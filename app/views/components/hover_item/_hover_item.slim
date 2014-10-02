@@ -1,0 +1,17 @@
+= content_tag_for :article, hover_item, 'component', data: {options: hover_item.options} do
+  .inner
+    .modal-trigger data={toggle: 'modal', target: "##{dom_id(hover_item, 'modal')}"}
+      div data={toggle: 'popover', content: hover_item.decorate.text}
+        = hover_item.decorate.icon_image
+        = hover_item.decorate.h1
+        = hover_item.decorate.text
+
+- if hover_item.options[:modal]
+  .modal.fade id=dom_id(hover_item, 'modal')
+    .modal-dialog
+      .modal-content
+        .modal-header
+          button.close data={dismiss: 'modal'}
+            span &times;
+
+        .modal-body= hover_item.decorate.text

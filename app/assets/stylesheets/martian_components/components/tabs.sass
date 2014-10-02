@@ -1,0 +1,59 @@
+article.component-tabs
+  .inner
+    .nav-tabs
+      margin-top: 30px
+      border: none
+
+      &.odd li
+        width: 100%
+
+      li
+        width: 50%
+        overflow: hidden
+
+        a
+          +flexbox
+          +align-items(center)
+          +justify-content(center)
+          +size(100%, 75px)
+          border: 1px solid darken(white, 15%)
+          border-left: none
+          border-top: none
+          border-radius: 0
+          margin: 0
+          font: 18px/1em $proxima-regular
+          text-align: center
+
+        &:nth-child(2n+0) a
+          border-right: none
+
+      li.active a
+        background-color: $blue
+        color: white
+
+    .tab-content
+      .tab-pane
+        padding-top: 35px
+
+  .inner[min-width~="550px"]
+    .nav-tabs
+      margin-top: 40px
+      +flexbox
+      +align-items(stretch)
+
+      li
+        +flexbox
+        +align-items(stretch)
+
+        a
+          height: auto
+          border-top: none
+
+        &:nth-child(2n+0) a
+          border-right: 1px solid darken(white, 15%)
+
+    .tab-content
+      .tab-pane
+        padding-top: 40px
+
+  .inner[min-width~="940px"]

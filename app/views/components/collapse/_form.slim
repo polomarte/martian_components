@@ -1,0 +1,18 @@
+= semantic_form_for component,
+  as:     :component,
+  url:    admin_component_path(component),
+  remote: true,
+  html:   {id: dom_id(component, 'form'), data: {type: :json, autosave: true}} do |f|
+
+  = f.inputs do
+    = f.input :h1
+    = f.input :h2
+    = f.input :text, as: :default_wysiwyg, height: :large
+    = f.input :key, as: :hidden
+
+  - unless component.nested_component.present?
+    - image = component.image || component.images.build(kind: 'main')
+    = render 'components/_shared/images_inputs', f: f, images: [image]
+
+- if component.nested_component.present?
+  = render component.nested_component.to_form_path, component: component.nested_component

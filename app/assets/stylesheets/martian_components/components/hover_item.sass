@@ -1,0 +1,31 @@
+article.component-hover_item
+  .inner
+    text-align: center
+    padding: 0 15px
+
+    .icon-wrapper
+      margin-bottom: 10px
+      text-align: center
+
+      img
+        +size(auto, 55px)
+        +center-block
+        float: none
+
+    .text
+      margin-top: 14px
+      height: 160px
+
+    .more-icon
+      +square(30px)
+      +center-block
+      margin-top: 15px
+      background-color: $blue
+      color: white
+      font-size: 30px
+
+    &[data-nested-level="1"],
+    &[data-nested-level="2"]
+      &[min-width~="0px"]
+        h1
+          font-size: 20px

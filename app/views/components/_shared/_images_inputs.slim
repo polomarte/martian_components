@@ -1,0 +1,11 @@
+= f.semantic_fields_for :images, images do |img_form|
+  = img_form.inputs f.object.class.human_attribute_name(img_form.object.kind) do
+    - file_hint = capture do
+      = image_tag img_form.object.file.presence.try(:url)
+      span.placeholder Arraste ou clique aqui para adicionar uma imagem
+
+    = img_form.input :file, as: :file, label: false, hint: file_hint, wrapper_html: {class: 'fileinput-button'}
+    = img_form.input :file_cache, as: :hidden
+    = img_form.input :kind, as: :hidden
+    = img_form.input :imageable_id, as: :hidden
+    = img_form.input :imageable_type, as: :hidden

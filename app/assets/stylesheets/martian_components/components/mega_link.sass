@@ -1,0 +1,78 @@
+article.component-mega_link
+  .outer
+    background-color: $blue
+
+  .inner
+    h1,
+    h2
+      color: white
+
+    h2
+      margin-top: 30px
+      margin-bottom: 40px
+
+    .icon-wrapper
+      +square(230px)
+      +flexbox
+      +align-items(center)
+      +justify-content(center)
+      margin: 20px auto
+      border: 5px solid fade_out(white, 0.7)
+      border-radius: 50%
+
+      img
+        max-width: 80%
+        max-height: 80%
+
+    .content-wrapper.sm
+      display: none
+
+.component-mega_link[min-width~="600px"]
+  .outer
+    background-color: transparent
+
+  .inner[min-width~="550px"]
+    h1,
+    h2
+      color: $text-black
+
+    h1
+      margin-bottom: 30px
+
+    .icon-wrapper
+      display: none
+
+    .content-wrapper
+      &.xs
+        display: none
+
+      &.sm
+        display: block
+        text-align: center
+
+        img
+          display: none
+
+        .btn
+          margin-top: 30px
+
+  .inner[min-width~="740px"]
+    .content-wrapper.sm
+      text-align: left
+
+      p
+        width: 480px
+        float: left
+
+      img
+        display: block
+        max-width: 250px
+        float: right
+
+  .inner[min-width~="940px"]
+    .content-wrapper.sm
+      p
+        width: 580px
+
+      img
+        max-width: 300px

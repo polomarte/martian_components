@@ -1,0 +1,16 @@
+= content_tag_for :article, banner, 'component' do
+  .outer
+    .background-image-wrapper data={liquid_fill: true}
+      = image_tag banner.background_image.file_url if banner.background_image.present?
+
+    - inner = capture do
+      .inner
+        = banner.decorate.icon_image
+        = banner.decorate.h1
+        = banner.decorate.h2
+
+    - if defined?(block)
+      - block.call(inner)
+    - else
+      = inner
+

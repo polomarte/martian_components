@@ -1,0 +1,2 @@
+class TabsDecorator < ComponentDecorator
+end

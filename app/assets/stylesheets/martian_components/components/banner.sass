@@ -1,0 +1,52 @@
+article.component-banner
+  .outer
+    position: relative
+
+    .background-image-wrapper
+      position: absolute
+      height: 100%
+      width: 100%
+
+  .inner
+    position: relative
+    z-index: 0
+    text-align: center
+    height: 240px
+    +flexbox
+    +justify-content(center)
+    +flex-direction(column)
+
+    .icon-wrapper
+      margin-bottom: 10px
+
+      img
+        +size(auto, 55px)
+
+    h1
+      text-transform: uppercase
+      color: white
+
+    h2
+      font: 20px/1.2em $proxima-light
+      color: white
+      margin: 0
+
+.component-banner[min-width~="600px"]
+  .outer
+    height: 280px
+
+  .inner
+    height: 280px
+
+    .icon-wrapper
+      margin-bottom: 12px
+
+      img
+        +size(auto, 60px)
+
+.component-banner[min-width~="900px"]
+  .outer
+    height: 320px
+
+  .inner
+    height: 320px

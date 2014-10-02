@@ -1,0 +1,19 @@
+= content_tag_for :article, collapse, 'component', data: {component_key: collapse.key} do
+  .inner
+    = collapse.decorate.h1
+    = collapse.decorate.media options[:media]
+    = collapse.decorate.text
+    .clearfix
+    .toggle-wrapper
+      button
+      hr
+    .more-icon.modal-trigger data={toggle: 'modal', target: "##{dom_id(collapse, 'modal')}"} +
+
+.modal.fade id=dom_id(collapse, 'modal')
+  .modal-dialog
+    .modal-content
+      .modal-header
+        button.close data={dismiss: 'modal'}
+          span &times;
+
+      .modal-body= collapse.decorate.text

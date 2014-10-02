@@ -1,0 +1,14 @@
+= content_tag_for :article, hover_group, 'component', data: { \
+  component_key: hover_group.key,
+  options: hover_group.options} do
+
+  .inner
+    = hover_group.decorate.h1
+    = hover_group.decorate.h2
+    = hover_group.decorate.text
+
+    div data={ \
+      slick_carousel:  !!hover_group.options[:gallery],
+      gallery_options: hover_group.options[:gallery_options].to_json}
+
+      = render hover_group.items

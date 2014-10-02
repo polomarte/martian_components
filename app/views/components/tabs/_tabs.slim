@@ -1,0 +1,20 @@
+= content_tag_for :article, tabs, 'component' do
+  .inner
+    = tabs.decorate.h1
+
+    /! Nav tabs
+    ul.nav.nav-tabs role='tablist'
+      - tabs.items.each_with_index do |item, i|
+        li[class=('active' if i.zero?)]
+          a data-toggle='tab' href="##{dom_id(item)}" role='tab'
+            = item.decorate.icon_image
+            = item.h1
+
+    /! Tab panes
+    .tab-content
+      - tabs.items.each_with_index do |item, i|
+        .tab-pane.fade id=dom_id(item) class=('active in' if i.zero?)
+          - if item_capture = options[:custom_items] && options[:custom_items][item.key]
+            = item_capture
+          - else
+            = component item.key

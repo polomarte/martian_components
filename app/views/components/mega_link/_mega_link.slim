@@ -1,0 +1,23 @@
+= content_tag_for :article, mega_link, 'component' do
+  .outer
+    - inner = capture do
+      .inner
+        = mega_link.decorate.h1
+
+        .content-wrapper.xs
+          = mega_link.decorate.link do
+            = mega_link.decorate.icon_image
+            = mega_link.decorate.h2
+
+        .content-wrapper.sm
+          = mega_link.decorate.text
+          = mega_link.decorate.image
+          = mega_link.decorate.link do
+            .btn.btn-primary= mega_link.h2
+
+        .clearfix
+
+    - if defined?(block)
+      - block.call(inner)
+    - else
+      = inner

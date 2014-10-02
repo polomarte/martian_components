@@ -1,0 +1,25 @@
+article.component-content
+  .inner
+    position: relative
+    z-index: 0
+
+    img.main
+      max-width: 100%
+      margin: 20px auto
+      display: block
+
+    .text
+      margin-top: 20px
+      text-align: center
+
+.component-content[min-width~="750px"]
+  .inner
+    img.main
+      &.left
+        +size(auto, 280px)
+        float: left
+        margin: 30px 30px 10px 0
+
+    .text
+      margin-top: 30px
+      text-align: left

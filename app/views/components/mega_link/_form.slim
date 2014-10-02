@@ -1,0 +1,18 @@
+= semantic_form_for component,
+  as:     :component,
+  url:    admin_component_path(component),
+  remote: true,
+  html:   {id: dom_id(component, 'form'), data: {type: :json, autosave: true}} do |f|
+
+  = f.inputs do
+    = f.input :h1
+    = f.input :h2
+    = f.input :text, as: :default_wysiwyg
+    = f.input :link_url
+    = f.input :key, as: :hidden
+    = f.input :file, as: :file, hint: f.object.file_identifier
+    = f.input :file_cache, as: :hidden
+
+  - image      = component.image || component.images.build(kind: 'main')
+  - icon_image = component.icon_image || component.images.build(kind: 'icon')
+  = render 'components/_shared/images_inputs', f: f, images: [image, icon_image]

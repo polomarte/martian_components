@@ -1,0 +1,14 @@
+= semantic_form_for component,
+  as:     :component,
+  url:    admin_component_path(component),
+  remote: true,
+  html:   {id: dom_id(component, 'form'), data: {type: :json, autosave: true}} do |f|
+
+  = f.inputs do
+    = f.input :h1
+    = f.input :h2
+    = f.input :key, as: :hidden
+
+  - background_image = component.background_image || component.images.build(kind: 'background')
+  - icon_image       = component.icon_image || component.images.build(kind: 'icon')
+  = render 'components/_shared/images_inputs', f: f, images: [background_image, icon_image]

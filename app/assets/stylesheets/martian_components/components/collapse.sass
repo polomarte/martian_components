@@ -1,0 +1,70 @@
+article.component-collapse
+  .inner
+    position: relative
+    z-index: 0
+
+    .media-wrapper
+      margin: 20px 0
+
+      & > img
+        max-width: 100%
+        +center-block
+
+    .text
+      text-align: center
+      margin-top: 20px
+      height: 0
+
+    .toggle-wrapper
+      display: none
+      margin: 20px 0 0
+
+      button
+        +square(44px)
+        +center-block
+        border: none
+        background-size: 100%
+        background-color: transparent
+        background-image: url("data:image/png;base64,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")
+        +transition(all .3s)
+
+        &:hover
+          cursor: pointer
+
+      hr
+        border-top: none
+        border-bottom: 1px solid darken(white, 15%)
+        position: absolute
+        width: 100%
+        height: 15px
+        left: 0
+        margin: 0
+        margin-top: -38px
+        z-index: -1
+        box-shadow: 0 6px 10px -7px darken(white, 95%)
+
+  .inner[min-width~="750px"]
+    .media-wrapper
+      margin: 30px 0
+
+      & > img
+        +size(auto, 280px)
+        float: left
+        margin: 0 30px 10px 0
+
+    .more-icon
+      display: none
+
+    .toggle-wrapper
+      display: block
+
+    p
+      text-align: left
+
+    .toggle-wrapper
+      [data-toggle='collapse']
+        +square(50px)
+        margin: 0 200px auto auto
+
+      hr
+        margin-top: -42px

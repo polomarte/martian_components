@@ -1,0 +1,9 @@
+= content_tag_for :article, timeline, 'component' do
+  .inner
+    = timeline.decorate.h1
+    = timeline.decorate.h2
+
+    .nav-slider[data={jq_slider: true}]
+      .years[data={values: timeline.items.map(&:h1)}]
+
+    div[data={slick_carousel: true}]= render timeline.items

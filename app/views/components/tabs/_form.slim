@@ -1,0 +1,34 @@
+.panel
+  h3= component.h1
+
+  .panel_contents
+    .panel
+      h3 Básico
+
+      .panel_contents
+        = semantic_form_for component,
+          as:     :component,
+          url:    admin_component_path(component),
+          remote: true,
+          html:   {id: dom_id(component, 'form'), data: {type: :json, autosave: true}} do |f|
+
+          = f.inputs do
+            = f.input :h1
+            = f.input :h2
+            = f.input :key, as: :hidden
+
+    .panel
+      h3 Abas
+
+      .panel_contents
+        ul.nav.nav-tabs role='tablist'
+          - component.items.each_with_index do |item, i|
+            li[class=('active' if i.zero?)]
+              a data-toggle='tab' href="##{dom_id(item)}" role='tab'
+                = item.h1
+
+        /! Tab panes
+        .tab-content
+          - component.items.each_with_index do |item, i|
+            .tab-pane id=dom_id(item) class=('active' if i.zero?)
+              = render item.to_form_path, component: item

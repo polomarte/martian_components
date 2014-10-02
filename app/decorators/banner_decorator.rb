@@ -1,0 +1,2 @@
+class BannerDecorator < ComponentDecorator
+end

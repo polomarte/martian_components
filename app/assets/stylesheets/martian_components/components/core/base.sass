@@ -1,0 +1,60 @@
+article[class^="component-"]
+  .inner
+    padding: 40px 0
+
+    h1
+      font: 28px/1em $proxima-bold
+      text-align: center
+      margin: 0
+
+    h2
+      font: 18px/1.2em $proxima-light
+      text-align: center
+      margin: 0
+
+    p + p
+      margin: 12px 0
+
+    &[data-nested-level="1"]
+      h1
+        font-size: 22px
+
+    &[data-nested-level="2"]
+      h1
+        font-size: 18px
+
+  .inner[min-width~="500px"]
+    h1
+      font-size: 45px
+
+    h2
+      font-size: 26px
+
+    &[data-nested-level="1"]
+      h1
+        font-size: 35px
+
+    &[data-nested-level="2"]
+      h1
+        font-size: 28px
+
+  .inner[min-width~="740px"]
+    h1
+      font-size: 55px
+
+    h2
+      font-size: 30px
+
+    &[data-nested-level="1"]
+      h1
+        font-size: 40px
+
+    &[data-nested-level="2"]
+      h1
+        font-size: 32px
+
+
+// Nested components do not have default padding.
+article[class^="component-"] article[class^="component-"]
+  .inner
+    padding: 0

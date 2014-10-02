@@ -1,0 +1,45 @@
+article.component-timeline
+  .inner
+    div[data-slick-carousel]
+      margin-top: 50px
+
+      .slick-prev,
+      .slick-next
+        &:before
+          color: black
+
+      .slick-prev
+        left: -15px
+
+      .slick-next
+        right: -15px
+
+    // Nested components
+    article[class^="component-"]
+      padding: 0 20px
+
+      h1
+        font-size: 24px
+        margin-bottom: 35px
+
+    .nav-slider
+      display: none
+
+  .inner[min-width~="715px"]
+    .nav-slider
+      display: block
+      width: 90%
+      left: 5%
+      margin-top: 100px
+
+      .years
+        position: relative
+        width: 100%
+        margin-left: -30px
+        margin-top: -45px
+
+        .year
+          position: absolute
+          width: 60px
+          text-align: center
+          cursor: pointer
