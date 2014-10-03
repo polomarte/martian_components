@@ -17,21 +17,22 @@ class @Components.Timeline extends @Components.Base
     @initSlider()
 
   initNavSlider: =>
-    yearsEl     = @navSlider.find('.years')
-    yearsValues = yearsEl.data('values')
+    @yearsEl           = @navSlider.find('.years')
+    @yearsValues       = @yearsEl.data('values')
+    @navSliderStepSize = (100 / (@yearsValues.length - 1))
 
-    yearsValues.each (item, index) ->
+    @yearsValues.each (item, index) =>
       year = $("<div class='year'>#{item}</div>")
-      year.css('left', (100 / (yearsValues.length - 1) * index) + '%')
-      year.appendTo yearsEl
+      year.css('left', (@navSliderStepSize * index) + '%')
+      year.appendTo @yearsEl
 
     @navSlider.slider
       values: [0]
-      step:   yearsValues.length - 1
+      step:   @navSliderStepSize
 
     @navSlider.on 'slide', (ev, ui) =>
       @slider.find('.slick-track')[0].style.webkitAnimationPlayState = 'paused'
-      @slider.slickGoTo(ui.value / 10)
+      @slider.slickGoTo(ui.value / @navSliderStepSize)
 
   initSlider: =>
     @slider.slick
@@ -46,4 +47,4 @@ class @Components.Timeline extends @Components.Base
         }
       ]
       onBeforeChange: (slider, current, next) =>
-        @navSlider.slider('values', 0, next * 10)
+        @navSlider.slider('values', 0, next * @navSliderStepSize)
