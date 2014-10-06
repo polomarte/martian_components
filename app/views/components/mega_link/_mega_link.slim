@@ -1,4 +1,6 @@
-= content_tag_for :article, mega_link, 'component' do
+= content_tag_for :article, mega_link, 'component', data: { \
+  component_key: mega_link.key} do
+
   .outer
     - inner = capture do
       .inner

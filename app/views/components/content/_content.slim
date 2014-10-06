@@ -1,4 +1,6 @@
-= content_tag_for :article, content, 'component' do
+= content_tag_for :article, content, 'component', data: { \
+  component_key: content.key} do
+
   .outer
     .inner
       = content.decorate.h1
