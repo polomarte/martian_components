@@ -84,6 +84,7 @@ class HoverGroup < Component
 end
 
 class HoverItem < Component
+  store_accessor :data, :link_url
 end
 
 class Timeline < Component
