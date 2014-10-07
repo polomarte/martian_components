@@ -17,14 +17,18 @@ class @Components.Timeline extends @Components.Base
     @initSlider()
 
   initNavSlider: =>
-    @yearsEl           = @navSlider.find('.years')
-    @yearsValues       = @yearsEl.data('values')
+    @yearsWrapper      = @navSlider.find('.years')
+    @yearsValues       = @yearsWrapper.data('values')
     @navSliderStepSize = (100 / (@yearsValues.length - 1))
 
     @yearsValues.each (item, index) =>
       year = $("<div class='year'>#{item}</div>")
       year.css('left', (@navSliderStepSize * index) + '%')
-      year.appendTo @yearsEl
+      year.appendTo @yearsWrapper
+
+    @years = @yearsWrapper.find('.year')
+
+    @years.first().addClass 'active'
 
     @navSlider.slider
       values: [0]
@@ -32,7 +36,9 @@ class @Components.Timeline extends @Components.Base
 
     @navSlider.on 'slide', (ev, ui) =>
       @slider.find('.slick-track')[0].style.webkitAnimationPlayState = 'paused'
-      @slider.slickGoTo(ui.value / @navSliderStepSize)
+      newPositionIndex = ui.value / @navSliderStepSize
+      @slider.slickGoTo newPositionIndex
+      @updateActiveYear newPositionIndex
 
   initSlider: =>
     @slider.slick
@@ -48,3 +54,8 @@ class @Components.Timeline extends @Components.Base
       ]
       onBeforeChange: (slider, current, next) =>
         @navSlider.slider('values', 0, next * @navSliderStepSize)
+        @updateActiveYear next
+
+  updateActiveYear: (newIndex) ->
+    @years.removeClass 'active'
+    @years.eq(newIndex).addClass 'active'
