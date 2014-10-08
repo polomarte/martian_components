@@ -4,7 +4,7 @@ article.component-hover_group
       margin-top: 20px
       text-align: center
 
-    div[data-slick-carousel]
+    [data-slick-carousel]
       margin-top: 50px
       width: calc(100% - 40px)
       margin-bottom: 0
@@ -31,18 +31,18 @@ article.component-hover_group
       h1
         font-size: 24px
 
-    div[data-slick-carousel="false"]
+    [data-slick-carousel="false"]
       article[class^="component-"]
         margin-bottom: 40px
 
   .inner[min-width~="600px"]
-    div[data-slick-carousel]
+    [data-slick-carousel]
       // Nested components
       article[class^="component-"]
         .text
           display: none
 
-    div[data-slick-carousel="false"]
+    [data-slick-carousel="false"]
       width: 600px
       +center-block
 
@@ -64,7 +64,7 @@ article.component-hover_group
         display: none
 
   .inner[min-width~="900px"]
-    div[data-slick-carousel="false"]
+    [data-slick-carousel="false"]
       width: 100%
 
       // Nested components
