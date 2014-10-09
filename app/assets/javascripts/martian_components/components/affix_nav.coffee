@@ -9,9 +9,11 @@ class @Components.AffixNav extends @Components.Base
 
     super
 
-    @el.affix
-      offset:
-        top: 372
+    setTimeout =>
+      @el.affix
+        offset:
+          top: @el.parent().offset().top
+    , 500
 
     @fixWidth()
     @smoothScroll()
