@@ -1,5 +1,6 @@
-= content_tag_for :article, tabs, 'component', data: { \
-  component_key: tabs.key} do
+= content_tag_for :article, tabs, 'component',
+  id: tabs.anchor_name,
+  data: {component_key: tabs.key} do
 
   .inner
     = tabs.decorate.h1

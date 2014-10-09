@@ -1,4 +1,4 @@
-= content_tag_for :article, banner, 'component' do
+= component_tag_for banner do
   .outer
     .background-image-wrapper data={liquid_fill: true}
       = image_tag banner.background_image.file_url if banner.background_image.present?

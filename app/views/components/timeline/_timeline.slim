@@ -1,6 +1,4 @@
-= content_tag_for :article, timeline, 'component', data: { \
-  component_key: timeline.key} do
-
+= component_tag_for timeline do
   .inner
     = timeline.decorate.h1
     = timeline.decorate.h2

@@ -1,9 +1,10 @@
 class Component < ActiveRecord::Base
   store :data, accessors: [:options, :form_options, :items_keys]
-  translates :h1, :h2, :text
+  translates :title, :h1, :h2, :text
 
   validates :key, presence: true
   validates :key, uniqueness: true
+  validates :title, presence: true, if: ->(c) { c.h1.blank? }
 
   has_many :images, as: :imageable, dependent: :destroy
 
@@ -42,6 +43,10 @@ class Component < ActiveRecord::Base
 
   def items
     items_keys.map{|key| Component[key]}
+  end
+
+  def anchor_name
+    (title || h1).parameterize
   end
 
   def to_partial_path

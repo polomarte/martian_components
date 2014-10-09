@@ -1,4 +1,4 @@
-= content_tag_for :article, collapse, 'component', data: {component_key: collapse.key} do
+= component_tag_for collapse do
   .inner
     = collapse.decorate.h1
     = collapse.decorate.media options[:media]

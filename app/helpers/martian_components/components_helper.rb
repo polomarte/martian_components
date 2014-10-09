@@ -1,5 +1,18 @@
 module MartianComponents
   module ComponentsHelper
+    def component_tag_for component
+      options = {
+        id:    component.anchor_name,
+        class: dom_class(component, 'component'),
+        data:  {
+          component_key: component.key,
+          options: component.options}}
+
+      content_tag :article, options do
+        yield
+      end
+    end
+
     def component key, options={}, &block
       component = Component[key]
 
@@ -24,7 +37,7 @@ module MartianComponents
 
         navegable_components.each do |component|
           output << content_tag(:li) do
-            link_to component.h1, dom_id(component, '#component')
+            link_to component.decorate.title, "##{component.anchor_name}"
           end
         end
 

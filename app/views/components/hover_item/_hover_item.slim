@@ -1,7 +1,4 @@
-= content_tag_for :article, hover_item, 'component', data: { \
-  component_key: hover_item.key,
-  options: hover_item.options} do
-
+= component_tag_for hover_item do
   .outer
     = hover_item.decorate.background_image
 

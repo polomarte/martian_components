@@ -2,6 +2,10 @@ class ComponentDecorator < Draper::Decorator
   delegate_all
   include Draper::LazyHelpers
 
+  def title
+    object.title.presence || object.h1
+  end
+
   def h1
     return unless object.h1.present? && !object.options[:h1_disabled]
     content_tag :h1, object.h1
