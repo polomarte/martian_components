@@ -13,7 +13,7 @@ class @Components.Collapse extends @Components.Base
     @onCollapseToggleClick()
 
     @fitText()
-    $(window).load @fitText
+    # $(window).load @fitText
 
   refresh: ->
     elementQuery()
@@ -21,9 +21,11 @@ class @Components.Collapse extends @Components.Base
     @fitText()
 
   fitText: =>
-    @textCollapsedHeight = @computeTextCollapseHeight()
-    @text.css height: @textCollapsedHeight
-    @text.trigger('update')
+    setTimeout =>
+      @textCollapsedHeight = @computeTextCollapseHeight()
+      @text.css height: @textCollapsedHeight
+      @text.trigger('update')
+    , 200
 
   computeTextCollapseHeight: ->
     @text.css 'height', 0

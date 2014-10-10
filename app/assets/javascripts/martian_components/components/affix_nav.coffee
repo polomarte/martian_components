@@ -11,7 +11,8 @@ class @Components.AffixNav extends @Components.Base
 
     @init()
     @fixWidth()
-    @smoothScroll()
+    @scrollOnClick()
+    @scrollOnLoad()
     $(window).resize @fixWidth
 
   init: ->
@@ -24,18 +25,27 @@ class @Components.AffixNav extends @Components.Base
       @el.css 'margin-left', '0'
     , 500
 
-  smoothScroll: ->
+  scrollOnClick: ->
     # Based on http://css-tricks.com/snippets/jquery/smooth-scrolling/
-    $('a[href*=#]:not([href=#])', @el).on 'click', ->
-      if location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname
-        target = $(this.hash)
-        target or=  $('[name=' + this.hash.slice(1) +']')
+    $('a[href*=#]:not([href=#])', @el).on 'click', (ev) =>
+      if location.pathname.replace(/^\//,'') == ev.target.pathname.replace(/^\//,'') && location.hostname == ev.target.hostname
+        @scrollTo @getTargetByHash(ev.target.hash)
 
-        if target.length
-          $('html,body').animate({
-            scrollTop: target.offset().top
-          }, 1000)
-          false
+  scrollOnLoad: ->
+    setTimeout =>
+      @scrollTo @getTargetByHash(location.hash)
+    , 500
+
+  scrollTo: (target) ->
+    return unless target.length
+
+    $('html,body').animate({
+      scrollTop: target.offset().top
+    }, 1000)
+    false
+
+  getTargetByHash: (hash) ->
+    if $(hash).length then $(hash) else $("[name='#{hash.slice(1)}']")
 
   fixWidth: =>
     @el.css 'width', @el.parent().width()
