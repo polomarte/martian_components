@@ -9,15 +9,20 @@ class @Components.AffixNav extends @Components.Base
 
     super
 
+    @init()
+    @fixWidth()
+    @smoothScroll()
+    $(window).resize @fixWidth
+
+  init: ->
+    @el.css 'margin-left', '-9999px'
     setTimeout =>
       @el.affix
         offset:
           top: @el.parent().offset().top
-    , 500
 
-    @fixWidth()
-    @smoothScroll()
-    $(window).resize @fixWidth
+      @el.css 'margin-left', '0'
+    , 500
 
   smoothScroll: ->
     # Based on http://css-tricks.com/snippets/jquery/smooth-scrolling/
