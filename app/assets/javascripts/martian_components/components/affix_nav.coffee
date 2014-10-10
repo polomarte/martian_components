@@ -23,6 +23,10 @@ class @Components.AffixNav extends @Components.Base
           top: @el.parent().offset().top
 
       @el.css 'margin-left', '0'
+
+      $('body').scrollspy
+        target: @el.selector
+
     , 500
 
   scrollOnClick: ->
