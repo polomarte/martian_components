@@ -9,16 +9,31 @@ class @Components.Collapse extends @Components.Base
 
     @text           = $('.text', @el)
     @collapseToggle = $('.toggle-wrapper button', @el)
+
+    @initModal()
     @text.dotdotdot watch: 'window'
     @onCollapseToggleClick()
-
     @fitText()
-    # $(window).load @fitText
+    $(window).load @fitText
 
   refresh: ->
     elementQuery()
     @closeCollapse()
     @fitText()
+
+  initModal: ->
+    @modalToggle  = $('> .inner > [data-toggle="modal"]', @el)
+    @modalDismiss = $("[data-dismiss][data-target='#{@modalToggle.data('target')}']")
+    @modal        = $(@modalToggle.data('target'))
+
+    @modal.on 'shown.bs.modal', =>
+      @modalDismiss.show()
+
+    @modal.on 'hide.bs.modal', =>
+      @modalDismiss.hide()
+
+    @modalDismiss.on 'touchstart click', =>
+      @modal.modal('hide')
 
   fitText: =>
     setTimeout =>

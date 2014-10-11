@@ -61,9 +61,9 @@ class @Components.HoverItem extends @Components.Base
 
     super
 
-    @text   = $ $('[data-text]', @el).data('text')
-    @hover = $('[data-toggle="popover"]', @el)
-    @modal = $('[data-toggle="modal"]', @el)
+    @text        = $ $('[data-text]', @el).data('text')
+    @hover       = $('[data-toggle="popover"]', @el)
+    @modalToggle = $('[data-toggle="modal"]', @el)
 
     @checkPlugins()
     @adjustText()
@@ -90,7 +90,19 @@ class @Components.HoverItem extends @Components.Base
     @hover.popover('destroy')
 
   initModal: ->
-    @modal.attr('data-toggle', 'modal')
+    @modalToggle.attr('data-toggle', 'modal')
+
+    @modalDismiss = $("[data-dismiss][data-target='#{@modalToggle.data('target')}']")
+    @modal        = $(@modalToggle.data('target'))
+
+    @modal.on 'shown.bs.modal', =>
+      @modalDismiss.show()
+
+    @modal.on 'hide.bs.modal', =>
+      @modalDismiss.hide()
+
+    @modalDismiss.on 'touchstart click', =>
+      @modal.modal('hide')
 
   disableModal: ->
-    @modal.removeAttr('data-toggle')
+    @modalToggle.removeAttr('data-toggle')

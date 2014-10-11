@@ -44,12 +44,12 @@ class @Components.Timeline extends @Components.Base
     @slider.slick
       slide:          'article'
       slidesToShow:   1
-      arrows:         true
       responsive:     [
         {
-          breakpoint: 500
+          breakpoint: 720
           settings:
             dots:   true
+            arrows: false
         }
       ]
       onBeforeChange: (slider, current, next) =>

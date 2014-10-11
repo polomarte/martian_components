@@ -1,0 +1,53 @@
+.modal-backdrop.fade.in
+  +opacity(0.9)
+
+.modal
+  .modal-dialog
+    width: 100%
+    margin: 0
+
+  .modal-content
+    height: 100%
+    background-color: transparent
+    color: fade_out(white, 0.1)
+    text-align: center
+    border: none
+    border-radius: 0
+    padding-bottom: 60px
+    +box-shadow(none)
+
+  .modal-header
+    border-bottom: none
+    padding: 40px 15px 10px
+
+    h1
+      font-size: 32px
+      line-height: 1em
+      margin: 0
+
+[data-dismiss="modal"]
+  display: none
+  +opacity(0.9)
+  position: fixed
+  bottom: 10px
+  left: 50%
+  z-index: 1100
+  margin-left: -25px
+  +square(50px)
+  +opacity(1)
+
+  svg
+    fill: white
+    +square(100%)
+
+  &:hover
+    +opacity(1)
+
+  &:before
+    content: ''
+    +size(100%, 120px)
+    +gradient-vertical(fade_out(black, 1), fade_out(black, 0), 10%, 85%)
+    position: fixed
+    left: 0
+    bottom: 0
+    z-index: -1

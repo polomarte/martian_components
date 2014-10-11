@@ -7,6 +7,8 @@
           = hover_item.decorate.icon_image
           = hover_item.decorate.h1
           = hover_item.decorate.text
+          - if hover_item.text.present?
+            .more-icon +
 
       - if hover_item.link_url.present?
         = link_to content, hover_item.link_url
@@ -20,7 +22,11 @@
     .modal-dialog
       .modal-content
         .modal-header
-          button.close data={dismiss: 'modal'}
-            span &times;
-
+          = hover_item.decorate.icon_image
+          = hover_item.decorate.h1
         .modal-body= hover_item.decorate.text
+
+  button.close data={dismiss: 'modal', target: "##{dom_id(hover_item, 'modal')}"}
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve" height="100px" width="100px">
+      <path d="M65,38.4l-12,12l12,12c0.8,0.8,0.8,2.2,0,3c-0.8,0.8-2.2,0.8-3,0l-12-12l-12,12c-0.8,0.8-2.2,0.8-3,0c-0.8-0.8-0.8-2.2,0-3  l12-12l-12-12c-0.8-0.8-0.8-2.2,0-3c0.8-0.8,2.2-0.8,3,0l12,12l12-12c0.8-0.8,2.2-0.8,3,0C65.8,36.2,65.8,37.6,65,38.4z M95,50.4  c0,24.8-20.2,45-45,45S5,75.2,5,50.4s20.2-45,45-45S95,25.5,95,50.4z M50,11.7c-21.3,0-38.7,17.4-38.7,38.7S28.7,89.1,50,89.1  c21.3,0,38.7-17.4,38.7-38.7S71.3,11.7,50,11.7z"/>
+    </svg>
