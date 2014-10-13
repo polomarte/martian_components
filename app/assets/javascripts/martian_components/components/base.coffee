@@ -23,9 +23,8 @@ class @Components.Base
 
   setNestedCssClasses: ->
     parentComponentLevels = @el.parents('article[class^="component-"]').length
-    if parentComponentLevels > 0
-      @el.attr('data-nested-level', parentComponentLevels)
-      @inner.attr('data-nested-level', parentComponentLevels)
+    @el.attr('data-nested-level', parentComponentLevels)
+    @inner.attr('data-nested-level', parentComponentLevels)
 
   onResize: ->
     @callResponsiveMethods()

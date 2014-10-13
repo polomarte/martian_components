@@ -6,10 +6,11 @@ class @Components
   class @Utils
 
   @autoInit: ->
-    @Collapse.autoInit()
-    @HoverGroup.autoInit()
-    @Timeline.autoInit()
     @AffixNav.autoInit()
+    @Collapse.autoInit()
+    @Content.autoInit()
+    @HoverGroup.autoInit()
     @Tabs.autoInit()
+    @Timeline.autoInit()
 
     @Utils.LazySvg.autoInit()
