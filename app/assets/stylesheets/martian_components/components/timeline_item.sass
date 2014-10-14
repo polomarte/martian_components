@@ -1,61 +1,64 @@
 article.component-timeline
-  article[class^="component-"]
-    .inner
-      text-align: center
+  .inner
+    article[class^="component-"]
+      padding: 0 0
 
-      img
-        display: none
+      .inner
+        text-align: center
 
-      h1
-        position: relative
-        z-index: 0
+        img
+          display: none
 
-        &:before
-          content: ''
-          position: absolute
-          border-radius: 50%
-          background-color: $text-black
-          +square(8px)
-          top: 30px
-          left: 50%
-          margin-left: -4px
+        h1
+          position: relative
+          z-index: 0
 
-        &:after
-          content: ''
-          position: absolute
-          top: 34px
-          border-top: 1px solid $text-black
-          width: 100%
-          width: calc(100% + 20px)
-          left: 0
-          z-index: -1
+          &:before
+            content: ''
+            position: absolute
+            border-radius: 50%
+            background-color: $text-black
+            +square(8px)
+            top: 30px
+            left: 50%
+            margin-left: -4px
 
-  article[class^="component-"]:nth-child(-n+2)
-    .inner
-      h1
-        &:after
-          width: 50%
-          left: 50%
+          &:after
+            content: ''
+            position: absolute
+            top: 34px
+            border-top: 1px solid $text-black
+            width: 100%
+            width: calc(100% + 20px)
+            left: 0
+            z-index: -1
 
-  article[class^="component-"]:nth-last-child(2)
-    .inner
-      h1
-        &:after
-          width: 50%
-          right: 50%
+    article[class^="component-"]:nth-child(-n+2)
+      .inner
+        h1
+          &:after
+            width: 50%
+            left: 50%
 
-  article[class^="component-"]
-    .inner[min-width~="650px"]
-      h1:before,
-      h1:after
-        display: none
+    article[class^="component-"]:nth-last-child(2)
+      .inner
+        h1
+          &:after
+            width: 50%
+            right: 50%
 
-      img
-        +size(auto, 220px)
-        display: block
-        float: left
-        margin: 0 30px 10px 0
+    article[class^="component-"]
+      .inner[min-width~="650px"]
+        h1:before,
+        h1:after
+          display: none
 
-      .text
-        text-align: left
+        img
+          +size(auto, 220px)
+          display: block
+          float: left
+          margin: 0 30px 10px 0
+
+        .text
+          text-align: left
 
