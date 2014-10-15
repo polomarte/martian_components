@@ -18,27 +18,35 @@
     padding-bottom: 60px
     +box-shadow(none)
 
-  .modal-header
-    border-bottom: none
-    padding: 40px 15px 10px
+    .modal-header
+      border-bottom: none
+      padding: 40px 15px 10px
 
-    .icon-wrapper
-      margin-bottom: 20px
-      max-width: 400px
-      +center-block
+      .icon-wrapper
+        margin-bottom: 20px
+        max-width: 400px
+        +center-block
 
-      svg
-        width: 100%
-        height: 100%
+        svg
+          +size(100%, 80px)
 
-    h1
-      font-size: 32px
+          *
+            fill: white
+
+      h1
+        font-size: 32px
+        line-height: 1em
+        margin: 0
+
+    h2
+      font-size: 24px
       line-height: 1em
-      margin: 0
 
-  h2
-    font-size: 24px
-    line-height: 1em
+  .modal-content[min-width~='700px']
+    .modal-header
+      .icon-wrapper
+        svg
+          +size(100%, 100px)
 
 [data-dismiss="modal"]
   display: none
