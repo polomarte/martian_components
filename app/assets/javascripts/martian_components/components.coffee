@@ -7,6 +7,7 @@ class @Components
 
   @autoInit: ->
     @AffixNav.autoInit()
+    @Banner.autoInit()
     @Collapse.autoInit()
     @Content.autoInit()
     @HoverGroup.autoInit()
