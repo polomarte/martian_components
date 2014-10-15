@@ -12,15 +12,21 @@ article.component-banner
     z-index: 0
     text-align: center
     height: 240px
+    padding: 0
     +flexbox
     +justify-content(center)
     +flex-direction(column)
 
     .icon-wrapper
       margin-bottom: 10px
+      +square(60px)
+      +center-block
 
       img
         +size(auto, 55px)
+
+      svg
+        +square(100%)
 
     h1
       text-transform: uppercase
@@ -31,14 +37,16 @@ article.component-banner
       color: white
       margin: 0
 
-.component-banner[min-width~="600px"]
+.component-banner[min-width~="500px"]
   .outer
     height: 280px
 
-  .inner
+  .inner[min-width~="500px"]
     height: 280px
+    padding: 0
 
     .icon-wrapper
+      +square(70px)
       margin-bottom: 12px
 
       img
@@ -48,5 +56,6 @@ article.component-banner
   .outer
     height: 320px
 
-  .inner
+  .inner[min-width~="740px"]
     height: 320px
+    padding: 0
