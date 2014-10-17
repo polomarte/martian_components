@@ -8,6 +8,7 @@
       slick_carousel:  !!hover_group.options[:gallery],
       gallery_options: hover_group.options[:gallery_options].to_json}
 
-      = render hover_group.items
+      - hover_group.items.each do |item|
+        = component item.key
 
     .clearfix

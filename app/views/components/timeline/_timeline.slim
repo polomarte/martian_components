@@ -6,4 +6,6 @@
     .nav-slider[data={jq_slider: true}]
       .years[data={values: timeline.items.map(&:h1)}]
 
-    div[data={slick_carousel: true}]= render timeline.items
+    div[data={slick_carousel: true}]
+      - timeline.items.each do |item|
+        = component item.key
