@@ -17,10 +17,15 @@ module MartianComponents
       component = Component[key]
 
       if component.present?
-        if block_given?
-          render component, options: options, block: block
-        else
-          render component, options: options
+        cache_key = ['v1', component, Digest::MD5.hexdigest(
+          [options, block.try(:call)].join)]
+
+        Rails.cache.fetch cache_key do
+          if block_given?
+            render component, options: options, block: block
+          else
+            render component, options: options
+          end
         end
       end
     end
