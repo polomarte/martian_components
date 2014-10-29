@@ -1,7 +1,11 @@
 class MegaLinkDecorator < ComponentDecorator
   def link
     if object.link_url.present?
-      link_to link_url, target: '_blank', remote: link_is_remote? do
+      options = object.options[:html_options].try :merge, {
+        remote: link_is_remote?
+      }
+
+      link_to link_url, options do
         yield
       end
     else
