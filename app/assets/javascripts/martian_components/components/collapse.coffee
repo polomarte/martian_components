@@ -54,11 +54,14 @@ class @Components.Collapse extends @Components.Base
   computeTextFullHeight: ->
     elClone = @el.clone()
 
-    $('.text', elClone).css
-      'width':       @text.width()
-      'height':      'auto'
+    elClone.css
+      'width':       @el.width()
       'margin-left': '-9999px'
       'position':    'fixed'
+
+    $('.text', elClone).css
+      'height':   'auto'
+      'overflow': ''
 
     elClone.appendTo 'body'
     result = $('.text', elClone).height()
@@ -66,22 +69,31 @@ class @Components.Collapse extends @Components.Base
     result
 
   openCollapse: ->
+    return if @text.open
     @text.trigger('destroy')
     @text.css('height', @textCollapsedHeight) # Hack, 'cause .trigger('destroy') clean inline syle too
     @text.css 'overflow', 'hidden'
     @collapseToggle.velocity rotateX: '180deg'
-    $.Velocity.animate(@text, height: @computeTextFullHeight()).then =>
-      @text.open = true
-      @text.css height: 'auto', overflow: ''
+
+    @text.velocity
+      height: @computeTextFullHeight()
+    ,
+      complete: =>
+        @text.open = true
+        @text.css overflow: ''
 
   closeCollapse: ->
     return unless @text.open
     @collapseToggle.velocity rotateX: '0deg'
     @text.css 'overflow', 'hidden'
-    $.Velocity.animate(@text, height: @textCollapsedHeight).then =>
-      @text.dotdotdot watch: 'window'
-      @text.open = false
-      @text.css 'overflow', ''
+
+    @text.velocity
+      height: @textCollapsedHeight
+    ,
+      complete: =>
+        @text.dotdotdot watch: 'window'
+        @text.open = false
+        @text.css 'overflow', ''
 
   onCollapseToggleClick: ->
     @collapseToggle.on 'click', =>
