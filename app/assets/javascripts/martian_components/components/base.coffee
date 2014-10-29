@@ -4,11 +4,12 @@ class @Components.Base
 
     @options        = @el.data('options')
     @inner          = $('.inner:first', @el)
-    @responsiveSize = @computeResponsiveSize()
+    @responsiveSize = null
 
     @setNestedCssClasses()
 
-    @el.resize => @onResize()
+    # Executed on begin too
+    addResizeListener(@el[0], @onResize)
 
   computeResponsiveSize: ->
     width = @inner.width()
@@ -26,7 +27,7 @@ class @Components.Base
     @el.attr('data-nested-level', parentComponentLevels)
     @inner.attr('data-nested-level', parentComponentLevels)
 
-  onResize: ->
+  onResize: =>
     @callResponsiveMethods()
 
   callResponsiveMethods: ->

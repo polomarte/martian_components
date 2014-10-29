@@ -13,11 +13,8 @@ class @Components.Collapse extends @Components.Base
     @initModal()
     @text.dotdotdot watch: 'window'
     @onCollapseToggleClick()
-    @fitText()
-    $(window).load @fitText
 
   refresh: ->
-    elementQuery()
     @closeCollapse()
     @fitText()
 
@@ -40,11 +37,18 @@ class @Components.Collapse extends @Components.Base
       @textCollapsedHeight = @computeTextCollapseHeight()
       @text.css height: @textCollapsedHeight
       @text.trigger('update')
-    , 200
+    , 0
 
   computeTextCollapseHeight: ->
     @text.css 'height', 0
-    diff = @collapseToggle.offset().top - @text.offset().top - 30
+
+    collapse_or_modal_toggle =
+      if @collapseToggle.is(':visible')
+        @collapseToggle
+      else
+        @modalToggle
+
+    diff = collapse_or_modal_toggle.offset().top - @text.offset().top - 30
     if diff < 160 then 160 else diff
 
   computeTextFullHeight: ->
