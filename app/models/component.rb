@@ -8,8 +8,10 @@ class Component < ActiveRecord::Base
 
   has_many :images, as: :imageable, dependent: :destroy
 
-  accepts_nested_attributes_for :images, allow_destroy: true,
-    reject_if: ->(attrs) {attrs['file'].blank? && attrs['file_cache'].blank?}
+  accepts_nested_attributes_for :images, allow_destroy: true, reject_if: ->(attrs) {
+    attrs['file'].blank? &&
+    attrs['file_cache'].blank? &&
+    attrs['remote_file_url'].blank?}
 
   def self.[] key
     subclass_based_on_key(key).find_by(key: key)

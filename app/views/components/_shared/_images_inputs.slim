@@ -4,8 +4,13 @@
       = image_tag img_form.object.file.presence.try(:url)
       span.placeholder Arraste ou clique aqui para adicionar uma imagem
 
-    = img_form.input :file, as: :file, label: false, hint: file_hint, wrapper_html: {class: 'fileinput-button'}
-    = img_form.input :file_cache, as: :hidden
+    li.fileinput-button.file.input.required
+      = img_form.s3_file_field :file, class: 'fileinput-button'
+      p.inline-hints
+        = file_hint
+        span.placeholder Arraste ou clique aqui para adicionar uma imagem
+
+    = img_form.input :remote_file_url, as: :hidden
     = img_form.input :kind, as: :hidden
     = img_form.input :imageable_id, as: :hidden
     = img_form.input :imageable_type, as: :hidden
