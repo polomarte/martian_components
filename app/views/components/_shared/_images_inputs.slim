@@ -1,5 +1,8 @@
+- options ||= {}
+
 = f.semantic_fields_for :images, images do |img_form|
-  = img_form.inputs f.object.class.human_attribute_name(img_form.object.kind) do
+  - inputs_label = f.object.class.human_attribute_name(img_form.object.kind) rescue nil
+  = img_form.inputs inputs_label, class: 'inputs image-uploader-inputs' do
     li.fileinput-button.file.input.required
       = img_form.s3_file_field :file, class: 'fileinput-button'
       p.inline-hints= img_form.object.decorate.form_hint
@@ -8,3 +11,6 @@
     = img_form.input :kind, as: :hidden
     = img_form.input :imageable_id, as: :hidden
     = img_form.input :imageable_type, as: :hidden
+
+    - if img_form.object.persisted? && options[:with_destroy?]
+      = img_form.input(:_destroy, as: :boolean, label: 'Apagar?')
