@@ -1,14 +1,8 @@
 = f.semantic_fields_for :images, images do |img_form|
   = img_form.inputs f.object.class.human_attribute_name(img_form.object.kind) do
-    - file_hint = capture do
-      = image_tag img_form.object.file.presence.try(:url)
-      span.placeholder Arraste ou clique aqui para adicionar uma imagem
-
     li.fileinput-button.file.input.required
       = img_form.s3_file_field :file, class: 'fileinput-button'
-      p.inline-hints
-        = file_hint
-        span.placeholder Arraste ou clique aqui para adicionar uma imagem
+      p.inline-hints= img_form.object.decorate.form_hint
 
     = img_form.input :remote_file_url, as: :hidden
     = img_form.input :kind, as: :hidden
