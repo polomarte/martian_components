@@ -83,7 +83,7 @@ class @Components.HoverItem extends @Components.Base
     @hover.popover
       trigger:   'hover'
       placement: 'bottom'
-      container: $('.inner:first', @hoverGroup.el)
+      container: @hoverGroup.el
       html:      true
 
   disableHover: ->

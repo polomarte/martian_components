@@ -54,17 +54,6 @@ article.component-hover_group
         float: left
         padding: 0 20px
 
-    // Hover popup
-    .popover
-      margin-top: -30px
-      border-top: none
-
-      .arrow
-        display: none
-
-      .more-icon
-        display: none
-
   .inner[min-width~="900px"]
     [data-slick-carousel="false"]
       width: 100%
@@ -72,3 +61,18 @@ article.component-hover_group
       // Nested components
       article[class^="component-"]
         width: 235px
+
+  // Hover popup
+  .popover
+    margin-top: -30px
+    border-top: none
+    pointer-events: none
+    border-radius: 0 0 6px 6px
+    border-color: darken(white, 10%)
+    +box-shadow(0 3px 7px fade_out(black, 0.9))
+
+    .arrow
+      display: none
+
+    .more-icon
+      display: none
