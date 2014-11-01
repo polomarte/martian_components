@@ -1,6 +1,7 @@
 class @Components.AffixNav extends @Components.Base
   @autoInit: ->
-    new @($('.component-affix_nav').first())
+    affixNavEl = $('.component-affix_nav').first()
+    new @(affixNavEl) if affixNavEl.length
 
   constructor: (@el) ->
     @breakpoints =
