@@ -53,4 +53,11 @@ class ComponentDecorator < Draper::Decorator
       image_tag object.background_image.file_url
     end
   end
+
+
+# Form specific methods
+
+  def form_additional_editable_attrs
+    object.form_options[:additional_editable_attrs] || []
+  end
 end

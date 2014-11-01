@@ -9,6 +9,9 @@
     = f.input :text, as: :default_wysiwyg, height: :small
     = f.input :key, as: :hidden
 
+    - if :link_url.in? f.object.decorate.form_additional_editable_attrs
+      = f.input :link_url
+
   - icon_image       = component.icon_image || component.images.build(kind: 'icon')
   - background_image = component.background_image || component.images.build(kind: 'background')
   = render 'components/_shared/images_inputs', f: f, images: [icon_image, background_image]
