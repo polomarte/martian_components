@@ -1,7 +1,7 @@
 - options ||= {}
 
 = f.semantic_fields_for :images, images do |img_form|
-  - inputs_label = f.object.class.human_attribute_name(img_form.object.kind) rescue nil
+  - inputs_label = options[:inputs_label] || (f.object.class.human_attribute_name(img_form.object.kind) rescue nil)
   = img_form.inputs inputs_label, class: 'inputs image-uploader-inputs' do
     li.fileinput-button.file.input.required
       = img_form.s3_file_field :file, class: 'fileinput-button'
