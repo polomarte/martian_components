@@ -1,6 +1,6 @@
 class @Components.AffixNav extends @Components.Base
   @autoInit: ->
-    $('.component-affix_nav').each (i, el) => new @($(el))
+    new @($('.component-affix_nav').first())
 
   constructor: (@el) ->
     @breakpoints =
@@ -23,10 +23,7 @@ class @Components.AffixNav extends @Components.Base
           top: @el.parent().offset().top
 
       @el.css 'margin-left', '0'
-
-      $('body').scrollspy
-        target: @el.selector
-
+      $('body').scrollspy(target: '.component-affix_nav')
     , 500
 
   scrollOnClick: ->
