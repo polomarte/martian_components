@@ -1,11 +1,13 @@
 class Component < ActiveRecord::Base
-  store :data, accessors: [:options, :form_options, :items_keys]
+  store :data, accessors: [:options, :form_options]
   translates :title, :h1, :h2, :text
 
   validates :key, presence: true
   validates :key, uniqueness: true
   validates :title, presence: true, if: ->(c) { c.h1.blank? }
 
+  belongs_to :parent, class_name: 'Component', inverse_of: :items, foreign_key: 'parent_id', touch: true
+  has_many :items, class_name: 'Component', inverse_of: :parent, foreign_key: 'parent_id', dependent: :destroy
   has_many :images, as: :imageable, dependent: :destroy
 
   accepts_nested_attributes_for :images, allow_destroy: true, reject_if: ->(attrs) {
@@ -43,9 +45,9 @@ class Component < ActiveRecord::Base
     images.find_by(kind: 'background')
   end
 
-  def items
-    items_keys.map{|key| Component[key]}
-  end
+  # def items
+  #   items_keys.map{|key| Component[key]}
+  # end
 
   def anchor_name
     (title || h1).parameterize
