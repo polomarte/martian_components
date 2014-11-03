@@ -20,7 +20,12 @@ class Component < ActiveRecord::Base
     attrs['remote_file_url'].blank?}
 
   def self.[] key
+    raise 'Invalid key format' unless valid_key?(key)
     subclass_based_on_key(key).find_by(key: key)
+  end
+
+  def self.valid_key? key
+    key.respond_to?(:split) && (key.chomp(':').split(':').size == 3)
   end
 
   def self.subclass_based_on_key key
