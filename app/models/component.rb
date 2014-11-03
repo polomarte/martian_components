@@ -103,6 +103,10 @@ end
 
 class HoverItem < Component
   store_accessor :data, :link_url
+
+  def self.permitted_params
+    super | [:link_url]
+  end
 end
 
 class Timeline < Component
