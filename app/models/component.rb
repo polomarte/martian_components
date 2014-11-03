@@ -6,8 +6,12 @@ class Component < ActiveRecord::Base
   validates :key, uniqueness: true
   validates :title, presence: true, if: ->(c) { c.h1.blank? }
 
-  belongs_to :parent, class_name: 'Component', inverse_of: :items, foreign_key: 'parent_id', touch: true
-  has_many :items, class_name: 'Component', inverse_of: :parent, foreign_key: 'parent_id', dependent: :destroy
+  belongs_to :parent, class_name: 'Component', inverse_of: :items,
+    foreign_key: 'parent_id', touch: true
+
+  has_many :items, -> { order [id: :asc] }, class_name: 'Component',
+    inverse_of: :parent, foreign_key: 'parent_id', dependent: :destroy
+
   has_many :images, as: :imageable, dependent: :destroy
 
   accepts_nested_attributes_for :images, allow_destroy: true, reject_if: ->(attrs) {
