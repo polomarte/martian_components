@@ -38,10 +38,12 @@ class ComponentDecorator < Draper::Decorator
     file = object.icon_image.file
 
     content_tag :div, class: 'icon-wrapper' do
-      if file.svg?
-        content_tag :div, nil, 'data-lazy-svg-url' => file.url
-      else
-        image_tag(file.url)
+      content_tag :div, class: 'icon-wrapper-inner' do
+        if file.svg?
+          content_tag :div, nil, 'data-lazy-svg-url' => file.url
+        else
+          image_tag(file.url)
+        end
       end
     end
   end
