@@ -73,7 +73,7 @@ class @Components.Collapse extends @Components.Base
     @text.trigger('destroy')
     @text.css('height', @textCollapsedHeight) # Hack, 'cause .trigger('destroy') clean inline syle too
     @text.css 'overflow', 'hidden'
-    @collapseToggle.velocity rotateX: '180deg'
+    @collapseToggle.velocity rotateX: '180deg', translateZ: '-1px'
 
     @text.velocity
       height: @computeTextFullHeight()
