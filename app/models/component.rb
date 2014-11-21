@@ -19,6 +19,8 @@ class Component < ActiveRecord::Base
     attrs['file_cache'].blank? &&
     attrs['remote_file_url'].blank?}
 
+  after_save :reload_related_active_admin_resource!
+
   def self.[] key
     raise 'Invalid key format' unless valid_key?(key)
     subclass_based_on_key(key).find_by(key: key)
@@ -76,6 +78,33 @@ class Component < ActiveRecord::Base
 
   def form_options
     super || {}
+  end
+
+private
+
+  def reload_related_active_admin_resource!
+    admin = ActiveAdmin.application.namespace(:admin)
+
+    page_resource = admin.resources.to_a.find do |res|
+      next unless res.is_a? ActiveAdmin::Page
+      res.name == key
+    end
+
+    component = self
+    admin.send :parse_page_registration_block, page_resource do
+      menu(
+        parent:   page_resource.menu_item.parent.label,
+        priority: page_resource.menu_item.priority,
+        label:    component.decorate.title)
+
+      content title: component.decorate.title do
+        columns do
+          column do
+            render component.to_form_path, component: component
+          end
+        end
+      end
+    end
   end
 end
 
