@@ -84,7 +84,7 @@ class @Components.Collapse extends @Components.Base
 
   closeCollapse: ->
     return unless @text.open
-    @collapseToggle.velocity rotateX: '0deg'
+    @collapseToggle.velocity rotateX: '0deg', translateZ: '0px'
     @text.css 'overflow', 'hidden'
 
     @text.velocity
