@@ -87,7 +87,7 @@ private
 
     page_resource = admin.resources.to_a.find do |res|
       next unless res.is_a? ActiveAdmin::Page
-      res.name == key
+      res.name.in? [key, parent.try(:key)]
     end
 
     component = self
@@ -100,7 +100,11 @@ private
       content title: component.decorate.title do
         columns do
           column do
-            render component.to_form_path, component: component
+            if parent = component.parent
+              render parent.to_form_path, component: parent
+            else
+              render component.to_form_path, component: component
+            end
           end
         end
       end
