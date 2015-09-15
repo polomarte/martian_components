@@ -90,6 +90,9 @@ private
       res.name.in? [key, parent.try(:key)]
     end
 
+    return if page_resource.blank?
+    return if page_resource.menu_item.blank?
+
     component = self
     admin.send :parse_page_registration_block, page_resource do
       menu(
