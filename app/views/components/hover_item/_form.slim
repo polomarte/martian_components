@@ -6,7 +6,10 @@
 
   = f.inputs do
     = f.input :h1
-    = f.input :text, as: :default_wysiwyg, height: :small
+
+    - unless :text.in? f.object.decorate.form_disabled_attrs
+      = f.input :text, as: :default_wysiwyg, height: :small
+
     = f.input :key, as: :hidden
 
     - if :link_url.in? f.object.decorate.form_additional_editable_attrs

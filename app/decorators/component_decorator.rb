@@ -37,10 +37,10 @@ class ComponentDecorator < Draper::Decorator
 
     file = object.icon_image.file
 
-    content_tag :div, class: 'icon-wrapper' do
-      content_tag :div, class: 'icon-wrapper-inner' do
+    h.content_tag :div, class: 'icon-wrapper' do
+      h.content_tag :div, class: 'icon-wrapper-inner' do
         if file.svg?
-          content_tag :div, nil, 'data-lazy-svg-url' => file.url
+          h.content_tag :div, nil, 'data-lazy-svg-url' => file.url
         else
           image_tag(file.url)
         end
@@ -57,7 +57,11 @@ class ComponentDecorator < Draper::Decorator
   end
 
 
-# Form specific methods
+  # Form specific methods
+
+  def form_disabled_attrs
+    object.form_options[:disabled_attrs] || []
+  end
 
   def form_additional_editable_attrs
     object.form_options[:additional_editable_attrs] || []
