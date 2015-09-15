@@ -1,0 +1,37 @@
+pt-BR:
+  models_attributes_and_errors: &models_attributes_and_errors
+    models:
+      component:
+        one: Componente
+        other: Componentes
+      image:
+        one: Imagem
+        other: Imagens
+
+    attributes:
+      shared_attributes: &shared_attributes
+        created_at: Criado em
+        updated_at: Atualizado em
+        link_url: Link
+      component:
+        <<: *shared_attributes
+        h1: Título
+        h2: Subtítulo
+        text: Texto
+      image:
+        file: Arquivo
+      mega_link:
+        document: Documento
+
+    errors:
+      models:
+        component:
+          attributes:
+            sample_attr:
+              error_key: "%{value} ..."
+
+  activerecord:
+    <<: *models_attributes_and_errors
+
+  activemodel:
+    <<: *models_attributes_and_errors
