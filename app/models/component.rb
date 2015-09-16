@@ -143,6 +143,20 @@ class HoverItem < Component
   def self.permitted_params
     super | [:link_url]
   end
+
+  def video_id
+    return nil if link_url.blank?
+    uri = URI.parse(link_url)
+    return nil unless uri.host.include? 'youtube'
+
+    CGI.parse(uri.query)['v'][0]
+  end
+
+  def options
+    options = super
+    options[:modal] = true if video_id.present?
+    options
+  end
 end
 
 class Timeline < Component

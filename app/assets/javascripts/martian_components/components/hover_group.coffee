@@ -65,9 +65,6 @@ class @Components.HoverItem extends @Components.Base
     @hover       = $('[data-toggle="popover"]', @el)
     @modalToggle = $('[data-toggle="modal"]', @el)
 
-    @checkPlugins()
-    @adjustText()
-
   adjustText: =>
     # Using timeout to hack this shit
     setTimeout (=>$('.text', @el).dotdotdot()), 0
@@ -92,17 +89,23 @@ class @Components.HoverItem extends @Components.Base
   initModal: ->
     @modalToggle.attr('data-toggle', 'modal')
 
-    @modalDismiss = $("[data-dismiss][data-target='#{@modalToggle.data('target')}']")
-    @modal        = $(@modalToggle.data('target'))
+    @modalDismiss    = $("[data-dismiss][data-target='#{@modalToggle.data('target')}']")
+    @modal           = $(@modalToggle.data('target'))
+    @embedded_player = $('.embedded-video-player-wrapper iframe', @modal)
 
     @modal.on 'shown.bs.modal', =>
       @modalDismiss.show()
 
     @modal.on 'hide.bs.modal', =>
       @modalDismiss.hide()
+      @stopVideo()
 
     @modalDismiss.on 'touchstart click', =>
       @modal.modal('hide')
 
   disableModal: ->
     @modalToggle.removeAttr('data-toggle')
+
+  stopVideo: ->
+    src = @embedded_player.attr('src')
+    @embedded_player.attr('src', '').attr('src', src)

@@ -10,21 +10,27 @@
           - if hover_item.text.present?
             .more-icon +
 
-      - if hover_item.link_url.present?
+      - if hover_item.link_url.present? && hover_item.video_id.blank?
         = link_to content, hover_item.link_url
       - else
         .modal-trigger data={toggle: 'modal', target: "##{dom_id(hover_item, 'modal')}"}
           div data={toggle: 'popover', content: hover_item.decorate.text}
             = content
 
-- if hover_item.options[:modal]
+- if hover_item.decorate.show_modal?
   .modal.fade id=dom_id(hover_item, 'modal')
     .modal-dialog
       .modal-content
-        .modal-header
-          = hover_item.decorate.icon_image
-          = hover_item.decorate.h1
-        .modal-body= hover_item.decorate.text
+        - unless hover_item.video_id.present?
+          .modal-header
+            = hover_item.decorate.icon_image
+            = hover_item.decorate.h1
+
+        .modal-body
+          - if hover_item.video_id.present?
+            = embedded_video_player hover_item.video_id
+          - else
+            = hover_item.decorate.text
 
   button.close data={dismiss: 'modal', target: "##{dom_id(hover_item, 'modal')}"}
     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve" height="100px" width="100px">
