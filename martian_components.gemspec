@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.version     = MartianComponents::VERSION
   s.authors     = ["Theo B"]
   s.email       = ["mail@theob.me"]
-  s.homepage    = "http://github.com/polomarte/polomarte_composer"
+  s.homepage    = "http://github.com/polomarte/martian_components"
   s.summary     = "Web components with admin modules."
   s.description = ""
   s.license     = "MIT"
