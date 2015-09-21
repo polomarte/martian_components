@@ -19,11 +19,14 @@ article.component-banner
 
     .icon-wrapper
       margin-bottom: 10px
-      +square(60px)
+      height: 60px
       +center-block
 
+      .icon-wrapper-inner
+        height: 100%
+
       img
-        +size(auto, 55px)
+        +size(auto, 100%)
 
       svg
         +square(100%)
@@ -46,11 +49,8 @@ article.component-banner
     padding: 0
 
     .icon-wrapper
-      +square(70px)
+      height: 60px
       margin-bottom: 12px
-
-      img
-        +size(auto, 60px)
 
 .component-banner[min-width~="900px"]
   .outer
