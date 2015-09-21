@@ -13,5 +13,6 @@ class @Components
     @HoverGroup.autoInit()
     @Tabs.autoInit()
     @Timeline.autoInit()
+    @SocialFeeds.autoInit()
 
     @Utils.LazySvg.autoInit()

@@ -4,63 +4,17 @@ article.component-hover_group
       margin-top: 20px
       text-align: center
 
-    [data-slick-carousel]
-      margin-top: 20px
-      width: calc(100% - 40px)
-      margin-bottom: 0
-      padding-bottom: 20px
-      +center-block
-
-      .slick-prev,
-      .slick-next
-        &:before
-          color: black
-
-      .slick-prev
-        left: -20px
-
-      .slick-next
-        right: -20px
-
-      .slick-dots
-        bottom: 0
-        margin-bottom: 0
-
     // Nested components
     article[class^="component-"]
       h1
         font-size: 24px
 
-    [data-slick-carousel="false"]
-      article[class^="component-"]
-        margin-bottom: 40px
-
   .inner[min-width~="600px"]
     [data-slick-carousel]
-      margin-top: 50px
-
       // Nested components
       article[class^="component-"]
         .text
           display: none
-
-    [data-slick-carousel="false"]
-      width: 600px
-      +center-block
-
-      // Nested components
-      article[class^="component-"]
-        width: 300px
-        float: left
-        padding: 0 20px
-
-  .inner[min-width~="900px"]
-    [data-slick-carousel="false"]
-      width: 100%
-
-      // Nested components
-      article[class^="component-"]
-        width: 235px
 
   // Hover popup
   .popover

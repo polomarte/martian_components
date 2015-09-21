@@ -1,0 +1,69 @@
+article.component-social_feeds
+  .social-feed
+    width: 100%
+    margin: 0 5px
+    border: 1px solid darken(white, 5%)
+
+    &.slick-slide:not(.slick-active)
+      iframe, a
+        pointer-events: none
+
+    .image
+      height: 170px
+      width: 100%
+      background-repeat: no-repeat
+      background-size: cover
+      background-position: center
+
+    .embedded-video-player-wrapper
+      height: 170px
+
+      iframe
+        +square(100%)
+
+    .modal-trigger
+      position: relative
+      z-index: 0
+      cursor: pointer
+
+      .mask
+        position: absolute
+        +square(100%)
+        background-color: fade_out(black, 0.7)
+        z-index: 1
+
+      .play-button
+        position: absolute
+        top: 50%
+        left: 50%
+        margin-left: 0px - 55/ 2
+        margin-top: 0px - 39/ 2
+        z-index: 2
+
+    .content
+      padding: 10px
+
+    hr
+      border-color: darken(white, 20%)
+      margin: 15px 0
+
+    .published-at a
+      span
+        color: $text-black !important
+
+      &:hover span
+        text-decoration: underline
+
+    .social-icon
+      +square(40px)
+      display: inline-block
+      vertical-align: middle
+      margin-right: 10px
+
+  .inner[min-width~="600px"]
+    .social-feed
+      margin: 0 10px
+
+      .image,
+      .embedded-video-player-wrapper
+        height: 300px

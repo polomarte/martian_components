@@ -52,7 +52,14 @@ module MartianComponents
 
     def embedded_video_player video_id
       content_tag :div, class: 'embedded-video-player-wrapper' do
-        content_tag :iframe, nil, src: "//www.youtube.com/embed/#{video_id}", allowfullscreen: true
+        params = [
+          'showinfo=0'
+        ].join('&')
+
+        content_tag :iframe, nil,
+          src: "//www.youtube.com/v/#{video_id}?#{params}",
+          frameborder: 0,
+          allowfullscreen: true
       end
     end
   end
