@@ -11,6 +11,9 @@ class @Components.Base
     # Executed on begin too
     addResizeListener(@el[0], @onResize)
 
+    if @options.full_height_header
+      @el.attr('full-height-header', true)
+
   computeResponsiveSize: ->
     width = @inner.width()
     switch

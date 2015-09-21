@@ -5,12 +5,12 @@ article[class^="component-"]
     h1
       font: 28px/1em $font-bold
       text-align: center
-      margin: 0
+      +center-block
 
     h2
       font: 18px/1.2em $font-light
       text-align: center
-      margin: 0
+      +center-block
 
     p + p
       margin: 12px 0
@@ -57,6 +57,10 @@ article[class^="component-"]
       h1
         font-size: 32px
 
+  // Height must be auto when FullHeightHeader script is in action
+  &[full-height-header]
+    .outer
+      height: auto
 
 // Nested components do not have default padding.
 article[class^="component-"] article[class^="component-"]

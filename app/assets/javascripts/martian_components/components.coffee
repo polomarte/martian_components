@@ -16,3 +16,4 @@ class @Components
     @SocialFeeds.autoInit()
 
     @Utils.LazySvg.autoInit()
+    @Utils.FullHeightHeader.autoInit()
