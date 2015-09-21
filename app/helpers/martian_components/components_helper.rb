@@ -17,8 +17,8 @@ module MartianComponents
       component = Component[key]
 
       if component.present?
-        cache_key = ['v1', component, Digest::MD5.hexdigest(
-          [options, block.try(:call)].join)]
+        cache_key = ['v1', component,
+          Digest::MD5.hexdigest([options, block_given? && capture(&block)].join)]
 
         Rails.cache.fetch cache_key do
           if block_given?
