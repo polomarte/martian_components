@@ -197,7 +197,7 @@ class SocialFeeds < Component
       self.text         = @raw_feed['message']
       self.published_at = DateTime.parse @raw_feed['created_time']
       self.source_link  = @raw_feed['link']
-      self.image        = @raw_feed['picture']
+      self.image        = @raw_feed['full_picture']
     end
 
     def build_youtube
