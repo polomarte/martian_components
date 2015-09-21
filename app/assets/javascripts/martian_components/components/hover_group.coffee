@@ -46,7 +46,7 @@ class @Components.HoverGroup extends @Components.Base
 
   onResponsiveSizeChange: ->
     @items.map 'checkPlugins'
-    @slider.slickGoTo(0)
+    @slider.slick('slickGoTo', 0)
 
   onResize: ->
     super
