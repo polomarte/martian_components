@@ -1,31 +1,30 @@
 article.component-timeline
-  .inner
-    [data-slick-carousel]
-      margin-top: 20px
+  [data-slick-carousel]
+    margin-top: 20px
 
-      .slick-prev,
-      .slick-next
-        &:before
-          color: black
+    .slick-prev,
+    .slick-next
+      &:before
+        color: black
 
-      .slick-prev
-        left: -15px
+    .slick-prev
+      left: -15px
 
-      .slick-next
-        right: -15px
+    .slick-next
+      right: -15px
 
-    // Nested components
-    article[class^="component-"]
-      padding: 0 20px
+  // Nested components
+  article[class^="component-"]
+    padding: 0 20px
 
-      h1
-        font-size: 24px
-        margin-bottom: 35px
+    h1
+      font-size: 24px
+      margin-bottom: 35px
 
-    .nav-slider
-      display: none
+  .nav-slider
+    display: none
 
-  .inner[min-width~="690px"]
+  @media (min-width: $screen-md-min)
     [data-slick-carousel]
       margin-top: 50px
 

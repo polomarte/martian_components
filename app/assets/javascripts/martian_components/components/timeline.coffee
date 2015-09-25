@@ -3,10 +3,6 @@ class @Components.Timeline extends @Components.Base
     $('.component-timeline').each (i, el) => new @($(el))
 
   constructor: (@el) ->
-    @breakpoints =
-      sm: 600
-      md: 900
-
     super
 
     @text      = $ $('[data-text]', @el).data('text')

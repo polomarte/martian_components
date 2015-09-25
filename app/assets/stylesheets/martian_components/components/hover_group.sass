@@ -1,20 +1,12 @@
 article.component-hover_group
-  .inner
-    .text
-      margin-top: 20px
-      text-align: center
+  .text
+    margin-top: 20px
+    text-align: center
 
-    // Nested components
-    article[class^="component-"]
-      h1
-        font-size: 24px
-
-  .inner[min-width~="600px"]
-    [data-slick-carousel]
-      // Nested components
-      article[class^="component-"]
-        .text
-          display: none
+  // Nested components
+  article[class^="component-"]
+    h1
+      font-size: 24px
 
   // Hover popup
   .popover
@@ -30,3 +22,10 @@ article.component-hover_group
 
     .more-icon
       display: none
+
+  @media (min-width: $screen-sm-min)
+    [data-slick-carousel]
+      // Nested components
+      article[class^="component-"]
+        .text
+          display: none

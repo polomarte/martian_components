@@ -18,6 +18,7 @@ Gem::Specification.new do |s|
   s.test_files = Dir["test/**/*"]
 
   s.add_dependency('rails', ['>= 4.1.0'])
+  s.add_dependency('bootstrap-sass', ['~> 3.2.0'])
   s.add_dependency('rails_autolink', ['~> 1.1.0'])
   s.add_dependency('koala', ['~> 2.2.0'])
   s.add_dependency('twitter', ['~> 5.15.0'])

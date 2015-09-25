@@ -1,52 +1,51 @@
 article[class^="component-"]
-  .inner
-    [data-slick-carousel]
-      width: 100%
-      margin-top: 20px
+  [data-slick-carousel]
+    width: 100%
+    margin-top: 20px
+    margin-bottom: 0
+    padding-bottom: 40px
+    +center-block
+
+    .slick-prev,
+    .slick-next
+      &:before
+        color: black
+
+    .slick-prev
+      left: -20px
+
+    .slick-next
+      right: -20px
+
+    .slick-dots
+      bottom: 0
       margin-bottom: 0
-      padding-bottom: 40px
-      +center-block
 
-      .slick-prev,
-      .slick-next
-        &:before
-          color: black
+      li
+        margin: 0 5px
+        +square(14px)
 
-      .slick-prev
-        left: -20px
-
-      .slick-next
-        right: -20px
-
-      .slick-dots
-        bottom: 0
-        margin-bottom: 0
-
-        li
-          margin: 0 5px
+        button
+          padding: 0
           +square(14px)
 
-          button
-            padding: 0
+          &:before
+            content: ''
             +square(14px)
+            border-radius: 50%
+            background-color: darken(white, 50%)
+            +opacity(1)
 
-            &:before
-              content: ''
-              +square(14px)
-              border-radius: 50%
-              background-color: darken(white, 50%)
-              +opacity(1)
+      li.slick-active
+        button:before
+          background-color: transparent
+          border: 1px solid darken(white, 50%)
 
-        li.slick-active
-          button:before
-            background-color: transparent
-            border: 1px solid darken(white, 50%)
+  [data-slick-carousel="false"]
+    article[class^="component-"]
+      margin-bottom: 40px
 
-    [data-slick-carousel="false"]
-      article[class^="component-"]
-        margin-bottom: 40px
-
-  .inner[min-width~="600px"]
+  @media (min-width: $screen-sm-min)
     [data-slick-carousel]
       margin-top: 50px
 
@@ -60,7 +59,7 @@ article[class^="component-"]
         float: left
         padding: 0 20px
 
-  .inner[min-width~="900px"]
+  @media (min-width: $screen-md-min)
     [data-slick-carousel="false"]
       width: 100%
 

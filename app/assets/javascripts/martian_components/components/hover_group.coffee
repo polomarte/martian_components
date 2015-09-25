@@ -3,10 +3,6 @@ class @Components.HoverGroup extends @Components.Base
     $('.component-hover_group').each (i, el) => new @($(el))
 
   constructor: (@el) ->
-    @breakpoints =
-      sm: 600
-      md: 900
-
     super
 
     # Hover Items

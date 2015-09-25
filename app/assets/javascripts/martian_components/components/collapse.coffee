@@ -3,8 +3,6 @@ class @Components.Collapse extends @Components.Base
     $('.component-collapse').each (i, el) => new @($(el))
 
   constructor: (@el) ->
-    @breakpoints = {sm: 750, md: 1000}
-
     super
 
     @text           = $('.text', @el)

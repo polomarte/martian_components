@@ -3,10 +3,6 @@ class @Components.SocialFeeds extends @Components.Base
     $('.component-social_feeds').each (i, el) => new @($(el))
 
   constructor: (@el) ->
-    @breakpoints =
-      sm: 600
-      md: 900
-
     super
 
     # Hover Items

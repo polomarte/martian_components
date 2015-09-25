@@ -3,6 +3,7 @@
 #= require_tree ./components
 
 class @Components
+  class @Core
   class @Utils
 
   @autoInit: ->
@@ -17,3 +18,5 @@ class @Components
 
     @Utils.LazySvg.autoInit()
     @Utils.FullHeightHeader.autoInit()
+
+    new @Core.ResponsiveSizeChangeEmitter

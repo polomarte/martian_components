@@ -1,41 +1,41 @@
 article.component-tabs
-  .inner
-    .nav-tabs
-      margin-top: 30px
-      border: none
 
-      &.odd li
-        width: 100%
+  .nav-tabs
+    margin-top: 30px
+    border: none
 
-      li
-        width: 50%
-        overflow: hidden
+    &.odd li
+      width: 100%
 
-        a
-          +flexbox
-          +align-items(center)
-          +justify-content(center)
-          +size(100%, 75px)
-          border: 1px solid darken(white, 15%)
-          border-left: none
-          border-top: none
-          border-radius: 0
-          margin: 0
-          font: 18px/1em $font-regular
-          text-align: center
+    li
+      width: 50%
+      overflow: hidden
 
-        &:nth-child(2n+0) a
-          border-right: none
+      a
+        +flexbox
+        +align-items(center)
+        +justify-content(center)
+        +size(100%, 75px)
+        border: 1px solid darken(white, 15%)
+        border-left: none
+        border-top: none
+        border-radius: 0
+        margin: 0
+        font: 18px/1em $font-regular
+        text-align: center
 
-      li.active a
-        background-color: $blue
-        color: white
+      &:nth-child(2n+0) a
+        border-right: none
 
-    .tab-content
-      .tab-pane
-        padding-top: 35px
+    li.active a
+      background-color: $blue
+      color: white
 
-  .inner[min-width~="550px"]
+  .tab-content
+    .tab-pane
+      padding-top: 35px
+
+  @media (min-width: $screen-sm-min)
     .nav-tabs
       margin-top: 40px
       +flexbox
@@ -55,5 +55,3 @@ article.component-tabs
     .tab-content
       .tab-pane
         padding-top: 40px
-
-  .inner[min-width~="940px"]

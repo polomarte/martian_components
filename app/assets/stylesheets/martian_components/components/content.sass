@@ -12,14 +12,14 @@ article.component-content
       margin-top: 20px
       text-align: center
 
-.component-content[min-width~="750px"]
-  .inner
-    img.main
-      &.left
-        +size(auto, 280px)
-        float: left
-        margin: 30px 30px 10px 0
+  @media (min-width: $screen-sm-min)
+    .inner
+      img.main
+        &.left
+          +size(auto, 280px)
+          float: left
+          margin: 30px 30px 10px 0
 
-    .text
-      margin-top: 30px
-      text-align: left
+      .text
+        margin-top: 30px
+        text-align: left

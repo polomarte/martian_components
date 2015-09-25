@@ -2,29 +2,35 @@ article[class^="component-"]
   .inner
     padding: 40px 0
 
+  h1
+    font: 28px/1em $font-bold
+    text-align: center
+    +center-block
+
+  h2
+    font: 18px/1.2em $font-light
+    text-align: center
+    +center-block
+
+  p + p
+    margin: 12px 0
+
+  &[data-nested-level="1"]
     h1
-      font: 28px/1em $font-bold
-      text-align: center
-      +center-block
+      font-size: 22px
 
-    h2
-      font: 18px/1.2em $font-light
-      text-align: center
-      +center-block
+  &[data-nested-level="2"]
+    h1
+      font-size: 18px
 
-    p + p
-      margin: 12px 0
+  // Height must be auto when FullHeightHeader script is in action
+  &[full-height-header]
+    .outer
+      height: auto
 
-    &[data-nested-level="1"]
-      h1
-        font-size: 22px
-
-    &[data-nested-level="2"]
-      h1
-        font-size: 18px
-
-  .inner[min-width~="500px"]
-    padding: 60px 0
+  @media (min-width: $screen-sm-min)
+    .inner
+      padding: 60px 0
 
     h1
       font-size: 45px
@@ -40,8 +46,9 @@ article[class^="component-"]
       h1
         font-size: 28px
 
-  .inner[min-width~="740px"]
-    padding: 80px 0
+  @media (min-width: $screen-md-min)
+    .inner
+      padding: 80px 0
 
     h1
       font-size: 55px
@@ -56,11 +63,6 @@ article[class^="component-"]
     &[data-nested-level="2"]
       h1
         font-size: 32px
-
-  // Height must be auto when FullHeightHeader script is in action
-  &[full-height-header]
-    .outer
-      height: auto
 
 // Nested components do not have default padding.
 article[class^="component-"] article[class^="component-"]

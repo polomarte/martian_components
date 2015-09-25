@@ -8,39 +8,28 @@ class @Components.Base
 
     @setNestedCssClasses()
 
-    # Executed on begin too
-    addResizeListener(@el[0], @onResize)
+    @el.on 'responsiveSizeChange', (ev, responsiveSize) =>
+      @callResponsiveMethods(responsiveSize)
 
     if @options.full_height_header
       @el.attr('full-height-header', true)
 
-  computeResponsiveSize: ->
-    width = @inner.width()
-    switch
-      when width < @breakpoints.sm then 'xs'
-      when width < @breakpoints.md then 'sm'
-      else
-        'md'
-
   refresh: ->
     console.log "#{@constructor.name} does not implement refresh"
+
+  addResizeListener: ->
 
   setNestedCssClasses: ->
     parentComponentLevels = @el.parents('article[class^="component-"]').length
     @el.attr('data-nested-level', parentComponentLevels)
     @inner.attr('data-nested-level', parentComponentLevels)
 
-  onResize: =>
-    @callResponsiveMethods()
-
-  callResponsiveMethods: ->
-    computeResponsiveSizeResult = @computeResponsiveSize()
-    if computeResponsiveSizeResult != @responsiveSize
-      @responsiveSize = computeResponsiveSizeResult
-      @["onChangeTo#{@responsiveSize.camelize()}"]()
-      @onResponsiveSizeChange()
+  callResponsiveMethods: (responsiveSize) ->
+    @["onChangeTo#{responsiveSize.camelize()}"]()
+    @onResponsiveSizeChange(responsiveSize)
 
   onResponsiveSizeChange: (newSize) -> console.log "#{@constructor.name} does not implement onResponsiveSizeChange"
   onChangeToXs: -> console.log "#{@constructor.name} does not implement onChangeToXs"
   onChangeToSm: -> console.log "#{@constructor.name} does not implement onChangeToSm"
   onChangeToMd: -> console.log "#{@constructor.name} does not implement onChangeToMd"
+  onChangeToLg: -> console.log "#{@constructor.name} does not implement onChangeToLg"
