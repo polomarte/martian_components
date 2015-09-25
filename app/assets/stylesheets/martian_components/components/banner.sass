@@ -34,6 +34,7 @@ article.component-banner
   h1
     text-transform: uppercase
     color: white
+    margin-top: 0
 
   h2
     font: 20px/1.2em $font-light
@@ -41,9 +42,6 @@ article.component-banner
     margin: 0
 
   @media (min-width: $screen-sm-min)
-    .outer
-      height: 280px
-
     .inner
       height: 280px
       padding: 0
@@ -53,9 +51,9 @@ article.component-banner
       margin-bottom: 12px
 
   @media (min-width: $screen-md-min)
-    .outer
-      height: 320px
-
     .inner
       height: 320px
-      padding: 0
+
+  @media (min-width: $screen-lg-min)
+    .inner
+      height: 400px
