@@ -18,5 +18,6 @@ class @Components
 
     @Utils.LazySvg.autoInit()
     @Utils.FullHeightHeader.autoInit()
+    @Utils.SmoothScroll.autoInit()
 
     new @Core.ResponsiveSizeChangeEmitter
