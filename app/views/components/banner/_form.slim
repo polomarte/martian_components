@@ -9,6 +9,6 @@
     = f.input :h2
     = f.input :key, as: :hidden
 
-  - background_image = component.background_image || component.images.build(kind: 'background')
-  - icon_image       = component.icon_image || component.images.build(kind: 'icon')
-  = render 'components/_shared/images_inputs', f: f, images: [background_image, icon_image]
+  - background = component.background || component.images.build(kind: 'background')
+  - icon       = component.icon || component.images.build(kind: 'icon')
+  = render 'components/_shared/images_inputs', f: f, images: [background, icon]

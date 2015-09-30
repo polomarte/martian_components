@@ -2,7 +2,9 @@ class ImagesInput
   include ::Formtastic::Inputs::Base
 
   def to_html
-    images = [builder.object.image || builder.object.images.build]
+    images = object.image_kinds.map do |image_kind|
+      object.public_send(image_kind) || object.images.build(kind: image_kind)
+    end
 
     builder.semantic_fields_for :images, images do |img_form|
       inputs_label = object.class.human_attribute_name(img_form.object.kind) rescue nil

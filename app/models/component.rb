@@ -1,4 +1,10 @@
 class Component < ActiveRecord::Base
+  @@permitted_params = [:h1, :h2, :text]
+
+  include Imageable
+
+  define_image_kinds [:image, :icon, :background]
+
   store :data, accessors: [:options, :form_options]
   translates :title, :h1, :h2, :text
 
@@ -11,13 +17,6 @@ class Component < ActiveRecord::Base
 
   has_many :items, -> { order [id: :asc] }, class_name: 'Component',
     inverse_of: :parent, foreign_key: 'parent_id', dependent: :destroy
-
-  has_many :images, as: :imageable, dependent: :destroy
-
-  accepts_nested_attributes_for :images, allow_destroy: true, reject_if: ->(attrs) {
-    attrs['file'].blank? &&
-    attrs['file_cache'].blank? &&
-    attrs['remote_file_url'].blank?}
 
   after_save :reload_related_active_admin_resource!
 
@@ -35,25 +34,13 @@ class Component < ActiveRecord::Base
   end
 
   def self.permitted_params
-    [:h1, :h2, :text, images_attributes: Image.permitted_params]
+    @@permitted_params
   end
 
   def subclass_based_on_key key=nil
     key = key || self.key
     page, component, page_location = key.split(':')
     component.camelcase.constantize
-  end
-
-  def image
-    images.find_by(kind: 'main')
-  end
-
-  def icon_image
-    images.find_by(kind: 'icon')
-  end
-
-  def background_image
-    images.find_by(kind: 'background')
   end
 
   # def items

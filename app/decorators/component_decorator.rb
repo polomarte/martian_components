@@ -32,10 +32,10 @@ class ComponentDecorator < Draper::Decorator
     image_tag object.image.file_url, class: css_classes
   end
 
-  def icon_image
-    return unless object.icon_image.present?
+  def icon
+    return unless object.icon.present?
 
-    file = object.icon_image.file
+    file = object.icon.file
 
     h.content_tag :div, class: 'icon-wrapper' do
       h.content_tag :div, class: 'icon-wrapper-inner' do
@@ -48,11 +48,11 @@ class ComponentDecorator < Draper::Decorator
     end
   end
 
-  def background_image
-    return unless object.background_image.present?
+  def background
+    return unless object.background.present?
 
     content_tag :div, class: 'background-image-wrapper', data: {liquid_fill: true} do
-      image_tag object.background_image.file_url
+      image_tag object.background.file_url
     end
   end
 

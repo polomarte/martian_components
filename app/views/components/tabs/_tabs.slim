@@ -7,7 +7,7 @@
       - tabs.items.each_with_index do |item, i|
         li[class=('active' if i.zero?)]
           a data-toggle='tab' href="##{dom_id(item)}" role='tab'
-            = item.decorate.icon_image
+            = item.decorate.icon
             = item.h1
 
     /! Tab panes

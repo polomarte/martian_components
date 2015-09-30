@@ -1,10 +1,10 @@
 = component_tag_for hover_item do
   .outer
-    = hover_item.decorate.background_image
+    = hover_item.decorate.background
 
     .inner
       - content = capture do
-        = hover_item.decorate.icon_image
+        = hover_item.decorate.icon
         = hover_item.decorate.h1
         = hover_item.decorate.text
         - if hover_item.text.present?
@@ -23,7 +23,7 @@
       .modal-content
         - unless hover_item.video_id.present?
           .modal-header
-            = hover_item.decorate.icon_image
+            = hover_item.decorate.icon
             = hover_item.decorate.h1
 
         .modal-body
