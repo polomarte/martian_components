@@ -25,7 +25,7 @@ class @Components.Utils.SmoothScroll
 
     $('html,body').animate({
       scrollTop: target.offset().top
-    }, 1000)
+    }, 1000, => location.hash = target.attr('id'))
     false
 
   getTargetByHash: (hash) ->
