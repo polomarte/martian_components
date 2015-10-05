@@ -67,6 +67,10 @@ class Component < ActiveRecord::Base
     super || {}
   end
 
+  def css_class
+    "component-#{self.class.to_s.underscore.dasherize}"
+  end
+
 private
 
   def reload_related_active_admin_resource!

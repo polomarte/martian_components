@@ -3,7 +3,7 @@ module MartianComponents
     def component_tag_for component
       options = {
         id:    component.anchor_name,
-        class: dom_class(component, 'component'),
+        class: component.css_class,
         data:  {
           component_key: component.key,
           options: component.options}}
@@ -13,8 +13,8 @@ module MartianComponents
       end
     end
 
-    def component key, options={}, &block
-      component = Component[key]
+    def component key_or_object, options={}, &block
+      component = key_or_object.is_a?(String) ? Component[key_or_object] : key_or_object
 
       if component.present?
         cache_key = ['v1', component,

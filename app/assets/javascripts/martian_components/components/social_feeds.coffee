@@ -1,6 +1,6 @@
 class @Components.SocialFeeds extends @Components.Base
   @autoInit: ->
-    $('.component-social_feeds').each (i, el) => new @($(el))
+    $('.component-social-feeds').each (i, el) => new @($(el))
 
   constructor: (@el) ->
     super

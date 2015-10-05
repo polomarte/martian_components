@@ -1,13 +1,13 @@
 class @Components.HoverGroup extends @Components.Base
   @autoInit: ->
-    $('.component-hover_group').each (i, el) => new @($(el))
+    $('.component-hover-group').each (i, el) => new @($(el))
 
   constructor: (@el) ->
     super
 
     # Hover Items
     @items  = []
-    $('.component-hover_item', @el).each (i, el) =>
+    $('.component-hover-item', @el).each (i, el) =>
       @items.push new Components.HoverItem($(el), @)
 
     @slider = $('[data-slick-carousel]', @el).not('[data-slick-carousel="false"]')
