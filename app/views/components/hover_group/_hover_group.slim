@@ -1,21 +1,20 @@
 = component_tag_for hover_group do
-  - inner = capture do
-    .inner
-      = hover_group.decorate.h1
-      = hover_group.decorate.h2
-      = hover_group.decorate.text
+  - inner_content = capture do
+    = hover_group.decorate.h1
+    = hover_group.decorate.h2
+    = hover_group.decorate.text
 
-      div data={ \
-        slick_carousel:  !!hover_group.options[:gallery],
-        gallery_options: hover_group.options[:gallery_options].to_json}
+    div data={ \
+      slick_carousel:  !!hover_group.options[:gallery],
+      gallery_options: hover_group.options[:gallery_options].to_json}
 
-        - hover_group.items.each do |item|
-          = component item.key
+      - hover_group.items.each do |item|
+        = component item.key
 
-      .clearfix
+    .clearfix
 
   - if defined?(block)
-    - block.call(inner)
+    - block.call(inner_content)
   - else
-    = inner
+    .inner= inner_content
 

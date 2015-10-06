@@ -3,14 +3,14 @@
     .background-image-wrapper data={liquid_fill: true}
       = image_tag banner.background.file_url if banner.background.present?
 
-    - inner = capture do
-      .inner
-        = banner.decorate.icon
-        = banner.decorate.h1
-        = banner.decorate.h2
+    - inner_content = capture do
+      = banner.decorate.icon
+      = banner.decorate.h1
+      = banner.decorate.h2
 
     - if defined?(block)
-      - block.call(inner)
+      - block.call(inner_content)
     - else
-      = inner
+      .inner
+        = inner_content
 

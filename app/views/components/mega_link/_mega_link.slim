@@ -1,8 +1,7 @@
 = component_tag_for mega_link do
   .outer
-    - inner = capture do
-      .inner
-        = mega_link.decorate.h1
+    - inner_content = capture do
+      = mega_link.decorate.h1
 
         .content-wrapper.xs
           = mega_link.decorate.link do
@@ -18,6 +17,6 @@
         .clearfix
 
     - if defined?(block)
-      - block.call(inner)
+      - block.call(inner_content)
     - else
-      = inner
+      .inner= inner_content
