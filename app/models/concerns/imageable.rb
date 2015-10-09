@@ -13,11 +13,9 @@ module Imageable
   end
 
   module ClassMethods
-    def image_kinds
-      raise 'Must implement #image_kinds'
-    end
-
     def define_image_kinds kinds
+      class_variable_set '@@image_kinds', kinds
+
       kinds.each do |kind|
         define_method kind do
           images.find_by(kind: kind)
@@ -31,8 +29,7 @@ module Imageable
     end
   end
 
-
   def image_kinds
-    self.class.image_kinds
+    self.class.class_variable_get '@@image_kinds'
   end
 end
