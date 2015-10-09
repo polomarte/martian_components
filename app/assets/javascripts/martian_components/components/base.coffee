@@ -8,7 +8,7 @@ class @Components.Base
 
     @setNestedCssClasses()
 
-    @el.on 'responsiveSizeChange', (ev, responsiveSize) =>
+    $(window).on 'responsiveSizeChange', (ev, responsiveSize) =>
       @callResponsiveMethods(responsiveSize)
 
     if @options.full_height_header

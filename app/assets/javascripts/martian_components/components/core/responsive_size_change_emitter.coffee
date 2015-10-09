@@ -7,7 +7,7 @@ class @Components.Core.ResponsiveSizeChangeEmitter
 
       if @currentResponsiveSize != responsiveSize
         @currentResponsiveSize = responsiveSize
-        $('article[class^="component-"]').trigger('responsiveSizeChange', @currentResponsiveSize)
+        $(window).trigger('responsiveSizeChange', @currentResponsiveSize)
 
   computeResponsiveSize: ->
     switch
