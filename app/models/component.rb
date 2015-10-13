@@ -240,15 +240,17 @@ class SocialFeeds < Component
 
     if fb_fanpage_id.present? && fb_permanent_fanpage_token.present?
       fb_feeds = FetchFacebookPageFeedsService.perform(fb_fanpage_id, token: fb_permanent_fanpage_token)
-      feeds << Feed.new(fb_feeds.first, :facebook)
+      feeds << Feed.new(fb_feeds.first, :facebook) if fb_feeds.any?
     end
 
     if youtube_channel_id.present?
-      feeds << Feed.new(FetchYoutubeFeedsService.perform(youtube_channel_id).first, :youtube)
+      youtube_feeds = FetchYoutubeFeedsService.perform(youtube_channel_id)
+      feeds << Feed.new(youtube_feeds.first, :youtube) if youtube_feeds.any?
     end
 
     if twitter_user.present?
-      feeds << Feed.new(FetchTwitterFeedsService.perform(twitter_user).first, :twitter)
+      twitter_feeds = FetchTwitterFeedsService.perform(twitter_user)
+      feeds << Feed.new(twitter_feeds.first, :twitter) if twitter_feeds.any?
     end
 
     feeds
