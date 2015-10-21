@@ -14,9 +14,7 @@ class FetchFacebookPageFeedsService
     @api = Koala::Facebook::API.new(token)
 
     feed_fields = ['message', 'full_picture', 'link', 'created_time', 'id', 'type']
-    @api.get_connections(fanpage_id, 'feed', {fields: feed_fields}).select do |feed|
-      feed['message'].try(:[], /#site/)
-    end
+    @api.get_connections(fanpage_id, 'feed', {fields: feed_fields})
   end
 
   def get_permanent_fanpage_token fanpage_id
