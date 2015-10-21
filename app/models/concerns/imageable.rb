@@ -14,11 +14,16 @@ module Imageable
 
   module ClassMethods
     def define_image_kinds kinds
+      @@image_kinds = kinds
       class_variable_set '@@image_kinds', kinds
 
       kinds.each do |kind|
         define_method kind do
           images.find_by(kind: kind)
+        end
+
+        define_method "#{kind}_url" do |*args|
+          (public_send(kind) || Image.new(kind: kind, imageable_type: self.class)).file_url(*args)
         end
       end
 
