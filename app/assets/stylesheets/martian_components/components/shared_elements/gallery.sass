@@ -23,15 +23,18 @@ article[class^="component-"]
 
       li
         margin: 0 5px
+        position: relative
         +square(14px)
 
         button
           padding: 0
-          +square(14px)
+          position: absolute
+          +square(100%)
 
           &:before
             content: ''
-            +square(14px)
+            +square(100%)
+            position: absolute
             border-radius: 50%
             background-color: darken(white, 50%)
             +opacity(1)
