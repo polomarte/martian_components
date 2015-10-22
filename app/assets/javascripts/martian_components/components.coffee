@@ -1,3 +1,4 @@
+#= require ./utils
 #= require_self
 #= require ./components/base
 #= require_tree ./components

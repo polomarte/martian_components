@@ -36,9 +36,7 @@ class @Components.HoverGroup extends @Components.Base
         }
       ]
 
-    customOptions = @slider.data('gallery-options') || {}
-
-    @slider.slick Object.merge(defaultOptions, customOptions)
+    @slider.slick Object.merge(defaultOptions, @slider.data('gallery-options') || {})
 
   onResponsiveSizeChange: ->
     @items.map 'checkPlugins'
@@ -55,18 +53,24 @@ class @Components.HoverItem extends @Components.Base
 
     @text        = $ $('[data-text]', @el).data('text')
     @hover       = $('[data-toggle="popover"]', @el)
-    @modalToggle = $('[data-toggle="modal"]', @el)
+    @modalToggle = $('.modal-trigger', @el)
+
+    @checkPlugins()
 
   adjustText: =>
     # Using timeout to hack this shit
     setTimeout (=>$('.text', @el).dotdotdot()), 0
 
   checkPlugins: ->
-    if @options.hover_group
-      if @options.hover_group[@hoverGroup.responsiveSize]?.hover then @initHover() else @disableHover()
-      if @options.hover_group[@hoverGroup.responsiveSize]?.modal then @initModal() else @disableModal()
+    if @options.modal? && ((@options.modal == true) || (Utils.currentResponsiveSize() in @options.modal))
+      @initModal()
     else
-      if @options.modal then @initModal() else @disableModal()
+      @disableModal()
+
+    if @options.hover? && ((@options.hover == true) || (Utils.currentResponsiveSize() in @options.hover))
+      @initHover()
+    else
+      @disableHover()
 
   initHover: ->
     @hover.popover

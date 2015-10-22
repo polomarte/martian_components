@@ -5,13 +5,16 @@
     = hover_group.decorate.text
 
     div data={ \
-      slick_carousel:  !!hover_group.options[:gallery],
+      slick_carousel: !!hover_group.options[:gallery],
       gallery_options: hover_group.options[:gallery_options].to_json}
 
       - hover_group.items.each do |item|
         = component item.key
 
     .clearfix
+
+    = render partial: 'components/hover_item/modal',
+      collection: hover_group.items, as: :hover_item
 
   - if defined?(block)
     - block.call(inner_content)
