@@ -51,10 +51,6 @@ class @Components.HoverGroup extends @Components.Base
 
 class @Components.HoverItem extends @Components.Base
   constructor: (@el, @hoverGroup) ->
-    @breakpoints =
-      sm: 400
-      md: 700
-
     super
 
     @text        = $ $('[data-text]', @el).data('text')

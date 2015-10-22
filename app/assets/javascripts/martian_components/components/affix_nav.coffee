@@ -4,10 +4,6 @@ class @Components.AffixNav extends @Components.Base
     new @(affixNavEl) if affixNavEl.length
 
   constructor: (@el) ->
-    @breakpoints =
-      sm: 600
-      md: 900
-
     super
 
     @init()
