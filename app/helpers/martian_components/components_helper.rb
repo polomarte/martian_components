@@ -1,9 +1,9 @@
 module MartianComponents
   module ComponentsHelper
-    def component_tag_for component
+    def component_tag_for component, options={}
       options = {
         id:    component.anchor_name,
-        class: component.css_class,
+        class: [component.css_class] | [options[:class]],
         data:  {
           component_key: component.key,
           options: component.options}}

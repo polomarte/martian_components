@@ -1,4 +1,4 @@
-= component_tag_for hover_group do
+= component_tag_for hover_group, class: options[:class] do
   - inner_content = capture do
     = hover_group.decorate.h1
     = hover_group.decorate.h2
