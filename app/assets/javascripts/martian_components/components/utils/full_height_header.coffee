@@ -21,5 +21,5 @@ class @Components.Utils.FullHeightHeader
 
   compute: =>
     return false if @lastWidth == window.innerWidth
-    @inner.height(window.innerHeight - @offset)
+    @inner.css('height', window.innerHeight - @offset)
     @lastWidth = window.innerWidth
