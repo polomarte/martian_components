@@ -1,0 +1,44 @@
+.gallery-asset[kind="video"],
+.gallery-asset[kind="image"]
+  .embedded-video-player-wrapper
+    iframe
+      +square(100%)
+
+  .image,
+  .embedded-video-player-wrapper
+    height: 170px
+    border-radius: 8px
+    overflow: hidden
+    position: relative
+
+  .caption
+    margin-top: 10px
+    padding: 5px
+    font: 22px/1.2em $font-regular
+    color: $blue
+
+  @media (min-width: $screen-sm-min)
+    .image,
+    .embedded-video-player-wrapper
+      height: 300px
+
+    .caption
+      margin-top: 12px
+      padding: 12px
+      font: 26px/1.2em $font-regular
+
+  @media (min-width: $screen-md-min)
+    .image,
+    .embedded-video-player-wrapper
+      height: 370px
+
+    .caption
+      padding: 15px
+      font: 30px/1.1em $font-regular
+      margin-top: 15px
+
+  @media (min-width: $screen-lg-min)
+    .image,
+    .embedded-video-player-wrapper
+      height: 400px
+

@@ -1,0 +1,37 @@
+.gallery-asset
+  width: 100%
+  margin: 0 5px
+
+  .image
+    width: 100%
+    background-repeat: no-repeat
+    background-size: cover
+    background-position: center
+
+  .caption
+    text-align: center
+
+    small
+      display: block
+      margin-top: 5px
+      font-size: 0.7em
+      line-height: 1.2em
+
+[data-slick-carousel][padding-gallery]
+  .gallery-asset
+    +transition(opacity .5s)
+
+    &.slick-slide:not(.slick-active)
+      iframe, a
+        pointer-events: none
+
+    &.slick-slide:not(.slick-center)
+      +opacity(0.3)
+
+@media (min-width: $screen-sm-min)
+  .gallery-asset
+    margin: 0 20px
+
+@media (min-width: $screen-md-min)
+  .gallery-asset
+    margin: 0 25px

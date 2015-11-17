@@ -2,7 +2,7 @@ class @Components.Base
   constructor: (@el) ->
     @el.data('component', @)
 
-    @options = @el.data('options')
+    @options = @el.data('options') || {}
     @inner   = $('.inner:first', @el)
 
     @setNestedCssClasses()

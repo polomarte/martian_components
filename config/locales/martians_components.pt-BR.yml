@@ -13,6 +13,10 @@ pt-BR:
         created_at: Criado em
         updated_at: Atualizado em
         link_url: Link
+        title: Título
+        description: Descrição
+        image: Imagem
+        file: Arquivo
       component:
         <<: *shared_attributes
         h1: Título
@@ -22,6 +26,9 @@ pt-BR:
         file: Arquivo
       mega_link:
         document: Documento
+      gallery_asset:
+        <<: *shared_attributes
+        video_code: Código Vídeo
 
     errors:
       models:

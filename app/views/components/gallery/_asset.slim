@@ -1,0 +1,27 @@
+- if asset.video?
+  .gallery-asset[kind=asset.kind]
+    = embedded_video_player asset.video_code
+    .caption
+      = asset.title
+
+- elsif asset.image?
+  .gallery-asset[kind=asset.kind]
+    .image style="background-image: url(#{asset.image_url})"
+    .caption
+      = asset.title
+      small= asset.description
+
+- elsif asset.file?
+  .gallery-asset[kind=asset.kind]
+    = link_to asset.file_url, target: '_blank' do
+      .image style="background-image: url(#{asset.image_url})"
+
+      .caption
+        = asset.title
+        = inline_svg(options[:download_icon] || 'icons/download.svg')
+
+      .hover
+        = inline_svg((options[:download_icon] || 'icons/download.svg'), class: 'icon')
+        span download
+
+    .description= asset.description

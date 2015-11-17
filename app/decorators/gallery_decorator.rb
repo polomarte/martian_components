@@ -1,0 +1,2 @@
+class GalleryDecorator < ComponentDecorator
+end

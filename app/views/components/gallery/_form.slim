@@ -1,0 +1,38 @@
+.panel
+  h3= component.h1
+
+  .panel_contents
+    = semantic_form_for component,
+      as:     :component,
+      url:    admin_component_path(component),
+      remote: true,
+      html:   {id: dom_id(component, 'form'), data: {type: :json, autosave: true}} do |f|
+
+      = f.input :key, as: :hidden, wrapper_html: {class: 'hide'}
+
+      - unless component.form_options[:only_items]
+        = f.inputs do
+          = f.input :h1
+          = f.input :h2
+          = f.input :text, as: :default_wysiwyg
+
+      .panel
+        h3 Itens
+
+        .assets-inputs-wrapper
+          .assets-inputs
+            = f.semantic_fields_for :gallery_assets do |asset_f|
+              = render "components/gallery/#{asset_f.object.kind}_asset_fields", f: asset_f
+
+          .actions
+            = link_to_add_association 'Adicionar Imagem', f, :gallery_assets,
+              partial: 'components/gallery/image_asset_fields', class: 'button assets',
+              data: {association_insertion_node: '.assets-inputs', association_insertion_method: 'append'}
+
+            = link_to_add_association 'Adicionar Video', f, :gallery_assets,
+              partial: 'components/gallery/video_asset_fields', class: 'button assets',
+              data: {association_insertion_node: '.assets-inputs', association_insertion_method: 'append'}
+
+            = link_to_add_association 'Adicionar Arquivo', f, :gallery_assets,
+              partial: 'components/gallery/file_asset_fields', class: 'button assets',
+              data: {association_insertion_node: '.assets-inputs', association_insertion_method: 'append'}
