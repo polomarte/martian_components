@@ -1,20 +1,21 @@
 module MartianComponents
   module ComponentsHelper
-    def component_tag_for component, options={}
-      options = {
+    def component_tag_for component
+      tag_options = {
         id:    component.anchor_name,
-        class: [component.css_class] | [options[:class]],
+        class: [component.css_class] | [component.options[:class]],
         data:  {
           component_key: component.key,
-          options: component.options}}
+          options: component.options[:data]}}
 
-      content_tag :article, options do
+      content_tag :article, tag_options do
         yield
       end
     end
 
     def component key_or_object, options={}, &block
       component = key_or_object.is_a?(String) ? Component[key_or_object] : key_or_object
+      component.options = component.options.deep_merge(options)
 
       if component.present?
         cache_key = ['v1', component,
@@ -22,9 +23,9 @@ module MartianComponents
 
         Rails.cache.fetch cache_key do
           if block_given?
-            render component, options: options, block: block
+            render component, block: block
           else
-            render component, options: options
+            render component
           end
         end
       end

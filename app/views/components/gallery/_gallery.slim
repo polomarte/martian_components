@@ -1,4 +1,4 @@
-= component_tag_for gallery, class: options[:class] do
+= component_tag_for gallery do
   - inner_content = capture do
     = gallery.decorate.h1
     = gallery.decorate.h2
@@ -8,8 +8,8 @@
       slick_carousel: true,
       gallery_options: gallery.options[:gallery_options].to_json}]
 
-      - (gallery.gallery_assets | (options[:custom_assets] || [])).each do |asset, index|
-        = render asset, options: options
+      - (gallery.gallery_assets | (gallery.options[:custom_assets] || [])).each do |asset, index|
+        = render asset, gallery: gallery
 
     .clearfix
 

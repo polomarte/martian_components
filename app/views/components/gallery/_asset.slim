@@ -18,10 +18,10 @@
 
       .caption
         = asset.title
-        = inline_svg(options[:download_icon] || 'icons/download.svg')
+        = inline_svg 'icons/download.svg'
 
       .hover
-        = inline_svg((options[:download_icon] || 'icons/download.svg'), class: 'icon')
+        = inline_svg 'icons/download.svg', class: 'icon'
         span download
 
     .description= asset.description

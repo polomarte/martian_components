@@ -14,7 +14,7 @@
     .tab-content
       - tabs.items.each_with_index do |item, i|
         .tab-pane.fade id=dom_id(item) class=('active in' if i.zero?)
-          - if item_capture = options[:custom_items] && options[:custom_items][item.key]
+          - if item_capture = tabs.options[:custom_items] && tabs.options[:custom_items][item.key]
             = item_capture
           - else
             = component item.key

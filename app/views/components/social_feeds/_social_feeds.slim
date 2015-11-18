@@ -7,7 +7,7 @@
       slick_carousel:  !!social_feeds.options[:gallery],
       gallery_options: social_feeds.options[:gallery_options].to_json}
 
-      - (social_feeds.feeds | (options[:custom_feeds] || [])).each do |feed, index|
+      - (social_feeds.feeds | (social_feeds.options[:custom_feeds] || [])).each do |feed, index|
         = render feed
 
     .clearfix

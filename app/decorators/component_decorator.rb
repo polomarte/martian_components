@@ -8,7 +8,7 @@ class ComponentDecorator < Draper::Decorator
 
   def h1
     return unless object.h1.present? && !object.options[:h1_disabled]
-    content_tag :h1, object.h1
+    content_tag :h1, object.h1, class: object.options[:h1_class]
   end
 
   def h2
@@ -18,7 +18,7 @@ class ComponentDecorator < Draper::Decorator
 
   def text
     return unless object.text.present?
-    content_tag :div, object.text.html_safe, class: 'text'
+    content_tag :div, object.text.html_safe, class: "text #{object.options[:text_class]}"
   end
 
   def image
