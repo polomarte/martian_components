@@ -29,20 +29,22 @@ class ComponentDecorator < Draper::Decorator
       object.options[:main_image_position]
     ].join(' ')
 
-    image_tag object.image.file_url, class: css_classes
+    image_tag object.image_url, class: css_classes
   end
 
-  def icon
-    return unless object.icon.present?
-
-    file = object.icon.file
+  def icon icon_path=nil
+    if object.icon.nil?
+      return if icon_path.nil?
+    else
+      icon_path = object.icon_url
+    end
 
     h.content_tag :div, class: 'icon-wrapper' do
       h.content_tag :div, class: 'icon-wrapper-inner' do
-        if file.svg?
-          h.content_tag :div, nil, 'data-lazy-svg-url' => file.url
+        if icon_path.ends_with?('.svg')
+          h.content_tag :div, nil, 'data-lazy-svg-url' => icon_path
         else
-          image_tag(file.url)
+          image_tag(icon_path)
         end
       end
     end

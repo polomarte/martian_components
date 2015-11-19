@@ -15,6 +15,10 @@ class MegaLinkDecorator < ComponentDecorator
     end
   end
 
+  def icon
+    super(object.icon.try(:file_url) || image_path('icons/download.svg'))
+  end
+
 private
 
   def link_is_remote?

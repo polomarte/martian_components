@@ -3,18 +3,27 @@
     - inner_content = capture do
       = mega_link.decorate.h1
 
-        .content-wrapper.xs
-          = mega_link.decorate.link do
-            = mega_link.decorate.icon
-            = mega_link.decorate.h2
+      .content-wrapper.xs
+        = mega_link.decorate.link do
+          = mega_link.decorate.icon
+          = mega_link.decorate.h2
 
-        .content-wrapper.sm
-          = mega_link.decorate.text
-          = mega_link.decorate.image
+      .content-wrapper.sm
+        .card
           = mega_link.decorate.link do
-            .btn.btn-primary= mega_link.h2
+            .image style="background-image: url(#{mega_link.image_url})"
 
-        .clearfix
+            .caption
+              = mega_link.h2.presence || 'Download'
+              = inline_svg 'icons/download.svg'
+
+            .hover
+              = inline_svg 'icons/download.svg', class: 'icon'
+              span Download
+
+        = mega_link.decorate.text
+
+      .clearfix
 
     - if defined?(block)
       - block.call(inner_content)

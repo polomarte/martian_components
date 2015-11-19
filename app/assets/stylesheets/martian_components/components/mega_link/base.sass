@@ -1,0 +1,78 @@
+.outer
+  background-color: $blue
+
+.inner
+  padding: $vertical-spacing-xs 0
+
+h1,
+h2
+  color: white
+
+h2
+  margin-top: 30px
+
+.icon-wrapper
+  +square(230px)
+  +flexbox
+  +align-items(center)
+  +justify-content(center)
+  margin: 20px auto
+  border: 5px solid fade_out(white, 0.7)
+  border-radius: 50%
+
+  img, svg
+    width: 80px
+
+.content-wrapper.sm
+  display: none
+
+@media (min-width: $screen-sm-min)
+  .outer
+    background-color: transparent
+
+  .inner
+    padding: $vertical-spacing-sm 0
+
+  h1,
+  h2
+    color: $text-black
+
+  h1
+    margin-bottom: $vertical-spacing-sm
+
+  .icon-wrapper
+    display: none
+
+  .content-wrapper
+    &.xs
+      display: none
+
+    &.sm
+      display: block
+
+      .text
+        padding-top: 10px
+
+        a
+          font-family: $font-bold
+
+@media (min-width: $screen-md-min)
+  .inner
+    padding: $vertical-spacing-md 0
+
+  h1
+    margin-bottom: $vertical-spacing-md
+
+  .content-wrapper.sm
+    img
+      display: block
+      float: right
+      margin-top: -5px
+      width: 345px
+
+@media (min-width: $screen-lg-min)
+  .inner
+    padding: $vertical-spacing-lg 0
+
+    h1
+      margin-bottom: $vertical-spacing-lg

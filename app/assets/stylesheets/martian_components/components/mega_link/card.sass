@@ -1,0 +1,147 @@
+.card
+  @media (min-width: $screen-sm-min)
+    width: 250px
+    margin-right: $grid-gutter-width
+    border-radius: 8px
+    position: relative
+    float: left
+
+    .caption
+      text-align: center
+
+    a
+      display: block
+      position: relative
+      width: 100%
+      height: 320px
+      margin-top: 10px
+      z-index: 0
+      border-radius: 8px
+      +box-shadow(0 0 10px darken(white, 30%))
+      +transition(box-shadow 0.5s)
+
+    &.no-touch:hover
+      a
+        +box-shadow(0 0 15px darken(white, 50%))
+
+      .hover
+        background-color: white
+
+        .icon
+          top: 50%
+
+        span
+          bottom: 50%
+
+    .hover
+      width: 100%
+      height: 100%
+      position: absolute
+      top: 0
+      left: 0
+      z-index: 0
+      overflow: hidden
+      border-radius: 8px
+      +transition(background-color .5s)
+
+      .icon
+        position: absolute
+        top: -50%
+        left: 50%
+        width: 90px
+        height: 90px
+        margin-left: -45px
+        margin-top: -70px
+        z-index: 1
+        +transition(top .2s)
+        +transition-delay(.2s)
+
+        path
+          fill: $blue
+
+      span
+        position: absolute
+        left: 50%
+        bottom: -50%
+        display: block
+        width: 200px
+        margin-left: -100px
+        margin-bottom: -60px
+        font: 22px/1em $font-regular
+        text-align: center
+        text-transform: uppercase
+        color: $blue
+        z-index: 1
+        +transition(bottom .2s)
+        +transition-delay(.2s)
+
+    .image
+      width: 100%
+      height: 80%
+      background-repeat: no-repeat
+      background-position: center
+      background-color: white
+      background-size: 60%
+      border-radius: 8px 8px 0 0
+
+    .caption
+      height: 20%
+      padding: 0 40px
+      background-color: $blue
+      font: 18px/1.2em $font-regular
+      letter-spacing: 1px
+      text-transform: uppercase
+      color: white
+      position: relative
+      z-index: 0
+      border-radius: 0 0 8px 8px
+      +flexbox
+      +align-items(center)
+      +justify-content(center)
+
+      svg
+        position: absolute
+        top: 50%
+        right: 10px
+        width: 24px
+        height: auto
+        margin-top: -13px
+
+  @media (min-width: $screen-md-min)
+    width: 280px
+    margin-right: $grid-gutter-width * 1.5
+
+    a
+      height: 370px
+
+    .caption
+      font: 18px/1.2em $font-regular
+      padding: 0 70px
+
+      svg
+        right: 20px
+        width: 29px
+        height: auto
+        margin-top: -17px
+
+  @media (min-width: $screen-lg-min)
+    width: 340px
+
+    a
+      height: 420px
+
+    .hover
+      .icon
+        width: 110px
+        height: 110px
+        margin-left: -55px
+        margin-top: -100px
+
+      span
+        margin-bottom: -70px
+        font: 29px/1em $font-regular
+        letter-spacing: 2px
+
+    .description
+      font-size: 20px
+      margin: 20px 0
