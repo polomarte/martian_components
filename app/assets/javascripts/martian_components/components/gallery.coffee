@@ -44,27 +44,7 @@ class @Components.Gallery extends @Components.Base
         }
       ]
 
-    if @el.attr('padding-gallery')?
-      customOptions =
-        centerMode:     true
-        centerPadding:  '28%'
-        slidesToShow:   1
-        slidesToScroll: 1
-        focusOnSelect:  true
-        responsive:     [
-          {
-            breakpoint: 1550
-            settings:
-              centerPadding:  '20%'
-          }
-          {
-            breakpoint: 768
-            settings:
-              centerPadding:  '10%'
-          }
-        ]
-
-    @slider.slick Object.merge(defaultOptions, customOptions || {})
+    @slider.slick Object.merge(defaultOptions, @slider.data('gallery-options') || {})
 
     @slider.on 'beforeChange', (ev, slick, currentSlide, nextSlide) =>
       if @items[currentSlide].embedded_player.length
