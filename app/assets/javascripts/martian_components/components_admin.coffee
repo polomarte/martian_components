@@ -5,3 +5,4 @@ class @ComponentsAdmin
   @autoInit: ->
     @AutoSave.autoInit()
     @GalleryAssets.autoInit()
+    @NestedMenu.autoInit()

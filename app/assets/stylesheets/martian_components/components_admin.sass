@@ -1,5 +1,20 @@
 @import "shared"
 
+#header #tabs li.has_nested
+  a[href="#"]
+    pointer-events: none
+
+  ul ul
+    margin: 0 0 0 15px
+    overflow: auto
+    display: block
+    position: static
+    padding: 0
+    background: none
+    float: none
+    clear: both
+    +box-shadow(none)
+
 form[id^=form-gallery]
   .assets-inputs-wrapper
     .assets-inputs
