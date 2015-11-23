@@ -17,6 +17,7 @@ class @Components
     @Timeline.autoInit()
     @SocialFeeds.autoInit()
     @Gallery.autoInit()
+    @MegaLink.autoInit()
 
     @Utils.LazySvg.autoInit()
     @Utils.FullHeightHeader.autoInit()
