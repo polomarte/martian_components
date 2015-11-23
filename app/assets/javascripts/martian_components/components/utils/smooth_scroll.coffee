@@ -6,6 +6,7 @@ class @Components.Utils.SmoothScroll
     $('[smooth-scroll]').each (i, nav) => new @($(nav))
 
   constructor: (@nav) ->
+    @offset = @nav.data('smooth-scroll-offset') || 0
     @scrollOnClick()
     @scrollOnLoad()
 
@@ -24,7 +25,7 @@ class @Components.Utils.SmoothScroll
     return unless target.length
 
     $('html,body').animate({
-      scrollTop: target.offset().top
+      scrollTop: target.offset().top - @offset
     }, 1000, => location.hash = target.attr('id'))
     false
 
