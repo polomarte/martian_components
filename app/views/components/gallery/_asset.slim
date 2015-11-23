@@ -2,14 +2,14 @@
   .gallery-asset[kind=asset.kind]
     = embedded_video_player asset.video_code
     .caption
-      = asset.title
+      = raw asset.title
 
 - elsif asset.image?
   .gallery-asset[kind=asset.kind]
     .image style="background-image: url(#{asset.image_url})"
     .caption
-      = asset.title
-      small= asset.description
+      = raw asset.title
+      small= raw asset.description
 
 - elsif asset.file?
   .gallery-asset[kind=asset.kind]
@@ -17,11 +17,11 @@
       .image style="background-image: url(#{asset.image_url})"
 
       .caption
-        = asset.title
+        = raw asset.title
         = inline_svg 'icons/download.svg'
 
       .hover
         = inline_svg 'icons/download.svg', class: 'icon'
         span download
 
-    .description= asset.description
+    .description= raw asset.description
