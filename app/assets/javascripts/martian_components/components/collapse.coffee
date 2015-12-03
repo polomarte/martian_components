@@ -6,18 +6,19 @@ class @Components.Collapse extends @Components.Base
     super
 
     @text           = $('.text', @el)
-    @collapseToggle = $('.toggle-wrapper button', @el)
+    @collapseToggle = $('.toggle-wrapper svg', @el)
 
-    @initModal()
     @text.dotdotdot watch: 'window'
+    @initModal()
+    @fitText()
     @onCollapseToggleClick()
 
   refresh: ->
     @closeCollapse()
-    @fitText()
+    setTimeout (=> @fitText()), 300
 
   initModal: ->
-    @modalToggle  = $('> .inner > [data-toggle="modal"]', @el)
+    @modalToggle  = $('> [data-toggle="modal"]', @inner)
     @modalDismiss = $("[data-dismiss][data-target='#{@modalToggle.data('target')}']")
     @modal        = $(@modalToggle.data('target'))
 
@@ -31,11 +32,9 @@ class @Components.Collapse extends @Components.Base
       @modal.modal('hide')
 
   fitText: =>
-    setTimeout =>
-      @textCollapsedHeight = @computeTextCollapseHeight()
-      @text.css height: @textCollapsedHeight
-      @text.trigger('update')
-    , 0
+    @textCollapsedHeight = @computeTextCollapseHeight()
+    @text.css height: @textCollapsedHeight
+    setTimeout (=> @text.trigger('update')), 300
 
   computeTextCollapseHeight: ->
     @text.css 'height', 0
@@ -59,7 +58,6 @@ class @Components.Collapse extends @Components.Base
 
     $('.text', elClone).css
       'height':   'auto'
-      'overflow': ''
 
     elClone.appendTo 'body'
     result = $('.text', elClone).height()
@@ -68,34 +66,30 @@ class @Components.Collapse extends @Components.Base
 
   openCollapse: ->
     return if @text.open
+
     @text.trigger('destroy')
     @text.css('height', @textCollapsedHeight) # Hack, 'cause .trigger('destroy') clean inline syle too
-    @text.css 'overflow', 'hidden'
-    @collapseToggle.velocity rotateX: '180deg', translateZ: '-1px'
+    @text.height @computeTextFullHeight()
 
-    @text.velocity
-      height: @computeTextFullHeight()
-    ,
-      complete: =>
-        @text.open = true
-        @text.css overflow: ''
+    setTimeout (=>
+      @text.open = true
+      @collapseToggle.attr('class', 'text-open')
+    ), 300
 
   closeCollapse: ->
     return unless @text.open
-    @collapseToggle.velocity rotateX: '0deg', translateZ: '0px'
-    @text.css 'overflow', 'hidden'
 
-    @text.velocity
-      height: @textCollapsedHeight
-    ,
-      complete: =>
-        @text.dotdotdot watch: 'window'
-        @text.open = false
-        @text.css 'overflow', ''
+    @text.height @textCollapsedHeight
+    $('body').stop().animate {scrollTop: @el.offset().top}
+
+    setTimeout (=>
+      @text.dotdotdot watch: 'window'
+      @text.open = false
+      @collapseToggle.attr('class', '')
+    ), 300
 
   onCollapseToggleClick: ->
     @collapseToggle.on 'click', =>
-      return if @text.hasClass 'velocity-animating'
       if @text.open then @closeCollapse() else @openCollapse()
 
   onResponsiveSizeChange: ->

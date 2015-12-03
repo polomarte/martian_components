@@ -1,13 +1,17 @@
 = component_tag_for collapse do
-  .inner
+  - inner_content = capture do
     = collapse.decorate.h1
     = collapse.decorate.media collapse.options[:media]
     = collapse.decorate.text
     .clearfix
     .toggle-wrapper
-      button
-      hr
+      = inline_svg 'martian_components/icons/arrow_down_with_circle_outline.svg'
     .more-icon.modal-trigger data={toggle: 'modal', target: "##{dom_id(collapse, 'modal')}"} +
+
+  - if defined?(block)
+    - block.call(inner_content)
+  - else
+    .inner= inner_content
 
 .modal.fade id=dom_id(collapse, 'modal')
   .modal-dialog

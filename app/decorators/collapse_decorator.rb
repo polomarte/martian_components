@@ -1,5 +1,5 @@
 class CollapseDecorator < ComponentDecorator
-  def media html
+  def media html=nil
     output =
       if object.nested_component
         render object.nested_component
