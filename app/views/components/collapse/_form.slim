@@ -11,7 +11,7 @@
     = f.input :key, as: :hidden
 
   - unless component.nested_component.present?
-    - image = component.image || component.images.build(kind: 'main')
+    - image = component.image || component.images.build(kind: 'image')
     = render 'components/_shared/images_inputs', f: f, images: [image]
 
 - if component.nested_component.present?
