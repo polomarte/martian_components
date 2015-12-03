@@ -1,6 +1,16 @@
 = component_tag_for content do
   .outer
-    .inner
+    .background-image-wrapper data={liquid_fill: true}
+      = image_tag content.background.file_url if content.background.present?
+
+    - inner_content = capture do
       = content.decorate.h1
       = content.decorate.image
       = content.decorate.text
+
+    - if defined?(block)
+      - block.call(inner_content)
+    - else
+      .inner
+        = inner_content
+
