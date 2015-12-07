@@ -1,7 +1,6 @@
 = component_tag_for banner do
   .outer
-    .background-image-wrapper data={liquid_fill: true}
-      = image_tag banner.background.file_url if banner.background.present?
+    = banner.decorate.background
 
     - inner_content = capture do
       = banner.decorate.icon
