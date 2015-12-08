@@ -8,7 +8,7 @@ class @Components.Collapse extends @Components.Base
     @text           = $('.text', @el)
     @collapseToggle = $('.toggle-wrapper svg', @el)
 
-    @text.dotdotdot watch: 'window'
+    @text.dotdotdot(watch: 'window') unless @options.skip_fit_text
     @initModal()
     @fitText()
     @onCollapseToggleClick()
@@ -32,6 +32,8 @@ class @Components.Collapse extends @Components.Base
       @modal.modal('hide')
 
   fitText: =>
+    return if @options.skip_fit_text
+
     @textCollapsedHeight = @computeTextCollapseHeight()
     @text.css height: @textCollapsedHeight
     setTimeout (=> @text.trigger('update')), 300
