@@ -14,6 +14,6 @@
     .clearfix
 
   - if defined?(block)
-    - block.call(inner_content)
+    - block.call(gallery, inner_content)
   - else
     .inner= inner_content

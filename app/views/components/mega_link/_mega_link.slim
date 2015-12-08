@@ -26,6 +26,6 @@
       .clearfix
 
     - if defined?(block)
-      - block.call(inner_content)
+      - block.call(mega_link, inner_content)
     - else
       .inner= inner_content

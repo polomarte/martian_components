@@ -17,7 +17,7 @@
       collection: hover_group.items, as: :hover_item
 
   - if defined?(block)
-    - block.call(inner_content)
+    - block.call(hover_group, inner_content)
   - else
     .inner= inner_content
 

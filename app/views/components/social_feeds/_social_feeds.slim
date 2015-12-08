@@ -13,6 +13,6 @@
     .clearfix
 
   - if defined?(block)
-    - block.call(inner_content)
+    - block.call(social_feeds, inner_content)
   - else
     .inner= inner_content

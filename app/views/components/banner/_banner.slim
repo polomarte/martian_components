@@ -8,8 +8,7 @@
       = banner.decorate.h2
 
     - if defined?(block)
-      - block.call(inner_content)
+      - block.call(banner, inner_content)
     - else
-      .inner
-        = inner_content
+      .inner= inner_content
 

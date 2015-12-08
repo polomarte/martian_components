@@ -9,7 +9,7 @@
     .more-icon.modal-trigger data={toggle: 'modal', target: "##{dom_id(collapse, 'modal')}"} +
 
   - if defined?(block)
-    - block.call(inner_content)
+    - block.call(collapse, inner_content)
   - else
     .inner= inner_content
 
