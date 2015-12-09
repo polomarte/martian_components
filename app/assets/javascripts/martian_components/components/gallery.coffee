@@ -17,9 +17,8 @@ class @Components.Gallery extends @Components.Base
     @items  = []
     $('.gallery-asset', @el).each (i, el) => @items.push(new GalleryAsset($(el), @))
 
-    @el.attr('padding-gallery', true) if @options.padding
-
     @slider = $('[data-slick-carousel]', @el)
+    @slider.attr('padding-gallery', true) if @options.padding
     @initSlider()
 
   initSlider: =>
@@ -27,24 +26,50 @@ class @Components.Gallery extends @Components.Base
       slide:  '.gallery-asset'
       arrows: false
       dots:   true
-      slidesToShow:   3
-      slidesToScroll: 3
-      responsive:     [
-        {
-          breakpoint: 992
-          settings:
-            slidesToShow:   2
-            slidesToScroll: 2
-        },
-        {
-          breakpoint: 768
-          settings:
-            slidesToShow:   1
-            slidesToScroll: 1
-        }
-      ]
 
-    @slider.slick Object.merge(defaultOptions, @slider.data('gallery-options') || {})
+    if @options.padding
+      customOptions =
+        centerMode:     true
+        centerPadding:  '32%'
+        slidesToShow:   1
+        slidesToScroll: 1
+        focusOnSelect:  true
+        responsive: [
+          {
+            breakpoint: 1600
+            settings: {centerPadding:  '28%'}
+          }
+          {
+            breakpoint: 1100
+            settings: {centerPadding:  '23%'}
+          }
+          {
+            breakpoint: 600
+            settings: {centerPadding: '10%'}
+          }
+        ]
+    else
+      customOptions =
+        slidesToShow:   3
+        slidesToScroll: 3
+        responsive:     [
+          {
+            breakpoint: 992
+            settings:
+              slidesToShow:   2
+              slidesToScroll: 2
+          },
+          {
+            breakpoint: 768
+            settings:
+              slidesToShow:   1
+              slidesToScroll: 1
+          }
+        ]
+
+    @slider.slick Object.merge(
+      defaultOptions,
+      Object.merge(customOptions, @slider.data('gallery-options') || {}))
 
     @slider.on 'beforeChange', (ev, slick, currentSlide, nextSlide) =>
       if @items[currentSlide].embedded_player.length
