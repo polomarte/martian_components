@@ -29,6 +29,8 @@ pt-BR:
       gallery_asset:
         <<: *shared_attributes
         video_code: Código Vídeo
+      collapse:
+        file_caption: Legenda Arquivo
 
     errors:
       models:

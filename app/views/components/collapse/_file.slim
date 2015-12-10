@@ -1,0 +1,10 @@
+= link_to collapse.file_url, target: '_blank' do
+  .image style="background-image: url(#{collapse.image_url(:small)})"
+
+  .caption
+    = raw collapse.file_caption
+    = inline_svg 'icons/download.svg'
+
+  .hover
+    = inline_svg 'icons/download.svg', class: 'icon'
+    span download

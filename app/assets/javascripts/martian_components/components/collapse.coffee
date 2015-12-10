@@ -5,12 +5,17 @@ class @Components.Collapse extends @Components.Base
   constructor: (@el) ->
     super
 
-    @text           = $('.text', @el)
+    @text           = $('.text', @el).first()
+    @collapsedText  = $('.text.collapse', @el)
     @collapseToggle = $('.toggle-wrapper svg', @el)
 
-    @text.dotdotdot(watch: 'window') unless @options.skip_fit_text
+    if @collapsedText.length
+      @collapsedText.collapse(toggle: false)
+    else
+      @text.dotdotdot(watch: 'window')
+      @fitText()
+
     @initModal()
-    @fitText()
     @onCollapseToggleClick()
 
   refresh: ->
@@ -32,7 +37,7 @@ class @Components.Collapse extends @Components.Base
       @modal.modal('hide')
 
   fitText: =>
-    return if @options.skip_fit_text
+    return if @collapsedText.length
 
     @textCollapsedHeight = @computeTextCollapseHeight()
     @text.css height: @textCollapsedHeight
@@ -92,7 +97,15 @@ class @Components.Collapse extends @Components.Base
 
   onCollapseToggleClick: ->
     @collapseToggle.on 'click', =>
-      if @text.open then @closeCollapse() else @openCollapse()
+      if @collapsedText.length
+        @collapsedText.collapse('toggle')
+
+        if @collapseToggle.attr('class')?.length
+          @collapseToggle.attr('class', '')
+        else
+          @collapseToggle.attr('class', 'text-open')
+      else
+        if @text.open then @closeCollapse() else @openCollapse()
 
   onResponsiveSizeChange: ->
     @refresh()

@@ -10,6 +10,11 @@
     = f.input :text, as: :default_wysiwyg, height: :large
     = f.input :key, as: :hidden
 
+    - unless component.nested_component.present?
+      = f.input :file, as: :file, hint: f.object.file_identifier
+      = f.input :file_cache, as: :hidden
+      = f.input :file_caption
+
   - unless component.nested_component.present?
     - image = component.image || component.images.build(kind: 'image')
     = render 'components/_shared/images_inputs', f: f, images: [image]

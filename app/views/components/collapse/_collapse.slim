@@ -17,7 +17,7 @@
   .modal-dialog
     .modal-content
       .modal-header= collapse.decorate.h1
-      .modal-body= collapse.decorate.text
+      .modal-body= collapse.decorate.text(for_modal: true)
 
 button.close data={dismiss: 'modal', target: "##{dom_id(collapse, 'modal')}"}
   <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve" height="100px" width="100px">

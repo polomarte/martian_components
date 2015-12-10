@@ -107,12 +107,23 @@ private
 end
 
 class Collapse < Component
-  store_accessor :data, :nested_component_key
+  TEXT_SPLITTER = '[[more]]'.freeze
+
+  store_accessor :data, :nested_component_key, :file_caption
+  mount_uploader :file, FileUploader
+
+  def self.permitted_params
+    super | [:file, :file_cache, :file_caption]
+  end
 
   def nested_component
     if nested_component_key
       Component[nested_component_key]
     end
+  end
+
+  def text_with_manual_division?
+    text[TEXT_SPLITTER].present?
   end
 end
 
