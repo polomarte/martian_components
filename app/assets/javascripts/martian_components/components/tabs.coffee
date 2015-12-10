@@ -12,5 +12,4 @@ class @Components.Tabs extends @Components.Base
     @nav.addClass('odd') if @navItems.length % 2 > 0
 
     $('a', @navItems).on 'shown.bs.tab', (ev) =>
-      elementQuery()
       $(component).data('component').refresh() for component in @nestedComponents
