@@ -1,5 +1,5 @@
 = component_tag_for tabs do
-  .inner
+  - inner_content = capture do
     = tabs.decorate.h1
 
     /! Nav tabs
@@ -18,3 +18,8 @@
             = item_capture
           - else
             = component item.key
+
+  - if defined?(block)
+    - block.call(tabs, inner_content)
+  - else
+    .inner= inner_content
