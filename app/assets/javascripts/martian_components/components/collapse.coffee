@@ -8,6 +8,14 @@ class @Components.Collapse extends @Components.Base
     @text           = $('.text', @el).first()
     @collapsedText  = $('.text.collapse', @el)
     @collapseToggle = $('.toggle-wrapper svg', @el)
+    @modalToggle  = $('> [data-toggle="modal"]', @inner)
+    @modalDismiss = $("[data-dismiss][data-target='#{@modalToggle.data('target')}']")
+    @modal        = $(@modalToggle.data('target'))
+
+    @modal.on 'shown.bs.modal',          => @modalDismiss.show()
+    @modal.on 'hide.bs.modal',           => @modalDismiss.hide()
+    @modalDismiss.on 'touchstart click', => @modal.modal('hide')
+    @collapseToggle.on 'click',          => @onCollapseToggleClick()
 
     if @collapsedText.length
       @collapsedText.collapse(toggle: false)
@@ -15,26 +23,9 @@ class @Components.Collapse extends @Components.Base
       @text.dotdotdot(watch: 'window')
       @fitText()
 
-    @initModal()
-    @onCollapseToggleClick()
-
   refresh: ->
     @closeCollapse()
     setTimeout (=> @fitText()), 300
-
-  initModal: ->
-    @modalToggle  = $('> [data-toggle="modal"]', @inner)
-    @modalDismiss = $("[data-dismiss][data-target='#{@modalToggle.data('target')}']")
-    @modal        = $(@modalToggle.data('target'))
-
-    @modal.on 'shown.bs.modal', =>
-      @modalDismiss.show()
-
-    @modal.on 'hide.bs.modal', =>
-      @modalDismiss.hide()
-
-    @modalDismiss.on 'touchstart click', =>
-      @modal.modal('hide')
 
   fitText: =>
     return if @collapsedText.length
@@ -46,13 +37,13 @@ class @Components.Collapse extends @Components.Base
   computeTextCollapseHeight: ->
     @text.css 'height', 0
 
-    collapse_or_modal_toggle =
+    collapseOrModalToggle =
       if @collapseToggle.is(':visible')
         @collapseToggle
       else
         @modalToggle
 
-    diff = collapse_or_modal_toggle.offset().top - @text.offset().top - 30
+    diff = collapseOrModalToggle.offset().top - @text.offset().top - 30
     if diff < 160 then 160 else diff
 
   computeTextFullHeight: ->
@@ -96,16 +87,15 @@ class @Components.Collapse extends @Components.Base
     ), 300
 
   onCollapseToggleClick: ->
-    @collapseToggle.on 'click', =>
-      if @collapsedText.length
-        @collapsedText.collapse('toggle')
+    if @collapsedText.length
+      @collapsedText.collapse('toggle')
 
-        if @collapseToggle.attr('class')?.length
-          @collapseToggle.attr('class', '')
-        else
-          @collapseToggle.attr('class', 'text-open')
+      if @collapseToggle.attr('class')?.length
+        @collapseToggle.attr('class', '')
       else
-        if @text.open then @closeCollapse() else @openCollapse()
+        @collapseToggle.attr('class', 'text-open')
+    else
+      if @text.open then @closeCollapse() else @openCollapse()
 
   onResponsiveSizeChange: ->
     @refresh()
