@@ -4,8 +4,7 @@
     = collapse.decorate.media collapse.options[:media]
     = collapse.decorate.text
     .clearfix
-    .toggle-wrapper
-      = inline_svg 'martian_components/icons/arrow_down_with_circle_outline.svg'
+    .toggle-wrapper= inline_svg 'martian_components/icons/arrow_down_with_circle_outline.svg'
     .more-icon.modal-trigger data={toggle: 'modal', target: "##{dom_id(collapse, 'modal')}"} +
 
   - if defined?(block)
