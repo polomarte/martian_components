@@ -14,6 +14,14 @@ class FetchTwitterFeedsService
       config.access_token_secret = ENV['TWITTER_ACCESS_SECRET']
     end
 
-    @api.user_timeline(user).select {|feed| !feed.reply?}
+    feeds =
+      begin
+        @api.user_timeline(user).select {|feed| !feed.reply?}
+      rescue Twitter::Error::ServiceUnavailable => e
+        Rails.logger.warn 'Twitter service unavailable'
+        []
+      end
+
+    feeds
   end
 end
