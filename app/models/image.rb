@@ -2,7 +2,7 @@ class Image < ActiveRecord::Base
   translates :title, :description
   mount_uploader :file, ImageUploader
 
-  belongs_to :imageable, polymorphic: true
+  belongs_to :imageable, touch: true, polymorphic: true
   validates :file, presence: true
   validates :title, presence: true, if: :photo?
   before_save :position_fallback

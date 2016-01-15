@@ -4,7 +4,7 @@ class GalleryAsset < ActiveRecord::Base
 
   enum kind: [:video, :image, :file]
 
-  belongs_to :gallery
+  belongs_to :gallery, touch: true
 
   validates :kind, :gallery, :position, presence: true
   validates :file, presence: true, if: 'kind == "file"'
