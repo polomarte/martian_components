@@ -20,6 +20,9 @@ class FetchTwitterFeedsService
       rescue Twitter::Error::ServiceUnavailable => e
         Rails.logger.warn 'Twitter service unavailable'
         []
+      rescue Twitter::Error::InternalServerError => e
+        Rails.logger.warn 'Twitter internal server error'
+        []
       end
 
     feeds
