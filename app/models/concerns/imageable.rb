@@ -19,7 +19,7 @@ module Imageable
 
       kinds.each do |kind|
         define_method kind do
-          images.find_by(kind: kind)
+          images.to_a.find{|img| img.kind.to_s == kind.to_s}
         end
 
         define_method "#{kind}_url" do |*args|
