@@ -113,7 +113,7 @@ class Collapse < Component
   mount_uploader :file, FileUploader
 
   def self.permitted_params
-    super | [:file, :file_cache, :file_caption]
+    super | [:file, :file_cache, :file_caption, :remove_file]
   end
 
   def nested_component

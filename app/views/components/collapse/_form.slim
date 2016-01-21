@@ -13,6 +13,10 @@
     - unless component.nested_component.present?
       = f.input :file, as: :file, hint: f.object.file_identifier
       = f.input :file_cache, as: :hidden
+
+      - if f.object.persisted? && f.object.file.present?
+        = f.input(:remove_file, as: :boolean, label: 'Apagar?')
+
       = f.input :file_caption
 
   - unless component.nested_component.present?
