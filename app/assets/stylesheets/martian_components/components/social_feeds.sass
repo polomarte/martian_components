@@ -8,10 +8,12 @@ article.component-social-feeds
       iframe, a
         pointer-events: none
 
-    &[no-image][platform=twitter] .content .text
-      padding: 10px 20px
-      font: 24px/1.6em $font-light
-      text-align: center
+    &[no-image][platform=twitter],
+    &[no-image][platform=custom]
+      .content .text
+        padding: 10px 20px
+        font: 24px/1.6em $font-light
+        text-align: center
 
     .image
       height: 170px
