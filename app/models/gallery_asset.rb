@@ -1,4 +1,12 @@
 class GalleryAsset < ActiveRecord::Base
+  include PgSearch
+
+  pg_search_scope(
+    :search,
+    against: {title: 'A', description: 'B'},
+    using: {tsearch: {dictionary: 'portuguese'}},
+    ignoring: :accents)
+
   mount_uploader :image, ImageUploader
   mount_uploader :file, FileUploader
 

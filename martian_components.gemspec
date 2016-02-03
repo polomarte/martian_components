@@ -22,6 +22,7 @@ Gem::Specification.new do |s|
   s.add_dependency('rails_autolink', ['~> 1.1.0'])
   s.add_dependency('koala', ['~> 2.2.0'])
   s.add_dependency('twitter', ['~> 5.15.0'])
+  s.add_dependency('pg_search', ['~> 1.0.5'])
 
   s.add_development_dependency 'sqlite3'
 end
