@@ -54,18 +54,16 @@ class @Components.HoverItem extends @Components.Base
     @text        = $ $('[data-text]', @el).data('text')
     @hover       = $('[data-toggle="popover"]', @el)
     @modalToggle = $('.modal-trigger', @el)
+    @modal       = $(@modalToggle.data('target'))
 
     @checkPlugins()
 
   adjustText: =>
     # Using timeout to hack this shit
-    setTimeout (=>$('.text', @el).dotdotdot()), 0
+    setTimeout (=> $('.text', @el).dotdotdot()), 0
 
   checkPlugins: ->
-    if @options.modal? && ((@options.modal == true) || (Utils.currentResponsiveSize() in @options.modal))
-      @initModal()
-    else
-      @disableModal()
+    if @modal.length then @initModal() else @disableModal()
 
     if @options.hover? && ((@options.hover == true) || (Utils.currentResponsiveSize() in @options.hover))
       @initHover()
@@ -86,7 +84,6 @@ class @Components.HoverItem extends @Components.Base
     @modalToggle.attr('data-toggle', 'modal')
 
     @modalDismiss    = $("[data-dismiss][data-target='#{@modalToggle.data('target')}']")
-    @modal           = $(@modalToggle.data('target'))
     @embedded_player = $('.embedded-video-player-wrapper iframe', @modal)
 
     @modal.on 'shown.bs.modal', =>
