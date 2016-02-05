@@ -71,9 +71,11 @@ article.component-social-feeds
     .social-feed
       margin: 0 10px
 
-      &[no-image][platform=twitter] .content .text
-        padding: 30px 20px
-        font: 28px/1.6em $font-light
+      &[no-image][platform=twitter],
+      &[no-image][platform=custom]
+        .content .text
+          padding: 30px 20px
+          font: 28px/1.6em $font-light
 
       .image,
       .embedded-video-player-wrapper
@@ -81,11 +83,15 @@ article.component-social-feeds
 
   @media (min-width: $screen-md-min)
     .social-feed
-      &[no-image][platform=twitter] .content .text
-        padding: 30px 20px
-        font: 32px/1.6em $font-light
+      &[no-image][platform=twitter],
+      &[no-image][platform=custom]
+        .content .text
+          padding: 30px 20px
+          font: 32px/1.6em $font-light
 
   @media (min-width: $screen-lg-min)
     .social-feed
-      &[no-image][platform=twitter] .content .text
-        padding: 50px 30px
+      &[no-image][platform=twitter],
+      &[no-image][platform=custom]
+        .content .text
+          padding: 50px 30px
