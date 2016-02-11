@@ -15,7 +15,7 @@ class Component < ActiveRecord::Base
   belongs_to :parent, class_name: 'Component', inverse_of: :items,
     foreign_key: 'parent_id', touch: true
 
-  has_many :items, -> { order [id: :asc] }, class_name: 'Component',
+  has_many :items, -> { order [position: :asc, id: :asc] }, class_name: 'Component',
     inverse_of: :parent, foreign_key: 'parent_id', dependent: :destroy
 
   after_save :reload_related_active_admin_resource!
