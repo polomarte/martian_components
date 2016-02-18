@@ -83,8 +83,8 @@ class @Components.HoverItem extends @Components.Base
   initModal: ->
     @modalToggle.attr('data-toggle', 'modal')
 
-    @modalDismiss    = $("[data-dismiss][data-target='#{@modalToggle.data('target')}']")
-    @embedded_player = $('.embedded-video-player-wrapper iframe', @modal)
+    @modalDismiss = $("[data-dismiss][data-target='#{@modalToggle.data('target')}']")
+    @embeddedPlayerWrapper = $('.embedded-video-player-wrapper', @modal)
 
     @modal.on 'shown.bs.modal', =>
       @modalDismiss.show()
@@ -100,5 +100,4 @@ class @Components.HoverItem extends @Components.Base
     @modalToggle.removeAttr('data-toggle')
 
   stopVideo: ->
-    src = @embedded_player.attr('src')
-    @embedded_player.attr('src', '').attr('src', src)
+    @embeddedPlayerWrapper.data('player').stopVideo()

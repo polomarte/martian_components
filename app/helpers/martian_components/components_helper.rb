@@ -53,14 +53,10 @@ module MartianComponents
 
     def embedded_video_player video_id
       content_tag :div, class: 'embedded-video-player-wrapper' do
-        params = [
-          'showinfo=0'
-        ].join('&')
-
-        content_tag :iframe, nil,
-          src: "//www.youtube.com/v/#{video_id}?#{params}",
-          frameborder: 0,
-          allowfullscreen: true
+        content_tag :div, nil,
+          id: "embedded-video-#{video_id}",
+          class: 'embedded-video-player-placeholder',
+          data: {video_id: video_id}
       end
     end
   end

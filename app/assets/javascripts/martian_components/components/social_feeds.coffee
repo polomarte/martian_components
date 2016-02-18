@@ -42,7 +42,7 @@ class @Components.SocialFeeds extends @Components.Base
     @slider.slick Object.merge(defaultOptions, customOptions)
 
     @slider.on 'beforeChange', (ev, slick, currentSlide, nextSlide) =>
-      if @items[currentSlide].embedded_player.length
+      if @items[currentSlide].embeddedPlayerWrapper.length
         @items[currentSlide].stopVideo()
 
   onResponsiveSizeChange: ->
@@ -52,9 +52,8 @@ class @Components.SocialFeeds extends @Components.Base
 
 class @Components.SocialFeed
   constructor: (@el, @socialFeeds) ->
-    @options         = @el.data('options')
-    @embedded_player = $('.embedded-video-player-wrapper iframe', @el)
+    @options = @el.data('options')
+    @embeddedPlayerWrapper = $('.embedded-video-player-wrapper', @el)
 
   stopVideo: ->
-    src = @embedded_player.attr('src')
-    @embedded_player.attr('src', '').attr('src', src)
+    @embeddedPlayerWrapper.data('player').stopVideo()

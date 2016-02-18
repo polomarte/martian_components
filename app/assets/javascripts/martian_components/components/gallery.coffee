@@ -1,12 +1,11 @@
 class @Components.Gallery extends @Components.Base
   class GalleryAsset
     constructor: (@el, @gallery) ->
-      @embedded_player = $('.embedded-video-player-wrapper iframe', @el)
+      @embeddedPlayerWrapper = $('.embedded-video-player-wrapper', @el)
       @el.addClass('no-touch') unless Utils.isTouchDevice()
 
     stopVideo: ->
-      src = @embedded_player.attr('src')
-      @embedded_player.attr('src', '').attr('src', src)
+      @embeddedPlayerWrapper.data('player').stopVideo()
 
   @autoInit: ->
     $('.component-gallery').each (i, el) => new @($(el))
@@ -72,7 +71,7 @@ class @Components.Gallery extends @Components.Base
       Object.merge(customOptions, @slider.data('gallery-options') || {}))
 
     @slider.on 'beforeChange', (ev, slick, currentSlide, nextSlide) =>
-      if @items[currentSlide].embedded_player.length
+      if @items[currentSlide].embeddedPlayerWrapper.length
         @items[currentSlide].stopVideo()
 
   onResponsiveSizeChange: ->
