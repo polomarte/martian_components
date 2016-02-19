@@ -149,7 +149,8 @@ class HoverItem < Component
   def video_id
     return nil if link_url.blank?
     uri = URI.parse(link_url)
-    return nil unless uri.host.include? 'youtube'
+    return nil if uri.relative?
+    return nil if !uri.host.include?('youtube')
 
     CGI.parse(uri.query)['v'][0]
   end
