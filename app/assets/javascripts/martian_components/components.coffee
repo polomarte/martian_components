@@ -19,6 +19,7 @@ class @Components
     @Gallery.autoInit()
     @MegaLink.autoInit()
 
+    @Utils.Analytics.autoInit()
     @Utils.YoutubePlayerApiLoader.autoInit()
     @Utils.LazySvg.autoInit()
     @Utils.FullHeightHeader.autoInit()
