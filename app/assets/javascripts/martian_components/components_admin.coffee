@@ -6,3 +6,4 @@ class @ComponentsAdmin
     @AutoSave.autoInit()
     @GalleryAssets.autoInit()
     @NestedMenu.autoInit()
+    @RemoveImageBtn.autoInit()

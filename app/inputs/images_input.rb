@@ -25,7 +25,7 @@ class ImagesInput
         img_form.input :imageable_id, as: :hidden
         img_form.input :imageable_type, as: :hidden
 
-        if img_form.object.persisted? && options[:with_destroy?]
+        if img_form.object.persisted?
           img_form.input(:_destroy, as: :boolean, label: 'Apagar?')
         end
       end
