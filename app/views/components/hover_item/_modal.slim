@@ -1,5 +1,5 @@
 - if hover_item.decorate.show_modal?
-  .modal.fade id=dom_id(hover_item, 'modal')
+  .modal.fade id=dom_id(hover_item, 'modal') tabindex='-1'
     .modal-dialog
       .modal-content
         - unless hover_item.video_id.present?
