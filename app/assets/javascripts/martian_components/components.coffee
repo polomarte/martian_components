@@ -20,9 +20,9 @@ class @Components
     @MegaLink.autoInit()
 
     @Utils.Analytics.autoInit()
-    @Utils.YoutubePlayerApiLoader.autoInit()
     @Utils.LazySvg.autoInit()
     @Utils.FullHeightHeader.autoInit()
     @Utils.SmoothScroll.autoInit()
 
     new @Core.ResponsiveSizeChangeEmitter
+    @Core.YoutubePlayerApiLoader.autoInit()
