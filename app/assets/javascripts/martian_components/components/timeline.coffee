@@ -33,7 +33,7 @@ class @Components.Timeline extends @Components.Base
     @navSlider.on 'slide', (ev, ui) =>
       @slider.find('.slick-track')[0].style.webkitAnimationPlayState = 'paused'
       newPositionIndex = (ui.value / @navSliderStepSize).round()
-      @slider.slickGoTo newPositionIndex
+      @slider.slick('slickGoTo', newPositionIndex)
       @updateActiveYear newPositionIndex
 
   initSlider: =>
