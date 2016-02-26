@@ -11,8 +11,8 @@ class @Components.Core.ResponsiveSizeChangeEmitter
 
   computeResponsiveSize: ->
     switch
-      when window.innerWidth < 768 then 'xs'
-      when window.innerWidth >= 768 && window.innerWidth < 992 then 'sm'
-      when window.innerWidth >= 992 && window.innerWidth < 1200 then 'md'
-      when window.innerWidth >= 1200 then 'lg'
+      when $(window).width() < 768 then 'xs'
+      when $(window).width() >= 768 && $(window).width() < 992 then 'sm'
+      when $(window).width() >= 992 && $(window).width() < 1200 then 'md'
+      when $(window).width() >= 1200 then 'lg'
 
