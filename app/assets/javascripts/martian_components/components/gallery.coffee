@@ -5,7 +5,7 @@ class @Components.Gallery extends @Components.Base
       @el.addClass('no-touch') unless Utils.isTouchDevice()
 
     stopVideo: ->
-      @embeddedPlayerWrapper.data('player').stopVideo()
+      @embeddedPlayerWrapper.data('player')?.stopVideo?()
 
   @autoInit: ->
     $('.component-gallery').each (i, el) => new @($(el))
