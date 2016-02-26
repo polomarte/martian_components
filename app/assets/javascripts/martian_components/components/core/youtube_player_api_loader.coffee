@@ -13,14 +13,19 @@ class @Components.Core.YoutubePlayerApiLoader
     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag)
 
   onYouTubeIframeAPIReady: ->
+    instance = Components.Core.YoutubePlayerApiLoader.instance
+    $(instance).trigger('apiReady')
+
     $('.embedded-video-player-wrapper').each (i, wrapper) =>
       wrapper = $(wrapper)
 
       # Skip auto init if inside of a nested componenent
       if !wrapper.parents('[data-nested-level="1"]').length
-        Components.Core.YoutubePlayerApiLoader.instance.setupWrapper(wrapper)
+        instance.setupWrapper(wrapper)
 
   setupWrapper: (wrapper) ->
+    return if wrapper.data('player')
+
     placeholder = $('.embedded-video-player-placeholder', wrapper)
 
     options =
@@ -35,4 +40,3 @@ class @Components.Core.YoutubePlayerApiLoader
     player = new YT.Player(placeholder.attr('id'), options)
 
     wrapper.data 'player', player
-
