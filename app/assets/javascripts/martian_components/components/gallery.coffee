@@ -66,6 +66,8 @@ class @Components.Gallery extends @Components.Base
           }
         ]
 
+    @slider.addClass('single-slide') if $('.gallery-asset', @el).length == 1
+
     @slider.slick Object.merge(
       defaultOptions,
       Object.merge(customOptions, @slider.data('gallery-options') || {}))
