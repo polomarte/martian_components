@@ -20,6 +20,6 @@ class @Components.Utils.FullHeightHeader
     $(window).on 'resize', @compute
 
   compute: =>
-    return false if @lastWidth == window.innerWidth
-    @inner.css('height', window.innerHeight - @offset)
-    @lastWidth = window.innerWidth
+    return false if @lastWidth == $(window).width()
+    @inner.css('height', $(window).height() - @offset)
+    @lastWidth = $(window).width()
