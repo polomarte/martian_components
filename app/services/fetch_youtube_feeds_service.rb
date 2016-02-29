@@ -8,8 +8,18 @@ class FetchYoutubeFeedsService
 
   def perform youtube_channel_id
     base_url = 'http://www.youtube.com/feeds/videos.xml'
-    raw_result = Net::HTTP.get(URI.parse("#{base_url}?channel_id=#{youtube_channel_id}"))
-    result = Nokogiri::XML.parse(raw_result)
-    result.css('entry')
+
+    feeds =
+      begin
+        raw_result = Net::HTTP.get(URI.parse("#{base_url}?channel_id=#{youtube_channel_id}"))
+        result = Nokogiri::XML.parse(raw_result)
+        result.css('entry')
+      rescue
+        Rails.logger.warn 'Youtube feed fetcher fail'
+        Rails.logger.warn $!
+        []
+      end
+
+    feeds
   end
 end
