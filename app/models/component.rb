@@ -267,6 +267,10 @@ class SocialFeeds < Component
 
     feeds
   end
+
+  def all_feeds
+    feeds | (options[:custom_feeds] || [])
+  end
 end
 
 class Gallery < Component
