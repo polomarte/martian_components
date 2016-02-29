@@ -16,7 +16,11 @@ class FetchTwitterFeedsService
 
     feeds =
       begin
-        @api.user_timeline(user).select {|feed| !feed.reply?}
+        timeline = Rails.cache.fetch ['social_feeds', 'twitter'], expires_in: 1.hour do
+          @api.user_timeline(user)
+        end
+
+        timeline.select {|feed| !feed.reply?}
       rescue Twitter::Error::ServiceUnavailable => e
         Rails.logger.warn 'Twitter service unavailable'
         []
@@ -24,6 +28,8 @@ class FetchTwitterFeedsService
         Rails.logger.warn 'Twitter internal server error'
         []
       end
+
+    Rails.cache.delete(['social_feeds', 'twitter']) if feeds.empty?
 
     feeds
   end

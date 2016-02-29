@@ -11,7 +11,9 @@ class FetchYoutubeFeedsService
 
     feeds =
       begin
-        raw_result = Net::HTTP.get(URI.parse("#{base_url}?channel_id=#{youtube_channel_id}"))
+        raw_result = Rails.cache.fetch ['social_feeds', 'youtube'], expires_in: 1.hour do
+          Net::HTTP.get(URI.parse("#{base_url}?channel_id=#{youtube_channel_id}"))
+        end
         result = Nokogiri::XML.parse(raw_result)
         result.css('entry')
       rescue
@@ -19,6 +21,8 @@ class FetchYoutubeFeedsService
         Rails.logger.warn $!
         []
       end
+
+    Rails.cache.delete(['social_feeds', 'youtube']) if feeds.empty?
 
     feeds
   end

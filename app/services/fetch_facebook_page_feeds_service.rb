@@ -14,7 +14,15 @@ class FetchFacebookPageFeedsService
     @api = Koala::Facebook::API.new(token)
 
     feed_fields = ['message', 'full_picture', 'link', 'created_time', 'id', 'type']
-    @api.get_connections(fanpage_id, 'feed', {fields: feed_fields})
+
+    feeds =
+      Rails.cache.fetch ['social_feeds', 'facebook'], expires_in: 1.hour do
+        @api.get_connections(fanpage_id, 'feed', {fields: feed_fields})
+      end
+
+    Rails.cache.delete(['social_feeds', 'facebook']) if feeds.empty?
+
+    feeds
   end
 
   def get_permanent_fanpage_token fanpage_id
