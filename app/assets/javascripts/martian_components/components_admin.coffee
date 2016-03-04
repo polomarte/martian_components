@@ -1,7 +1,7 @@
 #= require_self
 #= require_tree ./components_admin
 
-class @ComponentsAdmin
+class @MCAdmin
   @autoInit: ->
     @AutoSave.autoInit()
     @GalleryAssets.autoInit()

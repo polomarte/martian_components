@@ -1,4 +1,4 @@
-class @ComponentsAdmin.GalleryAssets
+class @MCAdmin.GalleryAssets
   @autoInit: ->
     init = =>
       $('form[id^=form-gallery] .assets-inputs').each (i, el) => new @($(el))

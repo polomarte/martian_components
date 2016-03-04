@@ -1,4 +1,4 @@
-class @Components.Core.ResponsiveSizeChangeEmitter
+class @MC.Core.ResponsiveSizeChangeEmitter
   constructor: ->
     @currentResponsiveSize = @computeResponsiveSize()
 

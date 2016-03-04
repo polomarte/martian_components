@@ -1,4 +1,4 @@
-class @Components.MegaLink extends @Components.Base
+class @MC.MegaLink extends @MC.Base
   @autoInit: ->
     $('.component-mega-link').each (i, el) => new @($(el))
 

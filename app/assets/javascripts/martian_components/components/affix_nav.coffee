@@ -1,4 +1,4 @@
-class @Components.AffixNav extends @Components.Base
+class @MC.AffixNav extends @MC.Base
   @autoInit: ->
     affixNavEl = $('.component-affix_nav').first()
     new @(affixNavEl) if affixNavEl.length

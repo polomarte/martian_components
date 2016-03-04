@@ -1,4 +1,4 @@
-class @ComponentsAdmin.NestedMenu
+class @MCAdmin.NestedMenu
   @autoInit: ->
     new @($('#header #tabs li.has_nested'))
 

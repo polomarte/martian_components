@@ -1,6 +1,6 @@
 # Fetch via ajax SVG file to able to edit it inline (like css fill property)
 # Experiments with <object> was not successful (turbolinks conflicts).
-class @Components.Utils.LazySvg
+class @MC.Utils.LazySvg
   @autoInit: ->
     $('[data-lazy-svg-url]').each (i, el) => new @($(el))
 

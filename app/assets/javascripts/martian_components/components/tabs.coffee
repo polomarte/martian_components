@@ -1,4 +1,4 @@
-class @Components.Tabs extends @Components.Base
+class @MC.Tabs extends @MC.Base
   @autoInit: ->
     $('.component-tabs').each (i, el) => new @($(el))
 

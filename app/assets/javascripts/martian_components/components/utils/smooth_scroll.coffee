@@ -1,7 +1,7 @@
 # USE
 # Add smooth-scroll attribute to the element with anchors link.
 # The target elements must have the id or name with the same value of the anchor's href
-class @Components.Utils.SmoothScroll
+class @MC.Utils.SmoothScroll
   @autoInit: ->
     $('[smooth-scroll]').each (i, nav) => new @($(nav))
 

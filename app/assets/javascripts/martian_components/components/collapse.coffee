@@ -1,4 +1,4 @@
-class @Components.Collapse extends @Components.Base
+class @MC.Collapse extends @MC.Base
   @autoInit: ->
     $('.component-collapse').each (i, el) => new @($(el))
 

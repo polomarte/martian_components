@@ -3,7 +3,7 @@
 #= require ./components/base
 #= require_tree ./components
 
-class @Components
+class @MC
   class @Core
   class @Utils
 

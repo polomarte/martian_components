@@ -1,4 +1,4 @@
-class @Components.Utils.Analytics
+class @MC.Utils.Analytics
   @autoInit: ->
     new @ if ga?
 

@@ -1,7 +1,7 @@
 # USE
 # If the element is not a component, add full-height-header attribute to the tag.
 # With a component, add 'full_height_header: true' to the persisted options
-class @Components.Utils.FullHeightHeader
+class @MC.Utils.FullHeightHeader
   @autoInit: ->
     $('[full-height-header]').each (i, el) => new @($(el))
 

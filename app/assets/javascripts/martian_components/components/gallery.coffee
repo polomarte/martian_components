@@ -1,4 +1,4 @@
-class @Components.Gallery extends @Components.Base
+class @MC.Gallery extends @MC.Base
   class GalleryAsset
     constructor: (@el, @gallery) ->
       @embeddedPlayerWrapper = $('.embedded-video-player-wrapper', @el)

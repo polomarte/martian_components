@@ -1,4 +1,4 @@
-class @Components.HoverGroup extends @Components.Base
+class @MC.HoverGroup extends @MC.Base
   @autoInit: ->
     $('.component-hover-group').each (i, el) => new @($(el))
 
@@ -8,7 +8,7 @@ class @Components.HoverGroup extends @Components.Base
     # Hover Items
     @items  = []
     $('.component-hover-item', @el).each (i, el) =>
-      @items.push new Components.HoverItem($(el), @)
+      @items.push new MC.HoverItem($(el), @)
 
     @slider = $('[data-slick-carousel]', @el).not('[data-slick-carousel="false"]')
 
@@ -47,7 +47,7 @@ class @Components.HoverGroup extends @Components.Base
     @items.map 'adjustText'
 
 
-class @Components.HoverItem extends @Components.Base
+class @MC.HoverItem extends @MC.Base
   constructor: (@el, @hoverGroup) ->
     super
 

@@ -1,4 +1,4 @@
-class @Components.Base
+class @MC.Base
   constructor: (@el) ->
     @el.data('component', @)
 

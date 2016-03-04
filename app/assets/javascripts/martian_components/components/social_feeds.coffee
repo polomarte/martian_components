@@ -1,4 +1,4 @@
-class @Components.SocialFeeds extends @Components.Base
+class @MC.SocialFeeds extends @MC.Base
   @autoInit: ->
     $('.component-social-feeds').each (i, el) => new @($(el))
 
@@ -7,7 +7,7 @@ class @Components.SocialFeeds extends @Components.Base
 
     @items  = []
     $('article.social-feed', @el).each (i, el) =>
-      @items.push new Components.SocialFeed($(el), @)
+      @items.push new MC.SocialFeed($(el), @)
 
     @slider = $('[data-slick-carousel]', @el).not('[data-slick-carousel="false"]')
     @initSlider()
@@ -50,7 +50,7 @@ class @Components.SocialFeeds extends @Components.Base
     @slider.slick('slickGoTo', 0)
 
 
-class @Components.SocialFeed
+class @MC.SocialFeed
   constructor: (@el, @socialFeeds) ->
     @options = @el.data('options')
     @embeddedPlayerWrapper = $('.embedded-video-player-wrapper', @el)

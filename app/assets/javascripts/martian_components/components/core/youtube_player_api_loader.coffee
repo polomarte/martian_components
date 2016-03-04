@@ -1,4 +1,4 @@
-class @Components.Core.YoutubePlayerApiLoader
+class @MC.Core.YoutubePlayerApiLoader
   @autoInit: ->
     @.instance = new @ if $('.embedded-video-player-wrapper').length
 
@@ -13,7 +13,7 @@ class @Components.Core.YoutubePlayerApiLoader
     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag)
 
   onYouTubeIframeAPIReady: ->
-    instance = Components.Core.YoutubePlayerApiLoader.instance
+    instance = MC.Core.YoutubePlayerApiLoader.instance
     $(instance).trigger('apiReady')
 
     $('.embedded-video-player-wrapper').each (i, wrapper) =>

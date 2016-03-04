@@ -1,4 +1,4 @@
-class @ComponentsAdmin.AutoSave
+class @MCAdmin.AutoSave
   @autoInit: ->
     $('form[data-autosave]').each (i, el) => new @($(el))
 

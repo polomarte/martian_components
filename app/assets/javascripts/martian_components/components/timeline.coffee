@@ -1,4 +1,4 @@
-class @Components.Timeline extends @Components.Base
+class @MC.Timeline extends @MC.Base
   @autoInit: ->
     $('.component-timeline').each (i, el) => new @($(el))
 

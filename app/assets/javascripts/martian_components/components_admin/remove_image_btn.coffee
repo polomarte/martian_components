@@ -1,4 +1,4 @@
-class @ComponentsAdmin.RemoveImageBtn
+class @MCAdmin.RemoveImageBtn
   @autoInit: ->
     init = =>
       $('.remove-image-btn').each (i, el) => new @($(el))
