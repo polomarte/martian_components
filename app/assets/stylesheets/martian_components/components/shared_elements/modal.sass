@@ -88,10 +88,14 @@
 
   &:before
     content: ''
-    +size(100%, 120px)
-    +gradient-vertical(fade_out(black, 1), fade_out(black, 0), 10%, 85%)
+    +size(100%, 80px)
+    +gradient-vertical(fade_out(black, 1), fade_out(black, 0), 0%, 90%)
     position: fixed
     left: 0
     bottom: 0
     z-index: -1
     pointer-events: none
+
+@media (min-width: $screen-sm-min)
+  [data-dismiss="modal"]
+    height: 120px
