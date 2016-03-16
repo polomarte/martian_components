@@ -5,6 +5,8 @@ class CollapseDecorator < ComponentDecorator
         render object.nested_component
       elsif object.file.present?
         render 'components/collapse/file', collapse: object
+      elsif video_code
+        embedded_video_player object.video_code
       elsif object.image.present?
         image_tag(object.image.file_url)
       elsif html

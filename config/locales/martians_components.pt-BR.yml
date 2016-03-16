@@ -17,6 +17,7 @@ pt-BR:
         description: Descrição
         image: Imagem
         file: Arquivo
+        video_code: Video
       component:
         <<: *shared_attributes
         h1: Título

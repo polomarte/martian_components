@@ -19,6 +19,8 @@
 
       = f.input :file_caption
 
+      = f.input :video_code, required: false, hint: "Para adicionar um video, adicione o endereço aqui. Apenas Youtube é suportado. Ex.: http://www.youtube.com/watch?v=VDspPKDMBMo"
+
   - unless component.nested_component.present?
     - image = component.image || component.images.build(kind: 'image')
     = render 'components/_shared/images_inputs', f: f, images: [image]

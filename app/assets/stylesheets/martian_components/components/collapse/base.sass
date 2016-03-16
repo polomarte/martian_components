@@ -9,6 +9,14 @@
     max-width: 100%
     +center-block
 
+  .embedded-video-player-wrapper
+    width: 300px
+    height: 170px
+    margin: 0 auto
+
+    iframe
+      +square(100%)
+
 .text
   text-align: center
   margin-top: 20px
@@ -71,6 +79,10 @@
       float: left
       margin: 0 30px 10px 0
 
+    .embedded-video-player-wrapper
+      margin-right: 30px
+      margin-bottom: 10px
+
   .more-icon
     display: none
 
@@ -97,3 +109,8 @@
 @media (min-width: $screen-lg-min)
   h1
     margin-bottom: $vertical-spacing-lg
+
+  .media-wrapper
+    .embedded-video-player-wrapper
+      width: 420px
+      height: 235px
