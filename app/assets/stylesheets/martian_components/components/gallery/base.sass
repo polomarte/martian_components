@@ -1,6 +1,11 @@
 [data-slick-carousel]
   margin-top: $vertical-spacing-xs / 1.5
 
+  // Prevent video playing when navigating
+  .slick-slide:not(.slick-active)
+    .embedded-video-player-wrapper
+      pointer-events: none
+
 @media (min-width: $screen-sm-min)
   [data-slick-carousel]
     margin-top: $vertical-spacing-sm / 1.5
