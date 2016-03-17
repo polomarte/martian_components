@@ -53,10 +53,25 @@ module MartianComponents
 
     def embedded_video_player video_id
       content_tag :div, class: 'embedded-video-player-wrapper' do
-        content_tag :div, nil,
+        output = ''
+
+        poster_content = capture do
+          out = ''
+          out << inline_svg('martian_components/embedded_video_player/player_play.svg', class: 'play-icon')
+          out << image_tag('martian_components/embedded_video_player/loader.gif', class: 'loader')
+          out.html_safe
+        end
+
+        output << (content_tag :div, poster_content,
+          style: "background-image: url('http://img.youtube.com/vi/#{video_id}/hqdefault.jpg'",
+          class: 'embedded-video-player-poster')
+
+        output << content_tag(:div, nil,
           id: "embedded-video-#{video_id}",
           class: 'embedded-video-player-placeholder',
-          data: {video_id: video_id}
+          data: {video_id: video_id})
+
+        output.html_safe
       end
     end
   end

@@ -26,6 +26,7 @@ class @MC.Core.YoutubePlayerApiLoader
   setupWrapper: (wrapper) ->
     return if wrapper.data('player')
 
+    poster = $('.embedded-video-player-poster', wrapper)
     placeholder = $('.embedded-video-player-placeholder', wrapper)
 
     options =
@@ -37,6 +38,13 @@ class @MC.Core.YoutubePlayerApiLoader
         showinfo: 0
         rel: 0
 
-    player = new YT.Player(placeholder.attr('id'), options)
+    poster.one 'click', =>
+      $('.loader', poster).show()
+      $('.play-icon', poster).hide()
 
-    wrapper.data 'player', player
+      player = new YT.Player(placeholder.attr('id'), options)
+      wrapper.data 'player', player
+
+      player.addEventListener 'onReady', =>
+        player.playVideo()
+        poster.hide()
