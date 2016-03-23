@@ -63,7 +63,7 @@ module MartianComponents
         end
 
         output << (content_tag :div, poster_content,
-          style: "background-image: url('http://img.youtube.com/vi/#{video_id}/hqdefault.jpg'",
+          style: "background-image: url('http://img.youtube.com/vi/#{video_id}/hqdefault.jpg')",
           class: 'embedded-video-player-poster')
 
         output << content_tag(:div, nil,
