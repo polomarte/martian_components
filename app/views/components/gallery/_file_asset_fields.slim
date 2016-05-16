@@ -3,7 +3,7 @@
     = f.input :kind, as: :hidden, input_html: {value: :file}
     = f.input :title
     = f.input :description, input_html: {rows: 3}
-    = f.input :file, as: :file, hint: (f.object.file if f.object.file.present?)
+    = f.input :file, as: :file, hint: (f.object.file_identifier if f.object.file.present?)
     = f.input :file_cache, as: :hidden
     = f.input :image, as: :file, required: false, hint: (image_tag(f.object.image_url(:thumb)) if f.object.image.present?)
     = f.input :image_cache, as: :hidden
