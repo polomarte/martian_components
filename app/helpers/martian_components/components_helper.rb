@@ -15,6 +15,11 @@ module MartianComponents
 
     def component key_or_object, options={}, &block
       component = key_or_object.is_a?(String) ? Component[key_or_object] : key_or_object
+
+      if component.nil? && key_or_object.is_a?(String)
+        raise "Can't find component with key #{key_or_object}"
+      end
+
       component.options = component.options.deep_merge(options)
 
       if component.present?
