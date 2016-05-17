@@ -28,7 +28,7 @@ class @MC.Tabs extends @MC.Base
 
     if component.length
       componentTabId = component.parents('.tab-pane').attr('id')
-      componentTab = $('[data-toggle]', @navItems).filter("[href=##{componentTabId}]")
+      componentTab = $('[data-toggle]', @navItems).filter("[href='##{componentTabId}']")
       componentTab.tab('show')
 
       setTimeout =>
