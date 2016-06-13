@@ -141,7 +141,11 @@ private
   end
 end
 
+class ContentGallery < Component
+end
+
 class Content < Component
+  # options = {class: 'media-left' | 'media-center' | 'media-right'}
 end
 
 class Tabs < Component

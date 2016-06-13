@@ -1,0 +1,19 @@
+= component_tag_for content_gallery do
+  - inner_content = capture do
+    = content_gallery.decorate.h1
+    = content_gallery.decorate.h2
+    = content_gallery.decorate.text
+
+    div[data={ \
+      slick_carousel: true,
+      gallery_options: content_gallery.options[:gallery_options].to_json}]
+
+      - content_gallery.items.each do |item, index|
+        = render item
+
+    .clearfix
+
+  - if defined?(block)
+    - block.call(content_gallery, inner_content)
+  - else
+    .inner= inner_content

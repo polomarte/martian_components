@@ -12,6 +12,7 @@ class @MC
     @Banner.autoInit()
     @Collapse.autoInit()
     @Content.autoInit()
+    @ContentGallery.autoInit()
     @HoverGroup.autoInit()
     @Tabs.autoInit()
     @Timeline.autoInit()
