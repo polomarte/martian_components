@@ -1,23 +1,27 @@
 = component_tag_for hover_group do
-  - inner_content = capture do
-    = hover_group.decorate.h1
-    = hover_group.decorate.h2
-    = hover_group.decorate.text
+  .outer
+    .background-image-wrapper data={liquid_fill: true}
+      = image_tag hover_group.background.file_url if hover_group.background.present?
 
-    div data={ \
-      slick_carousel: !!hover_group.options[:gallery],
-      gallery_options: hover_group.options[:gallery_options].to_json}
+    - inner_content = capture do
+      = hover_group.decorate.h1
+      = hover_group.decorate.h2
+      = hover_group.decorate.text
 
-      - hover_group.items.each do |item|
-        = component item.key
+      div data={ \
+        slick_carousel: !!hover_group.options[:gallery],
+        gallery_options: hover_group.options[:gallery_options].to_json}
 
-    .clearfix
+        - hover_group.items.each do |item|
+          = component item.key
 
-    = render partial: 'components/hover_item/modal',
-      collection: hover_group.items, as: :hover_item
+      .clearfix
 
-  - if defined?(block)
-    - block.call(hover_group, inner_content)
-  - else
-    .inner= inner_content
+      = render partial: 'components/hover_item/modal',
+        collection: hover_group.items, as: :hover_item
+
+    - if defined?(block)
+      - block.call(hover_group, inner_content)
+    - else
+      .inner= inner_content
 
