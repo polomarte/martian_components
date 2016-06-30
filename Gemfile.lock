@@ -14,6 +14,7 @@ PATH
       bourbon (~> 3.2.3)
       carrierwave (~> 0.10.0)
       cocoon (~> 1.2.6)
+      devise (~> 3.5.10)
       draper (~> 1.4.0)
       globalize (~> 5.0.1)
       koala (~> 2.2.0)
@@ -84,6 +85,7 @@ GEM
     arel (6.0.3)
     autoprefixer-rails (6.3.6.2)
       execjs
+    bcrypt (3.1.11)
     bootstrap-sass (3.3.6)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
@@ -107,6 +109,13 @@ GEM
       execjs
     coffee-script-source (1.10.0)
     concurrent-ruby (1.0.2)
+    devise (3.5.10)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 3.2.6, < 5)
+      responders
+      thread_safe (~> 0.1)
+      warden (~> 1.2.3)
     domain_name (0.5.20160615)
       unf (>= 0.0.5, < 1.0.0)
     draper (1.4.0)
@@ -182,6 +191,7 @@ GEM
     nokogiri (1.6.8)
       mini_portile2 (~> 2.1.0)
       pkg-config (~> 1.1.7)
+    orm_adapter (0.5.0)
     pg_search (1.0.6)
       activerecord (>= 3.1)
       activesupport (>= 3.1)
@@ -287,6 +297,8 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.2)
+    warden (1.2.6)
+      rack (>= 1.0)
 
 PLATFORMS
   ruby

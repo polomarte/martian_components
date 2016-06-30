@@ -1,4 +1,5 @@
 require 'martian_components/engine'
+require 'devise'
 require 'carrierwave'
 require 'globalize'
 require 'slim-rails'

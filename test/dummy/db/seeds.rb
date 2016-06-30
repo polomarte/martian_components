@@ -18,6 +18,8 @@ def load_yaml path
   YAML.load_file "#{Rails.root}/db/data/files/#{path}"
 end
 
+AdminUser.create(email: 'mc@outracoisa.co', password: 'admin123')
+
 Banner.create!(
   key: 'app:banner:banner_a',
   title: 'Cabeçalho',

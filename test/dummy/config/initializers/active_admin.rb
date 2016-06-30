@@ -77,7 +77,7 @@ ActiveAdmin.setup do |config|
   # Active Admin will automatically call an authorization
   # method in a before filter of all controller actions to
   # ensure that there is a user with proper rights.
-  config.authorization_adapter = ActiveAdmin::PunditAdapter
+  # config.authorization_adapter = ActiveAdmin::PunditAdapter
 
   # You can customize your CanCan Ability class name here.
   # config.cancan_ability_class = "Ability"
