@@ -27,6 +27,9 @@ Gem::Specification.new do |s|
   s.add_dependency('carrierwave', ['~> 0.10.0'])
   s.add_dependency('mini_magick', ['~> 4.3.2'])
   s.add_dependency('globalize', ['~> 5.0.1'])
+  s.add_dependency('activeadmin', ['1.0.0.pre1'])
+  s.add_dependency('pundit', ['~>1.0.1'])
 
   s.add_development_dependency 'sqlite3'
+  s.add_development_dependency 'pry'
 end
