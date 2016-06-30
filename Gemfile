@@ -12,3 +12,6 @@ gemspec
 
 # To use debugger
 # gem 'debugger'
+
+# TODO: Add in .gemspec
+gem 'activeadmin-wysihtml5', github: 'theo-bittencourt/activeadmin-wysihtml5'

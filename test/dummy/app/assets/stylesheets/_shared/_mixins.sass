@@ -1,0 +1,45 @@
+@import "bootstrap/mixins"
+@import "_shared/_mixins/flex"
+
+=font-smoothing($font-smoothing: antialiased)
+  // none | antialiased | subpixel-antialiased
+  -webkit-font-smoothing: $font-smoothing
+  -moz-font-smoothing: $font-smoothing
+  -ms-font-smoothing: $font-smoothing
+  font-smoothing: $font-smoothing
+
+=bourbon-placeholder
+  $placeholders: ":-webkit-input" ":-moz" "-moz" "-ms-input"
+  @each $placeholder in $placeholders
+    &:#{$placeholder}-placeholder
+      @content
+
+=triangle($dir, $size, $color, $offset: 0px)
+  &:before,
+  &:after
+    border: $size transparent solid
+    content: ''
+    position: absolute
+
+  @if ($dir == "top" or $dir == "up" or $dir == "left" or $dir == "before")
+    &:before
+      @if ($dir == "top" or $dir == "up")
+        border-bottom-color: $color
+      @else if ($dir == "right" or $dir == "after")
+        border-left-color: $color
+  @else if ($dir == "bottom" or $dir == "down" or $dir == "left" or $dir == "before")
+    &:after
+      left: 50%
+      margin-left: -$size
+      @if ($dir == "bottom" or $dir == "down")
+        border-top-color: $color
+        bottom: $offset
+      @else if ($dir == "left" or $dir == "before")
+        border-right-color: $color
+
+=transform($transform)
+  -webkit-transform: $transform
+  -moz-transform: $transform
+  -ms-transform: $transform
+  -o-transform: $transform
+  transform: $transform

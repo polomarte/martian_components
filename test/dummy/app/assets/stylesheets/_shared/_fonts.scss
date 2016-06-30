@@ -1,0 +1,25 @@
+@font-face {
+  font-family: 'gotham_rnd_light';
+  src: font_url('gotham_rnd_light.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'gotham_rnd_medium';
+  src: font_url('gotham_rnd_medium.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'gotham_rnd_book';
+  src: font_url('gotham_rnd_book.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'lato_lightitalic';
+  src: font_url('lato_lightitalic.woff') format('woff');
+}
+
+$gotham_rnd_light:  'gotham_rnd_light', serif;
+$gotham_rnd_medium: 'gotham_rnd_medium', serif;
+$gotham_rnd_book:   'gotham_rnd_book', serif;
+$lato_light_italic: 'lato_lightitalic', serif;
+$helveticaFallback: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;

@@ -1,0 +1,31 @@
+.autosave
+  width: 110px
+  position: fixed
+  top: 0 - (20px + 30px)
+  left: 50%
+  margin-left: -75px
+  z-index: 999
+  padding: 15px 20px
+  font-size: 20px
+  line-height: 1em
+  text-align: center
+  background-color: rgb(229, 227, 93)
+  border-radius: 0 0 8px 8px
+  box-shadow: 0 10px 15px -10px black inset
+  transition: top .3s, background-color .5s
+  -webkit-font-smoothing: antialiased
+
+  &.active
+    top: 0
+
+  &.sending
+    background-color: rgb(183, 207, 71)
+    color: white
+
+  &.success
+    background-color: rgb(93, 180, 93)
+    color: white
+
+  &.failure
+    background-color: rgb(180, 93, 93)
+    color: white

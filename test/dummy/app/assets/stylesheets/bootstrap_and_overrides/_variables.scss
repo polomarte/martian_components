@@ -1,0 +1,30 @@
+@import "_shared/colors";
+@import "_shared/fonts";
+@import "bootstrap/variables";
+
+// Set large grid to medium
+// $grid-gutter-width:       20px !default;
+// $screen-lg:               992px !default;
+// $screen-lg-min:           $screen-lg !default;
+// $screen-lg-desktop:       $screen-lg-min !default;
+// $container-large-desktop: ((940px + $grid-gutter-width)) !default;
+// $container-lg:            $container-large-desktop !default;
+
+//** Point at which the navbar becomes uncollapsed.
+$grid-float-breakpoint: $screen-lg-min;
+
+$font-family-sans-serif: $lato-light, Helvetica, Arial, sans-serif !default;
+$font-size-base:         18px !default;
+$brand-primary:          $blue;
+$text-color:             $text-black;
+$link-color:             $blue;
+$link-hover-color:       $blueLight;
+
+// $padding-base-horizontal:   22px !default;
+
+// $border-radius-base:        18px !default;
+// $border-radius-large:       22px !default;
+// $border-radius-small:       10px !default;
+
+// $btn-primary-color: $blueDarken;
+// $btn-primary-bg: $blueHl;

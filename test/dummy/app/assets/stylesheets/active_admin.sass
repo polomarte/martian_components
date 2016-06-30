@@ -1,0 +1,97 @@
+// SASS variable overrides must be declared before loading up Active Admin's styles.
+//
+// To view the variables that Active Admin provides, take a look at
+// `app/assets/stylesheets/active_admin/mixins/_variables.css.scss` in the
+// Active Admin source.
+//
+// For example, to change the sidebar width:
+// $sidebar-width: 242px
+
+// Active Admin's got SASS!
+@import "active_admin/mixins"
+@import "active_admin/base"
+@import "activeadmin-wysihtml5/base"
+@import "bootstrap/variables"
+@import "selectize/selectize"
+@import "_shared/mixins"
+@import "bootstrap/navs"
+@import "martian_components/components_admin"
+@import "admin/**/*"
+
+body.active_admin .cols-2
+  clear: both
+  overflow: auto
+
+  & > *
+    width: calc(50% - 10px)
+    float: left
+
+    &:first-child
+      margin-right: 20px
+
+// Fix wysihtml5 field
+body.active_admin form .activeadmin-wysihtml5
+  float: left !important
+
+body.active_admin form li.default_wysiwyg
+  overflow: auto
+
+body.active_admin
+  #header
+    ul.tabs
+      li
+        a
+          +font-smoothing(initial)
+
+  #utility_nav #locale
+    & > a
+      padding-top: 15px
+
+    img
+      width: 30px
+
+    ul
+      left: auto
+      right: 3px
+      border-radius: 0 0 10px 10px
+      min-width: initial
+      width: auto
+      box-shadow: none
+
+      a
+        padding: 5px 19px 0 11px
+
+  .has_many_container.items
+    fieldset
+      float: left
+      width: 33%
+      height: 400px
+      width: calc(33% - 10px)
+      margin-right: 10px
+
+      &:last-child
+        margin-right: 0
+
+      .inline-errors
+        margin-left: 30%
+
+      textarea, input[type="text"]
+        width: calc(70% - 22px)
+
+      ol > li label
+        width: 30%
+
+      li.boolean label
+        padding-left: 30%
+
+    .has_many_add
+      display: block
+      width: 200px
+      clear: both
+
+  .selectize-input
+    width: 80%
+
+  .selectize-dropdown .active
+    background-color: #77DDFF
+    font-weight: bold

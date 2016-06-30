@@ -1,0 +1,74 @@
+.image-uploader-inputs
+  .fileinput-button
+    position: relative
+    overflow: hidden
+    color: white
+
+    input
+      position: absolute
+      top: 0
+      left: 0
+      margin: 0
+      opacity: 0
+      -ms-filter: 'alpha(opacity=0)'
+      font-size: 150px
+      direction: ltr
+      cursor: pointer
+
+    .inline-errors + .inline-hints
+      margin-left: 20%
+
+    .inline-hints
+      display: inline-block
+      width: 200px
+      height: 150px
+      padding: 15px
+      border: 1px solid darken(white, 15%)
+      border-radius: 3px
+      text-align: center
+      margin: 0
+      background-color: white
+      +flexbox
+      +align-items(center)
+      +justify-content(center)
+
+      &.uploading,
+      &.processing
+        position: relative
+        z-index: 0
+
+        img, video
+          display: none
+
+        &:after
+          content: attr(data-content)
+          text-align: center
+          font-size: 28px
+          display: block
+          -webkit-font-smoothing: antialiased
+
+      &.processing
+        &:after
+          content: 'Processando...'
+          font-size: 15px
+
+      img, video
+        max-width: 100%
+        max-height: 100%
+        pointer-events: none
+
+        &[src='']
+          display: none
+
+          & + .placeholder
+            display: block
+
+      .placeholder
+        font-size: 14px
+        display: block
+        width: 190px
+        margin: 100px auto
+        display: none
+
+  label[for$="_destroy"]
+    padding: 0

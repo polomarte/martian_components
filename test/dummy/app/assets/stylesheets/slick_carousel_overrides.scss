@@ -1,0 +1,16 @@
+// Override Slick settings (Asset Pipeline compatibility)
+
+@font-face {
+    font-family:"slick";
+    src:    asset-url("slick-carousel/fonts/slick.eot");
+    src:    asset-url("slick-carousel/fonts/slick.eot?#iefix") format("embedded-opentype"),
+            asset-url("slick-carousel/fonts/slick.woff") format("woff"),
+            asset-url("slick-carousel/fonts/slick.ttf") format("truetype"),
+            asset-url("slick-carousel/fonts/slick.svg#slick") format("svg");
+    font-weight: normal;
+    font-style: normal;
+}
+
+.slick-track {
+  margin: 0 auto;
+}
