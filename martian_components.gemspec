@@ -23,6 +23,10 @@ Gem::Specification.new do |s|
   s.add_dependency('koala', ['~> 2.2.0'])
   s.add_dependency('twitter', ['~> 5.15.0'])
   s.add_dependency('pg_search', ['~> 1.0.5'])
+  s.add_dependency('slim-rails', ['~> 3.0.1'])
+  s.add_dependency('carrierwave', ['~> 0.10.0'])
+  s.add_dependency('mini_magick', ['~> 4.3.2'])
+  s.add_dependency('globalize', ['~> 5.0.1'])
 
   s.add_development_dependency 'sqlite3'
 end
