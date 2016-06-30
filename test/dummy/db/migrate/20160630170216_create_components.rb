@@ -11,6 +11,7 @@ class CreateComponents < ActiveRecord::Migration
       t.column :affix_nav_navegable, :boolean, default: false
       t.column :file, :string
       t.column :parent_id, :integer
+      t.column :position, :integer
 
       t.timestamps
     end

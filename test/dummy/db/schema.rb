@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 20160630170216) do
     t.boolean  "affix_nav_navegable", default: false
     t.string   "file"
     t.integer  "parent_id"
+    t.integer  "position"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
