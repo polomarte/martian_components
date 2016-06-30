@@ -1,0 +1,2 @@
+class HoverGroup < Component
+end

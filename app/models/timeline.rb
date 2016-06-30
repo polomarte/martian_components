@@ -1,0 +1,2 @@
+class Timeline < Component
+end
