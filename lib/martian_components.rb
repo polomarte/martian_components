@@ -4,6 +4,7 @@ require 'globalize'
 require 'slim-rails'
 require 'activeadmin'
 require 'draper'
+require 'bootstrap-sass'
 
 module MartianComponents
 end
