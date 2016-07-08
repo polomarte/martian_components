@@ -33,7 +33,7 @@ To download, you need to have the following requirements on your machine.
   ~/martian_components/test/dummy$ rails server
 ```
 
-  1 - Create a view: 
+  1. Create a view: 
 
     - Create a _form.slim file, a folder and a _test.slim file with the same name of your component in /martian_components/app/views
 
@@ -51,7 +51,7 @@ To download, you need to have the following requirements on your machine.
     
     - The _form.slim file will be utilized in admin mode.
     
-  2 -  Create a model:
+  2. Create a model:
 
     - Create a .rb file in /martian_components/app/models folder
     
@@ -69,7 +69,7 @@ To download, you need to have the following requirements on your machine.
         end
     ~~~~~
 
-  3 - Create the javascript and .sass files:
+  3. Create the javascript and .sass files:
 
 ```bash    
   .
@@ -95,7 +95,7 @@ class @MC.Test extends @MC.Base
   constructor: (@el) ->
     super
 ```
-  4 - Create the element in seeds.rb file, and run.
+- Create the element in seeds.rb file, and run.
 
 ~~~~~ ruby
   Test.create!(
