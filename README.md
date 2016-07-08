@@ -139,7 +139,7 @@ class @MC.Test extends @MC.Base
 
 ## Administrator
 
-- You or your client can use the admin route to manager your website, editing the components with a dynamic form:
+- You or your client can use the activeadmin to manager your website, editing the components with a dynamic form:
 ~~~~ruby
   AdminUser.create(email: 'example@domain.co', password: '123')
   # url: localhost:3000/admin

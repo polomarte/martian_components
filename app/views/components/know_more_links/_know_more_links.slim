@@ -1,14 +1,25 @@
 = component_tag_for know_more_links do
   .outer
-    = know_more_links.decorate.background
+    .background-image-wrapper data={liquid_fill: true}
+      = image_tag know_more_links.background.file_url if know_more_links.background.present?
 
     - inner_content = capture do
-      = know_more_links.decorate.icon
       = know_more_links.decorate.h1
       = know_more_links.decorate.h2
+      
+      div data={ \
+        slick_carousel: !!know_more_links.options[:gallery],
+        gallery_options: know_more_links.options[:gallery_options].to_json}
+
+        - know_more_links.items.each do |item|
+          = component item.key
+
+      .clearfix
+
+      = render partial: 'components/hover_item/modal',
+        collection: know_more_links.items, as: :hover_item
 
     - if defined?(block)
       - block.call(know_more_links, inner_content)
     - else
       .inner= inner_content
-
