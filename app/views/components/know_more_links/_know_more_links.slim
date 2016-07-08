@@ -1,0 +1,14 @@
+= component_tag_for know_more_links do
+  .outer
+    = know_more_links.decorate.background
+
+    - inner_content = capture do
+      = know_more_links.decorate.icon
+      = know_more_links.decorate.h1
+      = know_more_links.decorate.h2
+
+    - if defined?(block)
+      - block.call(know_more_links, inner_content)
+    - else
+      .inner= inner_content
+

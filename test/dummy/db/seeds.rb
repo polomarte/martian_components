@@ -32,8 +32,9 @@ Banner.create!(
     build_image('background', 'bg.jpg')],
   options: {data: {full_height_header: true}})
 
-Test.create!(
-  key: 'app:test:test_a',
-  title: 'zz',
-  h1: 'New Title',
+
+KnowMoreLinks.create!(
+  key: 'app:know_more_links:know_more_links_a',
+  title: 'Saiba mais',
+  h1: 'Know more',
   h2: 'A Subtitle')

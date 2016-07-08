@@ -13,11 +13,11 @@ An engine with components ready for the creation and development of websites, us
 
 ## TODO
 - Create google maps component.
-- Create a rake to create this automatically 
+- Create a rake to create this automatically.
 
 ## Installation
 
-To download, you need to have the following requirements on your machine
+To download, you need to have the following requirements on your machine.
 
 - [Git](https://git-scm.com/)
 - [Ruby on rails](http://rubyonrails.org/)
@@ -27,15 +27,15 @@ To download, you need to have the following requirements on your machine
 ```
 
 ## Starting
-  - You can test your applicantion using   
+  - You can test your applicantion using.   
 
 ```bash
   ~/martian_components/test/dummy$ rails server
 ```
 
-  1. Create a view: 
+  1 - Create a view: 
 
-    - Create a _form.slim file, a folder and a .slim file with the same name of your component in /martian_components/app/views
+    - Create a _form.slim file, a folder and a _test.slim file with the same name of your component in /martian_components/app/views
 
 
     ```bash
@@ -47,8 +47,11 @@ To download, you need to have the following requirements on your machine
                       ├── _form.slim
                       └── _test.slim
 
-    ```
-  2. Create a model:
+    ````
+    
+    - The _form.slim file will be utilized in admin mode.
+    
+  2 -  Create a model:
 
     - Create a .rb file in /martian_components/app/models folder
     
@@ -66,7 +69,7 @@ To download, you need to have the following requirements on your machine
         end
     ~~~~~
 
-  3. Create the javascript and .sass files:
+  3 - Create the javascript and .sass files:
 
 ```bash    
   .
@@ -82,7 +85,7 @@ To download, you need to have the following requirements on your machine
 
 ```
 
-- Write the sentences in your .coffeescript file
+  - Write the sentences in your .coffeescript file.
 
 ```coffeescript
 class @MC.Test extends @MC.Base
@@ -92,7 +95,7 @@ class @MC.Test extends @MC.Base
   constructor: (@el) ->
     super
 ```
-  4. Create the element in seeds.rb file, and run.
+  4 - Create the element in seeds.rb file, and run.
 
 ~~~~~ ruby
   Test.create!(
@@ -127,7 +130,7 @@ class @MC.Test extends @MC.Base
 
 ## Building
 
-- If you want to see the preview , you can use the following commands to access the folder and start the server
+- If you want to see the preview , you can use the following commands to access the folder and start the server.
 
 ```bash
   cd martian_components/test/dummy && rails server
