@@ -1,0 +1,12 @@
+= component_tag_for test do
+  .outer
+    = test.decorate.background
+
+    - inner_content = capture do
+      = test.decorate.h1
+      = test.decorate.h2
+
+    - if defined?(block)
+      - block.call(test, inner_content)
+    - else
+      .inner= inner_content

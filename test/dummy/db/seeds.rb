@@ -20,12 +20,20 @@ end
 
 AdminUser.create(email: 'mc@outracoisa.co', password: 'admin123')
 
+Component.destroy_all
+
 Banner.create!(
   key: 'app:banner:banner_a',
   title: 'Cabeçalho',
-  h1: 'A Title',
+  h1: 'New Title',
   h2: 'A Subtitle',
   images: [
     build_image('icon', 'icon.png'),
     build_image('background', 'bg.jpg')],
   options: {data: {full_height_header: true}})
+
+Test.create!(
+  key: 'app:test:test_a',
+  title: 'zz',
+  h1: 'New Title',
+  h2: 'A Subtitle')

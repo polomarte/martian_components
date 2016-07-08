@@ -1,0 +1,3 @@
+class TestDecorator < ComponentDecorator
+ 
+end

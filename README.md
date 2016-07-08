@@ -27,7 +27,71 @@ To download, you need to have the following requirements on your machine
 ```
 
 ## Starting
+  - You can test your applicantion using   
 
+```bash
+  ~/martian_components/test/dummy$ rails server
+```
+
+  1. Create a view: 
+
+    - Create a _form.slim file, a folder and a .slim file with the same name of your component in /martian_components/app/views
+
+
+    ```bash
+      .
+      └── app
+          └── view
+              └── components
+                  └── test
+                      ├── _form.slim
+                      └── _test.slim
+
+    ```
+  2. Create a model:
+
+    - Create a .rb file in /martian_components/app/models folder
+    
+    ```bash
+    .
+    └── app
+        └── models
+            └── test.rb
+    ```
+    
+    - In the .rb file you can write:
+
+    ~~~~~ ruby
+        class Test < Component
+        end
+    ~~~~~
+
+  3. Create the javascript and .sass files:
+
+```bash    
+  .
+  └── app
+      └── assets
+          ├── javascript
+          │   └── martian_components
+          │       └── test.coffee
+          └── stylesheets
+              └── martian_components
+                  └── components
+                      └── test.sass
+
+```
+
+- Write the sentences in your .coffeescript file
+
+```coffeescript
+class @MC.Test extends @MC.Base
+  @autoInit: ->
+    $('.component-test').each (i, el) => new @($(el))
+
+  constructor: (@el) ->
+    super
+```
 
 ## Integration
 
