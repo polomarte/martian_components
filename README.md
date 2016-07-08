@@ -10,6 +10,7 @@ An engine with components ready for the creation and development of websites, us
 2. [Starting](#starting)
 3. [Integration](#integration)
 4. [Building](#building)
+5. [Administrator](#administrator)
 
 ## TODO
 - Create google maps component.
@@ -135,6 +136,14 @@ class @MC.Test extends @MC.Base
 ```bash
   cd martian_components/test/dummy && rails server
 ```
+
+## Administrator
+
+- You or your client can use the admin route to manager your website, editing the components with a dynamic form:
+~~~~ruby
+  AdminUser.create(email: 'example@domain.co', password: '123')
+  # url: localhost:3000/admin
+~~~~
 
 ## License
 
