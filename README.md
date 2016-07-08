@@ -92,6 +92,15 @@ class @MC.Test extends @MC.Base
   constructor: (@el) ->
     super
 ```
+  4. Create the element in seeds.rb file, and run.
+
+~~~~~ ruby
+  Test.create!(
+  key: 'app:test:test_a',
+  title: 'New Component',
+  h1: 'New Component',
+  h2: 'A Component o/')
+~~~~~
 
 ## Integration
 
