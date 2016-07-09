@@ -106,6 +106,10 @@ class @MC.Test extends @MC.Base
   h2: 'A Component o/')
 ~~~~~
 
+```bash
+  rake db:seed
+```
+
 ## Integration
 
     # Gemfile

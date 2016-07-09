@@ -4,8 +4,7 @@
       = image_tag know_more_links.background.file_url if know_more_links.background.present?
 
     - inner_content = capture do
-      = know_more_links.decorate.h1
-      = know_more_links.decorate.h2
+      = know_more_links.h1
       
       div data={ \
         slick_carousel: !!know_more_links.options[:gallery],

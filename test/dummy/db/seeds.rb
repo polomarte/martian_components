@@ -37,7 +37,7 @@ KnowMoreLinks.create!(
   title: 'Saiba mais',
   h1: 'Know more')
 
-/
+=begin
 links = [
       KnowMoreLink.create!(
         key: 'app:know_more_link:know_more_link_1',
@@ -78,4 +78,4 @@ KnowMoreLinks.create!(
   options: {
     gallery: true,
 })
-/
+=end

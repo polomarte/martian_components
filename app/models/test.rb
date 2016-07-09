@@ -1,2 +1,0 @@
-class Test < Component
-end
