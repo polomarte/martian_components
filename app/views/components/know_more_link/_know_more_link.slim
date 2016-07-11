@@ -1,18 +1,4 @@
-= component_tag_for know_more_links do
+= component_tag_for know_more_link do
   .outer
-	= know_more_links.decorate.background
-	
-    .inner
-      - content = capture do
-        = hover_item.decorate.icon
-        = hover_item.decorate.h1
-        = hover_item.decorate.text
-        - if hover_item.text.present?
-          .more-icon +
-
-      - if hover_item.link_url.present? && hover_item.video_id.blank?
-        = link_to content, hover_item.link_url, target: hover_item.decorate.link_url_target_attr
-      - else
-        .modal-trigger data={target: "##{dom_id(hover_item, 'modal')}"}
-          div data={toggle: 'popover', content: "#{hover_item.decorate.text}"}
-            = content
+    = know_more_link.h1
+    = know_more_link.decorate.image
