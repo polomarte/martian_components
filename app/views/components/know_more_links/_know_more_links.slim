@@ -1,7 +1,10 @@
 = component_tag_for know_more_links do
   .outer
     = know_more_links.decorate.h1
-  
-  .gallery
-      - know_more_links.items.each do |item|
-          = component item.key
+  	
+  	div[data={ \
+      slick_carousel: !!know_more_links.options[:gallery],
+      gallery_options: know_more_links.options[:gallery_options].to_json}]
+      
+    	- know_more_links.items.each do |item|
+    		= component item.key

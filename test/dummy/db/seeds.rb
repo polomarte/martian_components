@@ -21,7 +21,6 @@ end
 AdminUser.create(email: 'mc@outracoisa.co', password: 'admin123')
 
 Component.destroy_all
-=begin
 
 Banner.create!(
   key: 'app:banner:banner_a',
@@ -32,24 +31,20 @@ Banner.create!(
     build_image('icon', 'icon.png'),
     build_image('background', 'bg.jpg')],
   options: {data: {full_height_header: true}})
-=end
 
 links = [
       KnowMoreLink.create!(
         key: 'app:know_more_link:know_more_link_a',
-        title: 'Link 1',
         h1: "Title 1",
         images: [build_image('image', 'icon.png')]),
       
       KnowMoreLink.create!(
         key: 'app:know_more_link:know_more_link_b',
-        title: 'Link 2',
         h1: "Title 2",
         images: [build_image('image', 'icon.png')]),
     
       KnowMoreLink.create!(
         key: 'app:know_more_link:know_more_link_c',
-        title: 'Link 3',
         h1: "Title 3",
         images: [build_image('image', 'icon.png')])
 ]
