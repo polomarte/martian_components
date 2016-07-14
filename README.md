@@ -7,10 +7,12 @@
 An engine with components ready for the creation and development of websites, using ruby on rails.
 
 1. [Installation](#installation)
-2. [Starting](#starting)
-3. [Integration](#integration)
-4. [Building](#building)
-5. [Administrator](#administrator)
+2. [Getting Started](#getting-started)
+3. [Create Component](#create-new-component)
+4. [Instantiating a Banner](#instantiating-some-components)
+5. [Integration](#integration)
+6. [Building](#building)
+7. [Administrator](#administrator)
 
 ## TODO
 - Create google maps component.
@@ -33,8 +35,9 @@ To download, you need to have the following requirements on your machine.
 ```bash
   ~/martian_components/test/dummy$ rails server
 ```
+## Create New Component
 
-  1. Create a view: 
+  - Create a view: 
 
     - Create a _form.slim file, a folder and a _test.slim file with the same name of your component in /martian_components/app/views
 
@@ -52,7 +55,7 @@ To download, you need to have the following requirements on your machine.
     
     - The _form.slim file will be utilized in admin mode.
     
-  2. Create a model:
+  - Create a model:
 
     - Create a .rb file in /martian_components/app/models folder
     
@@ -70,7 +73,7 @@ To download, you need to have the following requirements on your machine.
         end
     ~~~~~
 
-  3. Create the javascript and .sass files:
+  - Create the javascript and .sass files:
 
 ```bash    
   .
@@ -109,7 +112,33 @@ class @MC.Test extends @MC.Base
 ```bash
   rake db:seed
 ```
-
+## Instantiating some components
+  
+### Banner
+  ~~~~~ ruby
+  Banner.create!(
+  key: 'app:banner:your_banner_key',
+  title: 'your_title',
+  h1: 'your_h1',
+  h2: 'your_h2',
+  images: [
+    build_image('icon', 'you_icon.png'),
+    build_image('background', 'your_background.jpg')],
+  options: {data: {full_height_header: true}})
+  ~~~~~
+  
+### Know More Links
+  ~~~~~ ruby
+    KnowMoreLinks.create!(
+    key: 'app:know_more_links:your_know_more_links_key',
+    title: 'your_title',
+    h1: 'your_h1',
+    h2: 'your_h2',
+    items: links, # this links will be your know_more_links list
+    images: [build_image('image', 'icon.png')]
+  )
+~~~~~
+  
 ## Integration
 
     # Gemfile
