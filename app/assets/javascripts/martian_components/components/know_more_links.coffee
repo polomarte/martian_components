@@ -1,6 +1,6 @@
 class @MC.KnowMoreLinks extends @MC.Base
   @autoInit: ->
-    $('.component-hover-group').each (i, el) => new @($(el))
+    $('.component-know-more-links').each (i, el) => new @($(el))
 
   constructor: (@el) ->
     super
@@ -9,12 +9,13 @@ class @MC.KnowMoreLinks extends @MC.Base
     @items  = []
     $('.component-know-more-link', @el).each (i, el) =>
       @items.push new MC.KnowMoreLink($(el), @)
-
+      
     @slider = $('[data-slick-carousel]', @el).not('[data-slick-carousel="false"]')
 
     @initSlider()
 
   initSlider: =>
+    console.log("a");
     defaultOptions =
       slide:          'article'
       slidesToShow:   4
@@ -36,7 +37,8 @@ class @MC.KnowMoreLinks extends @MC.Base
         }
       ]
 
-    @slider.slick Object.merge(defaultOptions, @slider.data('gallery-options') || {})
+    console.log(@slider)
+    @slider.slick defaultOptions
 
   onResponsiveSizeChange: ->
     @items.map 'checkPlugins'
