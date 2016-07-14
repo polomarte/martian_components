@@ -29,7 +29,7 @@ To download, you need to have the following requirements on your machine.
   git clone https://github.com/polomarte/martian_components
 ```
 
-## Starting
+## Getting Started
   - You can test your applicantion using.   
 
 ```bash
