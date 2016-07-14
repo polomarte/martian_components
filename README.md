@@ -135,8 +135,7 @@ class @MC.Test extends @MC.Base
     h1: 'your_h1',
     h2: 'your_h2',
     items: links, # this links will be your know_more_links list
-    images: [build_image('image', 'icon.png')]
-  )
+    images: [build_image('image', 'icon.png')])
 ~~~~~
   
 ## Integration
