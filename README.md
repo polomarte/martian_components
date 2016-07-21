@@ -136,8 +136,60 @@ class @MC.Test extends @MC.Base
     h2: 'your_h2',
     items: links, # this links will be your know_more_links list
     images: [build_image('image', 'icon.png')])
-~~~~~
+  ~~~~~
+
+### Hover Group
   
+  ~~~~~ ruby
+
+    def create_hover_group
+      items = [
+        HoverItem.create!(
+          key: 'home:hover_item:your_hover_item_key',
+          h1: 'Your h1 text',
+          link_url: https://github.com/polomarte/martian_components,
+          images: [
+            build_image('background', 'background.png'),
+            build_image('icon', 'icon.png')],
+          form_options: {
+            additional_editable_attrs: [:link_url],
+            disabled_attrs: [:text]}),
+      
+        HoverItem.create!(
+          key: 'home:hover_item:your_hover_item_key',
+          h1: 'Your h1 text',
+          link_url: https://github.com/polomarte/martian_components,
+          images: [
+            build_image('background', 'background.png'),
+            build_image('icon', 'icon.png')],
+          form_options: {
+            additional_editable_attrs: [:link_url],
+            disabled_attrs: [:text]}),
+      
+        HoverItem.create!(
+          key: 'home:hover_item:your_hover_item_key',
+          h1: 'Your h1 text',
+          link_url: https://github.com/polomarte/martian_components,
+          images: [
+            build_image('background', 'background.png'),
+            build_image('icon', 'icon.png')],
+          form_options: {
+            additional_editable_attrs: [:link_url],
+            disabled_attrs: [:text]})]
+
+      HoverGroup.create!(
+        key:          'home:hover_group:highlights',
+        h1:           'Your main h1 text',
+        h2:           'Últimas novidades Amanco',
+        items:        items,
+        form_options: {only_items: true},
+        options: {
+          gallery: true,
+          gallery_options: load_yaml('home/home.yml')['highlights_gallery_options']})
+  end
+
+  ~~~~~
+
 ## Integration
 
     # Gemfile
@@ -171,7 +223,7 @@ class @MC.Test extends @MC.Base
 
 ## Administrator
 
-- You or your client can use the activeadmin to manager your website, editing the components with a dynamic form:
+- You or your client can use the [activeadmin](http://activeadmin.info/) to manager your website, editing the components with a dynamic form:
 ~~~~ruby
   AdminUser.create(email: 'example@domain.co', password: '123')
   # url: localhost:3000/admin
