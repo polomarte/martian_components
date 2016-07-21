@@ -1,3 +1,4 @@
+
 # Martian Components
 ![License](https://img.shields.io/github/license/mashape/apistatus.svg)
 ![Stage](https://img.shields.io/badge/Stage-Developing-red.svg)
@@ -31,7 +32,7 @@ To download, you need to have the following requirements on your machine.
 ```
 
 ## Getting Started
-  - You can test your applicantion using.   
+  - You can test your applicantion using.
 
 ```bash
   ~/martian_components/test/dummy$ rails server
@@ -40,60 +41,6 @@ To download, you need to have the following requirements on your machine.
 ```bash
   rake db:seed
 ```
-## Instantiating some components
-  
-
-### Hover Group
-  
-  ~~~~~ ruby
-
-    def create_hover_group
-      items = [
-        HoverItem.create!(
-          key: 'home:hover_item:your_hover_item_key',
-          h1: 'Your h1 text',
-          link_url: https://github.com/polomarte/martian_components,
-          images: [
-            build_image('background', 'background.png'),
-            build_image('icon', 'icon.png')],
-          form_options: {
-            additional_editable_attrs: [:link_url],
-            disabled_attrs: [:text]}),
-      
-        HoverItem.create!(
-          key: 'home:hover_item:your_hover_item_key',
-          h1: 'Your h1 text',
-          link_url: https://github.com/polomarte/martian_components,
-          images: [
-            build_image('background', 'background.png'),
-            build_image('icon', 'icon.png')],
-          form_options: {
-            additional_editable_attrs: [:link_url],
-            disabled_attrs: [:text]}),
-      
-        HoverItem.create!(
-          key: 'home:hover_item:your_hover_item_key',
-          h1: 'Your h1 text',
-          link_url: https://github.com/polomarte/martian_components,
-          images: [
-            build_image('background', 'background.png'),
-            build_image('icon', 'icon.png')],
-          form_options: {
-            additional_editable_attrs: [:link_url],
-            disabled_attrs: [:text]})]
-
-      HoverGroup.create!(
-        key:          'home:hover_group:highlights',
-        h1:           'Your main h1 text',
-        h2:           'Últimas novidades Amanco',
-        items:        items,
-        form_options: {only_items: true},
-        options: {
-          gallery: true,
-          gallery_options: load_yaml('home/home.yml')['highlights_gallery_options']})
-  end
-
-  ~~~~~
 
 ## Integration
 
