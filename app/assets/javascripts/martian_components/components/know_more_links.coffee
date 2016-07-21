@@ -5,11 +5,11 @@ class @MC.KnowMoreLinks extends @MC.Base
   constructor: (@el) ->
     super
 
-    # Hover Items
+    # know-more-links
     @items  = []
     $('.component-know-more-link', @el).each (i, el) =>
       @items.push new MC.KnowMoreLink($(el), @)
-      
+
     @slider = $('[data-slick-carousel]', @el).not('[data-slick-carousel="false"]')
 
     @initSlider()
