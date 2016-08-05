@@ -11,3 +11,4 @@ Rails.application.config.assets.precompile -= %w(active_admin.js active_admin.cs
 Rails.application.config.assets.precompile += %w(admin.js admin.css)
 Rails.application.config.assets.precompile += %w(devise_mailer.css)
 Rails.application.config.assets.precompile += %w(basic_mailer.css)
+Rails.application.config.assets.precompile += %w(martian_components/embedded_video_player/loader.gif)

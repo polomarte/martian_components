@@ -13,5 +13,15 @@ gemspec
 # To use debugger
 # gem 'debugger'
 
+# rspec gem
+gem "rspec-rails", '~> 3.5',:group => [:test, :development]
+group :development, :test do
+  gem "factory_girl_rails"
+  gem "capybara"
+  gem "guard-rspec"
+  gem 'rspec-rails', '~> 3.5'
+end
+
+
 # TODO: Add in .gemspec
 gem 'activeadmin-wysihtml5', github: 'theo-bittencourt/activeadmin-wysihtml5'
