@@ -1,6 +1,6 @@
 ## Banner
 
-Ver erat, et morbo Romæ languebat inertiOrbilius: dira tacuerunt tela magistri, Plagarumque sonus non jam veniebat ad aures, Nec ferula assiduo cruciabat membra dolore.
+The banner will be the first thing the user will see , it must have an id , a key, a title and some optional properties. Like h1 and h2 elements.
 
   ~~~~~ ruby
   Banner.create!(
