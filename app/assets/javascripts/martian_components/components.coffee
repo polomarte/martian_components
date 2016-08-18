@@ -19,6 +19,7 @@ class @MC
     @SocialFeeds.autoInit()
     @Gallery.autoInit()
     @MegaLink.autoInit()
+    @KnowMoreLinks.autoInit()
 
     @Utils.Analytics.autoInit()
     @Utils.LazySvg.autoInit()

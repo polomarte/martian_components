@@ -1,0 +1,2 @@
+class KnowMoreLinks < Component
+end

@@ -1,0 +1,18 @@
+= semantic_form_for component,
+  as:     :component,
+  url:    admin_component_path(component),
+  remote: true,
+  html:   {id: dom_id(component, 'form'), data: {type: :json, autosave: true}} do |f|
+
+  = f.inputs do
+    = f.input :h1
+
+    - unless :text.in? f.object.decorate.form_disabled_attrs
+      = f.input :text, as: :default_wysiwyg, height: :small
+
+    = f.input :key, as: :hidden
+
+    = f.input :link_url
+
+  - icon = component.icon || component.images.build(kind: 'icon')
+  = render 'components/_shared/images_inputs', f: f, images: [icon]

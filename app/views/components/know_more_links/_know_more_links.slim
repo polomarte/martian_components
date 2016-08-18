@@ -1,0 +1,8 @@
+= component_tag_for know_more_links do
+  .outer
+    = know_more_links.decorate.h1
+    = know_more_links.decorate.h2
+
+  	div[data={slick_carousel: true}]
+      	- know_more_links.items.each do |item|
+    		= component item.key
