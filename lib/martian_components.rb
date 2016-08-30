@@ -9,6 +9,7 @@ require 'bootstrap-sass'
 require 'turbolinks'
 require 's3_file_field'
 require 'cocoon'
+require 'inline_svg'
 
 module MartianComponents
 end

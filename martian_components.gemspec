@@ -35,6 +35,7 @@ Gem::Specification.new do |s|
   s.add_dependency('turbolinks', ['~>2.5.3'])
   s.add_dependency('s3_file_field', ['~>1.3.0'])
   s.add_dependency('cocoon', ['~>1.2.6'])
+  s.add_dependency('inline_svg', ['~>0.6.1'])
 
   s.add_development_dependency 'sqlite3'
   s.add_development_dependency 'pry'
