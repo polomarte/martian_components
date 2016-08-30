@@ -22,3 +22,8 @@
       string   "file"
       integer  "parent_id"
       integer  "position"
+
+
+## TODO
+
+* Sanitize uploaded SVG files. A SVG file can contain undesired tags like <style> or worse...
