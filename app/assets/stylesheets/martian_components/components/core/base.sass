@@ -3,7 +3,7 @@ article[class^="component-"]
     padding: $vertical-spacing-xs 0 ($vertical-spacing-xs * 1.5)
 
   h1
-    font: 28px/1em $font-bold
+    font: $component-title-xs
     text-align: center
     +center-block
 
@@ -14,6 +14,9 @@ article[class^="component-"]
 
   p + p
     margin: 12px 0
+
+  .text
+    font: $component-text-xs
 
   &[data-nested-level="1"]
     h1
@@ -33,10 +36,13 @@ article[class^="component-"]
       padding: $vertical-spacing-sm 0 ($vertical-spacing-sm * 1.5)
 
     h1
-      font-size: 45px
+      font: $component-title-sm
 
     h2
       font-size: 26px
+
+    .text
+      font: $component-text-sm
 
     &[data-nested-level="1"]
       h1
@@ -51,10 +57,13 @@ article[class^="component-"]
       padding: $vertical-spacing-md 0 ($vertical-spacing-md * 1.5)
 
     h1
-      font-size: 55px
+      font: $component-title-md
 
     h2
       font-size: 30px
+
+    .text
+      font: $component-text-md
 
     &[data-nested-level="1"]
       h1
@@ -67,6 +76,12 @@ article[class^="component-"]
   @media (min-width: $screen-lg-min)
     .inner
       padding: $vertical-spacing-lg 0 ($vertical-spacing-lg * 1.5)
+
+    h1
+      font: $component-title-lg
+
+    .text
+      font: $component-text-lg
 
 // Nested components do not have default padding.
 article[class^="component-"] article[class^="component-"]
