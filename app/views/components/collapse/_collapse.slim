@@ -1,16 +1,20 @@
 = component_tag_for collapse do
-  - inner_content = capture do
-    = collapse.decorate.h1
-    = collapse.decorate.media collapse.options[:media]
-    = collapse.decorate.text
-    .clearfix
-    .toggle-wrapper= inline_svg 'martian_components/icons/arrow_down_with_circle_outline.svg'
-    .more-icon.modal-trigger data={toggle: 'modal', target: "##{dom_id(collapse, 'modal')}"} +
+  .outer
+    .background-image-wrapper data={liquid_fill: true}
+      = image_tag collapse.background.file_url if collapse.background.present?
 
-  - if defined?(block)
-    - block.call(collapse, inner_content)
-  - else
-    .inner= inner_content
+    - inner_content = capture do
+      = collapse.decorate.h1
+      = collapse.decorate.media collapse.options[:media]
+      = collapse.decorate.text
+      .clearfix
+      .toggle-wrapper= inline_svg 'martian_components/icons/arrow_down_with_circle_outline.svg'
+      .more-icon.modal-trigger data={toggle: 'modal', target: "##{dom_id(collapse, 'modal')}"} +
+
+    - if defined?(block)
+      - block.call(collapse, inner_content)
+    - else
+      .inner= inner_content
 
 .modal.fade id=dom_id(collapse, 'modal') tabindex='-1'
   .modal-dialog
