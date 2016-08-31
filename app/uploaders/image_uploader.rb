@@ -5,8 +5,8 @@ class ImageUploader < CarrierWave::Uploader::Base
   # Call method
   process :set_content_type
 
-  # https://github.com/jnicklas/carrierwave/wiki/How-to%3A-Specify-the-image-quality
-  process quality: 90, if: Proc.new {|new_upload| !new_upload.svg?}
+  # https://coderwall.com/p/ryzmaa/use-imagemagick-to-create-optimised-and-progressive-jpgs
+  process :optimize_jpeg
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
