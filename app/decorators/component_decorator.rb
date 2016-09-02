@@ -33,11 +33,8 @@ class ComponentDecorator < Draper::Decorator
   end
 
   def icon icon_path=nil
-    if object.icon.nil?
-      return if icon_path.nil?
-    else
-      icon_path = object.icon_url
-    end
+    icon_path = icon_path || object.try(:icon_url)
+    return unless icon_path.present?
 
     h.content_tag :div, class: 'icon-wrapper' do
       h.content_tag :div, class: 'icon-wrapper-inner' do
