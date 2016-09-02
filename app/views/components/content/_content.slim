@@ -1,7 +1,6 @@
 = component_tag_for content do
   .outer
-    .background-image-wrapper data={liquid_fill: true}
-      = image_tag content.background.file_url if content.background.present?
+    = content.decorate.background
 
     - inner_content = capture do
       = content.decorate.h1
