@@ -47,18 +47,12 @@ class ComponentDecorator < Draper::Decorator
     end
   end
 
-  def background
-    return unless object.background.present?
-
-    image_file_url =
-      if object.background.is_a? String
-        object.background
-      else
-        object.background.file_url
-      end
+  def background background_path=nil
+    background_path = background_path || object.try(:background_url)
+    return unless background_path.present?
 
     content_tag :div, class: 'background-image-wrapper', data: {liquid_fill: true} do
-      image_tag image_file_url
+      image_tag background_path
     end
   end
 

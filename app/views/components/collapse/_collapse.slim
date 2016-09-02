@@ -1,7 +1,6 @@
 = component_tag_for collapse do
   .outer
-    .background-image-wrapper data={liquid_fill: true}
-      = image_tag collapse.background.file_url if collapse.background.present?
+    = collapse.decorate.background
 
     - inner_content = capture do
       = collapse.decorate.h1
