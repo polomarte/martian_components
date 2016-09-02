@@ -22,11 +22,11 @@ class ComponentDecorator < Draper::Decorator
   end
 
   def image
-    return unless object.image.present?
+    return unless object.try(:image).present?
 
     css_classes = [
-      object.image.kind.parameterize('-'),
-      object.options[:main_image_position]
+      object.image.try(:kind).try(:parameterize, '-'),
+      object.try(:options).try(:[], :main_image_position)
     ].join(' ')
 
     image_tag object.image_url, class: css_classes
