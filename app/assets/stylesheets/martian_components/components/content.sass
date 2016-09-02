@@ -32,8 +32,28 @@ article.component-content
         &.left
           +size(auto, 280px)
           float: left
-          margin: 30px 30px 10px 0
+          margin: $vertical-spacing-sm 30px 10px 0
 
       .text
-        margin-top: 30px
+        margin-top: $vertical-spacing-sm
         text-align: left
+
+  @media (min-width: $screen-md-min)
+    .inner
+      img.main
+        &.left
+          +size(auto, 310px)
+          margin-top: $vertical-spacing-md
+
+      .text
+        margin-top: $vertical-spacing-md
+
+  @media (min-width: $screen-lg-min)
+    .inner
+      img.main
+        &.left
+          +size(auto, 360px)
+          margin-top: $vertical-spacing-lg
+
+      .text
+        margin-top: $vertical-spacing-lg
