@@ -33,7 +33,7 @@ class ComponentDecorator < Draper::Decorator
   end
 
   def icon icon_path=nil
-    icon_path = icon_path || object.try(:icon_url)
+    icon_path = icon_path || object.try(:icon) && object.icon_url
     return unless icon_path.present?
 
     h.content_tag :div, class: 'icon-wrapper' do
@@ -48,7 +48,7 @@ class ComponentDecorator < Draper::Decorator
   end
 
   def background background_path=nil
-    background_path = background_path || object.try(:background_url)
+    background_path = background_path || object.try(:background) && object.background_url
     return unless background_path.present?
 
     content_tag :div, class: 'background-image-wrapper', data: {liquid_fill: true} do
