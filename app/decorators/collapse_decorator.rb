@@ -1,20 +1,22 @@
 class CollapseDecorator < ComponentDecorator
   def media html=nil
     output =
-      if object.nested_component
+      if object.try(:nested_component)
         render object.nested_component
-      elsif object.file.present?
+      elsif object.try(:file).present?
         render 'components/collapse/file', collapse: object
-      elsif object.video_code.present?
+      elsif object.try(:video_code).present?
         embedded_video_player object.video_code
-      elsif object.image.present?
-        image_tag(object.image.file_url)
+      elsif object.try(:image).present?
+        image_tag object.image_url(:small)
+      elsif object.try(:media_html).present?
+        object.media_html
       elsif html
         html
       end
 
     css_classes = ['media-wrapper']
-    css_classes << 'file' if object.file.present?
+    css_classes << 'file' if object.try(:file).present?
 
     content_tag :div, output, class: css_classes.join(' ') if output.present?
   end
