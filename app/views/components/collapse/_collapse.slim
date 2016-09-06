@@ -8,7 +8,8 @@
       = collapse.decorate.text
       .clearfix
       .toggle-wrapper= inline_svg 'martian_components/icons/arrow_down_with_circle_outline.svg'
-      .more-icon.modal-trigger data={toggle: 'modal', target: "##{dom_id(collapse, 'modal')}"} +
+      .more-icon.modal-trigger data={toggle: 'modal', target: "##{dom_id(collapse, 'modal')}"}
+        = inline_svg 'icons/more.svg'
 
     - if defined?(block)
       - block.call(collapse, inner_content)
