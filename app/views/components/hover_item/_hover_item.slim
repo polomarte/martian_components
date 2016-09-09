@@ -8,7 +8,7 @@
         = hover_item.decorate.h1
         = hover_item.decorate.text
         - if hover_item.text.present?
-          .more-icon +
+          .more-icon= inline_svg 'icons/more.svg'
 
       - if hover_item.link_url.present? && hover_item.video_id.blank?
         = link_to content, hover_item.link_url, target: hover_item.decorate.link_url_target_attr
