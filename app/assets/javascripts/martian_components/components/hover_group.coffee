@@ -14,6 +14,9 @@ class @MC.HoverGroup extends @MC.Base
 
     @initSlider()
 
+    @items.map 'checkPlugins'
+    @items.map 'adjustText'
+
   initSlider: =>
     defaultOptions =
       slide:          'article'
@@ -40,12 +43,8 @@ class @MC.HoverGroup extends @MC.Base
 
   onResponsiveSizeChange: ->
     @items.map 'checkPlugins'
-    @slider.slick('slickGoTo', 0)
-
-  onResize: ->
-    super
     @items.map 'adjustText'
-
+    @slider.slick('slickGoTo', 0)
 
 class @MC.HoverItem extends @MC.Base
   constructor: (@el, @hoverGroup) ->
