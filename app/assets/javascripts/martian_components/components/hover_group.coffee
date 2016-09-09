@@ -15,7 +15,6 @@ class @MC.HoverGroup extends @MC.Base
     @initSlider()
 
     @items.map 'checkPlugins'
-    @items.map 'adjustText'
 
   initSlider: =>
     defaultOptions =
@@ -56,10 +55,6 @@ class @MC.HoverItem extends @MC.Base
     @modal       = $(@modalToggle.data('target'))
 
     @checkPlugins()
-
-  adjustText: =>
-    # Using timeout to hack this shit
-    setTimeout (=> $('.text', @el).dotdotdot()), 0
 
   checkPlugins: ->
     if @modal.length then @initModal() else @disableModal()
