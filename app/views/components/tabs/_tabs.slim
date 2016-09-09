@@ -1,25 +1,28 @@
 = component_tag_for tabs do
-  - inner_content = capture do
-    = tabs.decorate.h1
+  .outer
+    = tabs.decorate.background
 
-    /! Nav tabs
-    ul.nav.nav-tabs role='tablist'
-      - tabs.items.each_with_index do |item, i|
-        li[class=('active' if i.zero?)]
-          a data-toggle='tab' href="##{dom_id(item)}" role='tab'
-            = item.decorate.icon
-            = item.h1
+    - inner_content = capture do
+      = tabs.decorate.h1
 
-    /! Tab panes
-    .tab-content
-      - tabs.items.each_with_index do |item, i|
-        .tab-pane.fade id=dom_id(item) class=('active in' if i.zero?)
-          - if item_capture = tabs.options[:custom_items] && tabs.options[:custom_items][item.key]
-            = item_capture
-          - else
-            = component item.key
+      /! Nav tabs
+      ul.nav.nav-tabs role='tablist'
+        - tabs.items.each_with_index do |item, i|
+          li[class=('active' if i.zero?)]
+            a data-toggle='tab' href="##{dom_id(item)}" role='tab'
+              = item.decorate.icon
+              = item.h1
 
-  - if defined?(block)
-    - block.call(tabs, inner_content)
-  - else
-    .inner= inner_content
+      /! Tab panes
+      .tab-content
+        - tabs.items.each_with_index do |item, i|
+          .tab-pane.fade id=dom_id(item) class=('active in' if i.zero?)
+            - if item_capture = tabs.options[:custom_items] && tabs.options[:custom_items][item.key]
+              = item_capture
+            - else
+              = component item.key
+
+    - if defined?(block)
+      - block.call(tabs, inner_content)
+    - else
+      .inner= inner_content
