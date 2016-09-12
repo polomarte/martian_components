@@ -1,18 +1,21 @@
 = component_tag_for social_feeds do
-  - inner_content = capture do
-    = social_feeds.decorate.h1
-    = social_feeds.decorate.h2
+  .outer
+    = social_feeds.decorate.background
 
-    div data={ \
-      slick_carousel:  !!social_feeds.options[:gallery],
-      gallery_options: social_feeds.options[:gallery_options].to_json}
+    - inner_content = capture do
+      = social_feeds.decorate.h1
+      = social_feeds.decorate.h2
 
-      - social_feeds.all_feeds.each do |feed, index|
-        = render feed
+      div data={ \
+        slick_carousel:  !!social_feeds.options[:gallery],
+        gallery_options: social_feeds.options[:gallery_options].to_json}
 
-    .clearfix
+        - social_feeds.all_feeds.each do |feed, index|
+          = render feed
 
-  - if defined?(block)
-    - block.call(social_feeds, inner_content)
-  - else
-    .inner= inner_content
+      .clearfix
+
+    - if defined?(block)
+      - block.call(social_feeds, inner_content)
+    - else
+      .inner= inner_content
