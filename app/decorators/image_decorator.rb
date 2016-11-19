@@ -5,7 +5,7 @@ class ImageDecorator < Draper::Decorator
   def form_hint
     output = ''
 
-    image_url = if file = object.file.presence
+    image_url = if file = object.file.try(:file).try(:exists?) && object.file
       file.svg? ? file.url : (file.try(:thumb).try(:url) || file.url)
     end
 
