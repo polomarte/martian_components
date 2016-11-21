@@ -40,6 +40,10 @@ class ImageUploader < CarrierWave::Uploader::Base
     process resize_to_fit: [1200, 1200]
   end
 
+  version :large, if: Proc.new {|new_upload| !new_upload.svg?} do
+    process resize_to_fit: [1920, 1080]
+  end
+
   # version :fullscreen, if: Proc.new {|new_upload| !new_upload.svg?} do
   #   process resize_to_fill: [1920, 1080]
   # end
