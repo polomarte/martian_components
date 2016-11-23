@@ -27,3 +27,7 @@
 ## TODO
 
 * Sanitize uploaded SVG files. A SVG file can contain undesired tags like <style> or worse...
+* Split HoverGroup component into 3 components:
+  * 1 - Media card (video, link, download or image, with gallery)
+  * 2 - Popover bullets (video, link, download or image, no gallery)
+  * 3 - ?
