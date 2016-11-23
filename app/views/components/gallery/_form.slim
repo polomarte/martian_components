@@ -8,6 +8,8 @@
       remote: true,
       html:   {id: dom_id(component, 'form'), data: {type: :json, autosave: true}} do |f|
 
+      = f.semantic_errors *f.object.errors.keys
+
       = f.input :key, as: :hidden, wrapper_html: {class: 'hide'}
 
       - unless component.form_options[:only_items]

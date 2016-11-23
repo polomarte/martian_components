@@ -8,6 +8,8 @@
       remote: true,
       html:   {id: dom_id(component, 'form'), data: {type: :json, autosave: true}} do |f|
 
+      = f.semantic_errors *f.object.errors.keys
+
       = f.inputs do
         = f.input :h1
         = f.input :h2
