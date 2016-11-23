@@ -1,6 +1,13 @@
 class @MCAdmin.Uploader
   @autoInit: ->
-    $('.fileinput-button input[type="file"]').each (i, el) => new @($(el))
+    init = =>
+      $('.fileinput-button input[type="file"]').each (i, el) => new @($(el))
+
+    $(document).on 'ajaxComplete', (ev, xhr) =>
+      return false unless $(xhr.responseJSON?.component_form).length
+      init()
+
+    init()
 
   constructor: (@input) ->
     @form             = @input.parents('form')
