@@ -7,3 +7,4 @@ class @MCAdmin
     @GalleryAssets.autoInit()
     @NestedMenu.autoInit()
     @RemoveMediaBtn.autoInit()
+    @Uploader.autoInit()
