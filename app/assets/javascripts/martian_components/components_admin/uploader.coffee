@@ -7,7 +7,7 @@ class @MCAdmin.Uploader
     @hint             = $('~ .inline-hints', @input)
     @placeholder      = $('.placeholder', @hint)
     @media            = $('img, video', @hint)
-    @remote_url_input = @input.parents('.fileinput-button').find('input[name*="remote_"')
+    @remote_url_input = @input.parents('.fileinput-button').find('input[name*="remote_"]')
 
     @adjustInputSize()
 
