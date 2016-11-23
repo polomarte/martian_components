@@ -13,6 +13,4 @@
     = f.input :file, as: :file, hint: f.object.file_identifier
     = f.input :file_cache, as: :hidden
 
-  - image = component.image || component.images.build(kind: 'image')
-  - icon  = component.icon || component.images.build(kind: 'icon')
-  = render 'components/_shared/images_inputs', f: f, images: [image, icon]
+  = f.input :images, as: :images

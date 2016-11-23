@@ -1,7 +1,7 @@
-class @MCAdmin.RemoveImageBtn
+class @MCAdmin.RemoveMediaBtn
   @autoInit: ->
     init = =>
-      $('.remove-image-btn').each (i, el) => new @($(el))
+      $('.remove-media-btn').each (i, el) => new @($(el))
 
     $(document).on 'ajaxComplete', (ev, xhr) =>
       return false unless $(xhr.responseJSON?.component_form).length
@@ -10,7 +10,10 @@ class @MCAdmin.RemoveImageBtn
     init()
 
   constructor: (@el) ->
-    @destroyField = @el.parent().find('li[id$="_destroy_input"] input')
+    @destroyField = @el.parent().find('input[name*="remove"]')
+
+    if !@destroyField.length
+      @destroyField = @el.parent().find('input[name*="destroy"]')
 
     @el.on 'click', (ev) =>
       ev.preventDefault()

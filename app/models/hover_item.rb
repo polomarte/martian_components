@@ -1,6 +1,8 @@
 class HoverItem < Component
   store_accessor :data, :link_url
 
+  define_image_kinds [:icon, :background]
+
   def self.permitted_params
     super | [:link_url]
   end

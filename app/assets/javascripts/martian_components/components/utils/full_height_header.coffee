@@ -23,3 +23,4 @@ class @MC.Utils.FullHeightHeader
     return false if @lastWidth == $(window).width()
     @inner.css('height', $(window).height() - @offset)
     @lastWidth = $(window).width()
+    @el.trigger 'compute.fullHeightHeader.MC'

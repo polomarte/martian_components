@@ -15,6 +15,4 @@
     - if :link_url.in? f.object.decorate.form_additional_editable_attrs
       = f.input :link_url
 
-  - icon       = component.icon || component.images.build(kind: 'icon')
-  - background = component.background || component.images.build(kind: 'background')
-  = render 'components/_shared/images_inputs', f: f, images: [icon, background]
+  = f.input :images, as: :images

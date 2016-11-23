@@ -16,8 +16,7 @@
           = f.input :h2
           = f.input :text, as: :default_wysiwyg
 
-        - background = component.background || component.images.build(kind: 'background')
-        = render 'components/_shared/images_inputs', f: f, images: [background]
+        = f.input :images, as: :images
 
     .panel
       h3 Items

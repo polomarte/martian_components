@@ -1,3 +1,3 @@
 class Content < Component
-  # options = {class: 'media-left' | 'media-center' | 'media-right'}
+  define_image_kinds [:image, :background]
 end

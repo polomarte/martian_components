@@ -10,6 +10,4 @@
     = f.input :text, as: :default_wysiwyg
     = f.input :key, as: :hidden
 
-  - background = component.background || component.images.build(kind: 'background')
-  - image = component.image || component.images.build(kind: 'image')
-  = render 'components/_shared/images_inputs', f: f, images: [background, image]
+  = f.input :images, as: :images

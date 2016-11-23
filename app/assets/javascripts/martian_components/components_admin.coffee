@@ -6,4 +6,4 @@ class @MCAdmin
     @AutoSave.autoInit()
     @GalleryAssets.autoInit()
     @NestedMenu.autoInit()
-    @RemoveImageBtn.autoInit()
+    @RemoveMediaBtn.autoInit()

@@ -3,8 +3,6 @@ class Component < ActiveRecord::Base
 
   include Imageable
 
-  define_image_kinds [:image, :icon, :background]
-
   store :data, accessors: [:options, :form_options]
   translates :title, :h1, :h2, :text
 

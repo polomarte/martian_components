@@ -18,6 +18,8 @@ pt-BR:
         image: Imagem
         file: Arquivo
         video_code: Video
+        video_mp4: Video formato mp4
+        video_ogg: Video formato ogg
       component:
         <<: *shared_attributes
         h1: Título
@@ -35,10 +37,12 @@ pt-BR:
 
     errors:
       models:
-        component:
+        banner:
           attributes:
-            sample_attr:
-              error_key: "%{value} ..."
+            video_mp4:
+              invalid_mime: Formato inválido. Deve ser mp4
+            video_ogg:
+              invalid_mime: Formato inválido. Deve ser ogv/ogg
 
   activerecord:
     <<: *models_attributes_and_errors
