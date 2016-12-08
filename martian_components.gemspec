@@ -23,7 +23,6 @@ Gem::Specification.new do |s|
   s.add_dependency('rails_autolink', ['~> 1.1.0'])
   s.add_dependency('koala', ['~> 2.2.0'])
   s.add_dependency('twitter', ['~> 5.15.0'])
-  s.add_dependency('pg_search', ['~> 1.0.5'])
   s.add_dependency('slim-rails', ['~> 3.0.1'])
   s.add_dependency('carrierwave', ['~> 0.10.0'])
   s.add_dependency('mini_magick', ['~> 4.3.2'])
