@@ -1,7 +1,6 @@
 = component_tag_for hover_group do
   .outer
-    .background-image-wrapper data={liquid_fill: true}
-      = image_tag hover_group.background.file_url if hover_group.background.present?
+    = hover_group.decorate.background
 
     - inner_content = capture do
       = hover_group.decorate.h1

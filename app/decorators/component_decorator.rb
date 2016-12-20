@@ -50,10 +50,7 @@ class ComponentDecorator < Draper::Decorator
   def background background_path=nil
     background_path = background_path || object.try(:background) && object.background_url
     return unless background_path.present?
-
-    content_tag :div, class: 'background-image-wrapper', data: {liquid_fill: true} do
-      image_tag background_path
-    end
+    content_tag :div, '', class: 'background-image-wrapper', style: "background-image: url(#{background_path})"
   end
 
 
