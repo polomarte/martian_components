@@ -44,6 +44,16 @@ class ImageUploader < CarrierWave::Uploader::Base
     process resize_to_fit: [1920, 1080]
   end
 
+  version :duotone_large, if: Proc.new {|new_upload| !new_upload.svg? && new_upload.model.duotone} do
+    process resize_to_fit: [1920, 1080]
+    process :duotone
+  end
+
+  version :duotone_small, if: Proc.new {|new_upload| !new_upload.svg? && new_upload.model.duotone} do
+    process resize_to_fit: [600, 600]
+    process :duotone
+  end
+
   # version :fullscreen, if: Proc.new {|new_upload| !new_upload.svg?} do
   #   process resize_to_fill: [1920, 1080]
   # end
@@ -59,6 +69,18 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   def svg?
     content_type.ends_with? 'svg+xml'
+  end
+
+  # Need ImageMagick >= 6.9.7-0
+  def duotone
+    manipulate! do |img|
+      MiniMagick::Tool::Convert.new do |convert|
+        convert << img.path
+        convert.merge! ['-modulate', '100,0,0', '-size', '255x1!', "gradient:"+ model.duotone.join('-'), '-clut']
+        convert << img.path
+      end
+      img
+    end
   end
 
   def gaussian_blur
