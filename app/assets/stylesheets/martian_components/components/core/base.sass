@@ -1,4 +1,15 @@
 article[class^="component-"]
+  .outer
+    position: relative
+
+    .background-image-wrapper
+      position: absolute
+      height: 100%
+      width: 100%
+      background-size: cover
+      background-repeat: no-repeat
+      background-position: top center
+
   .inner
     padding: $vertical-spacing-xs 0 ($vertical-spacing-xs * 1.5)
 
