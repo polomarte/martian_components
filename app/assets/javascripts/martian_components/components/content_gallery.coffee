@@ -28,6 +28,11 @@ class @MC.ContentGallery extends @MC.Base
       slidesToShow:   1
       slidesToScroll: 1
       focusOnSelect:  true
+      responsive: [
+        {
+          breakpoint: 768
+          settings: {arrows: false}
+        }]
 
     @slider.addClass('single-slide') if $('.component-content', @el).length == 1
     @slider.slick options
