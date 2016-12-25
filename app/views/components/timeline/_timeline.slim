@@ -1,11 +1,20 @@
 = component_tag_for timeline do
-  .inner
-    = timeline.decorate.h1
-    = timeline.decorate.h2
+  .outer
+    = timeline.decorate.background
 
-    .nav-slider[data={jq_slider: true}]
-      .years[data={values: timeline.items.map(&:h1)}]
+    - inner_content = capture do
+      = timeline.decorate.h1
+      = timeline.decorate.h2
 
-    div[data={slick_carousel: true}]
-      - timeline.items.each do |item|
-        = component item.key
+      .nav-slider[data={jq_slider: true}]
+        .years[data={values: timeline.items.map(&:h1)}]
+
+      div[data={slick_carousel: true}]
+        - timeline.items.each do |item|
+          = component item
+
+    - if defined?(block)
+      - block.call(hover_group, inner_content)
+    - else
+      .inner= inner_content
+
