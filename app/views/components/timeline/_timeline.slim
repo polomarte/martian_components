@@ -6,8 +6,9 @@
       = timeline.decorate.h1
       = timeline.decorate.h2
 
-      .nav-slider[data={jq_slider: true}]
-        .years[data={values: timeline.items.map(&:h1)}]
+      .nav-slider-wrapper
+        .nav-slider[data={jq_slider: true}]
+          .years[data={values: timeline.items.map(&:h1)}]
 
       div[data={slick_carousel: true}]
         - timeline.items.each do |item|
