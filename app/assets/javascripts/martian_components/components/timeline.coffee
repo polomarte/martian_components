@@ -38,13 +38,13 @@ class @MC.Timeline extends @MC.Base
 
   initSlider: =>
     @slider.slick
-      slide:          'article'
-      slidesToShow:   1
-      responsive:     [
+      slide: 'article'
+      slidesToShow: 1
+      dots: false
+      responsive: [
         {
-          breakpoint: 720
+          breakpoint: 768
           settings:
-            dots:   true
             arrows: false
         }
       ]
