@@ -4,7 +4,7 @@ class Collapse < Component
   store_accessor :data, :nested_component_key, :file_caption, :video_code
   mount_uploader :file, FileUploader
 
-  define_image_kinds [:image]
+  define_image_kinds [:image, :background]
 
   before_validation :parse_video_code
 
