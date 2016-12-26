@@ -56,7 +56,7 @@ module MartianComponents
       end
     end
 
-    def embedded_video_player video_id
+    def embedded_video_player video_id, poster_url=nil
       content_tag :div, class: 'embedded-video-player-wrapper' do
         output = ''
 
@@ -67,8 +67,10 @@ module MartianComponents
           out.html_safe
         end
 
+        poster_url ||= "http://img.youtube.com/vi/#{video_id}/hqdefault.jpg"
+
         output << (content_tag :div, poster_content,
-          style: "background-image: url('http://img.youtube.com/vi/#{video_id}/hqdefault.jpg')",
+          style: "background-image: url('#{poster_url}')",
           class: 'embedded-video-player-poster')
 
         output << content_tag(:div, nil,
