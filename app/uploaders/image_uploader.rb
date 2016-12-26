@@ -44,12 +44,12 @@ class ImageUploader < CarrierWave::Uploader::Base
     process resize_to_fit: [1920, 1080]
   end
 
-  version :duotone_large, if: Proc.new {|new_upload| !new_upload.svg? && new_upload.model.duotone} do
+  version :duotone_large, if: Proc.new {|new_upload| !new_upload.svg? && new_upload.model.try(:duotone)} do
     process resize_to_fit: [1920, 1080]
     process :duotone
   end
 
-  version :duotone_small, if: Proc.new {|new_upload| !new_upload.svg? && new_upload.model.duotone} do
+  version :duotone_small, if: Proc.new {|new_upload| !new_upload.svg? && new_upload.model.try(:duotone)} do
     process resize_to_fit: [600, 600]
     process :duotone
   end
