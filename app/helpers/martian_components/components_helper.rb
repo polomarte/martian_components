@@ -62,8 +62,8 @@ module MartianComponents
 
         poster_content = capture do
           out = ''
-          out << inline_svg('martian_components/embedded_video_player/player_play.svg', class: 'play-icon')
-          out << image_tag('martian_components/embedded_video_player/loader.gif', class: 'loader')
+          out << inline_svg('icons/video_player_play.svg', class: 'play-icon')
+          out << image_tag('icons/video_player_loader.gif', class: 'loader')
           out.html_safe
         end
 
