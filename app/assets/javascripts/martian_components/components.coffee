@@ -8,6 +8,7 @@ class @MC
   class @Utils
 
   @autoInit: ->
+
     @AffixNav.autoInit()
     @Banner.autoInit()
     @Collapse.autoInit()
@@ -27,3 +28,4 @@ class @MC
 
     new @Core.ResponsiveSizeChangeEmitter
     @Core.YoutubePlayerApiLoader.autoInit()
+    @Core.EmbeddedVideoPlayerWrapper.autoInit()
