@@ -7,7 +7,6 @@
   .image,
   .embedded-video-player-wrapper
     height: 170px
-    border-radius: 8px
     overflow: hidden
     position: relative
 
@@ -33,7 +32,6 @@
       height: 370px
 
     .caption
-      padding: 15px
       font: 30px/1.1em $font-regular
       margin-top: 15px
 
@@ -42,3 +40,70 @@
     .embedded-video-player-wrapper
       height: 400px
 
+.mosaic-wrapper
+  .gallery-asset[kind="video"],
+  .gallery-asset[kind="image"]
+    position: relative
+    overflow: hidden
+    margin: 0
+
+    &.no-touch:hover
+      .hover
+        +transform(translateY(0))
+
+    .image,
+    .embedded-video-player-wrapper
+      height: 230px
+
+    .caption
+      position: absolute
+      bottom: 0
+      width: 100%
+      padding: 0 20px 20px
+
+    .hover
+      font: 16px/1.2em $font-regular
+      text-align: center
+      width: 100%
+      height: 100%
+      padding: 15px
+      position: absolute
+      top: 0
+      left: 0
+      z-index: 0
+      overflow: hidden
+      background-color: white
+      +flexbox
+      +flex-wrap(wrap)
+      +align-items(center)
+      +justify-content(center)
+      +flex-direction(column)
+      +transform(translateY(100%))
+      +transition(transform .3s)
+
+    @media (min-width: $screen-sm-min)
+      width: 50%
+      float: left
+
+      .caption
+        padding: 0 20px 20px
+
+      .hover
+        padding: 20px
+
+    @media (min-width: $screen-md-min)
+      .image,
+      .embedded-video-player-wrapper
+        height: 300px
+
+      .caption
+        padding: 0 30px 30px
+
+      .hover
+        padding: 40px
+
+    @media (min-width: $screen-lg-min)
+      width: 33.333%
+
+    @media (min-width: 1600px)
+      width: 25%

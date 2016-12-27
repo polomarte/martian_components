@@ -1,15 +1,23 @@
 - if asset.video?
   .gallery-asset[kind=asset.kind]
-    = embedded_video_player asset.video_code
+    = embedded_video_player asset.video_code, asset.image.file.try(:exists?) && asset.image_url(:small)
+
     .caption
       = raw asset.title
+
+    - if asset.description.present?
+      .hover= raw asset.description
 
 - elsif asset.image?
   .gallery-asset[kind=asset.kind]
     .image style="background-image: url(#{asset.image_url})"
+
     .caption
       = raw asset.title
       small= raw asset.description
+
+    - if asset.description.present?
+      .hover= raw asset.description
 
 - elsif asset.file?
   .gallery-asset[kind=asset.kind]
