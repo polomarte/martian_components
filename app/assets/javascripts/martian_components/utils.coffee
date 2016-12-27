@@ -32,3 +32,22 @@ class @Utils
       decodeURIComponent(string[1]).replace(/\+/g, ' ')
     else
       null
+
+  @requestFullscreen: (el) ->
+    el.webkitRequestFullscreen?(el)
+    el.mozRequestFullScreen?(el)
+    el.msRequestFullscreen?(el)
+    el.webkitRequestFullscreen?(el)
+
+  @exitFullscreen: ->
+    document.webkitExitFullscreen?()
+    document.mozCancelFullScreen?()
+    document.msExitFullscreen?()
+    document.webkitExitFullscreen?()
+    document.webkitExitFullscreen?()
+
+  @onExitFullscreen: (callback) ->
+    document.addEventListener('webkitfullscreenchange', callback, false)
+    document.addEventListener('mozfullscreenchange', callback, false)
+    document.addEventListener('fullscreenchange', callback, false)
+    document.addEventListener('MSFullscreenChange', callback, false)
