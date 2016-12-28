@@ -1,0 +1,2 @@
+class HoverGroupDecorator < ComponentDecorator
+end
