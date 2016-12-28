@@ -56,8 +56,8 @@ module MartianComponents
       end
     end
 
-    def embedded_video_player video_id, poster_url=nil
-      content_tag :div, class: 'embedded-video-player-wrapper' do
+    def embedded_video_player video_id, poster_url=nil, options={}
+      content_tag :div, class: 'embedded-video-player-wrapper', 'data-fullscreen' => !!options[:fullscreen] do
         output = ''
 
         poster_content = capture do
