@@ -34,6 +34,9 @@ class @MC.ContentGallery extends @MC.Base
           settings: {arrows: false}
         }]
 
+    if @slider.data('gallery-options')
+      options = Object.merge(@slider.data('gallery-options'), options)
+
     @slider.addClass('single-slide') if $('.component-content', @el).length == 1
     @slider.slick options
 
