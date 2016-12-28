@@ -24,7 +24,7 @@ class @MC.Core.EmbeddedVideoPlayerWrapper
         rel: 0
 
     Utils.onExitFullscreen =>
-      @player.stopVideo() if @player
+      @player.stopVideo?()
       @loader.hide()
       @poster.show()
 
