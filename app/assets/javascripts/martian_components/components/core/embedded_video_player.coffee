@@ -24,7 +24,7 @@ class @MC.Core.EmbeddedVideoPlayerWrapper
         rel: 0
 
     Utils.onExitFullscreen =>
-      @player.stopVideo() if @player
+      @player.stopVideo?()
       @loader.hide()
       @poster.show()
 
@@ -36,7 +36,7 @@ class @MC.Core.EmbeddedVideoPlayerWrapper
       @wrapper.data 'player', @player
 
       # TODO: Refact this. Gallery component should be responsable for this action
-      if @wrapper.parents('.mosaic-wrapper').length
+      if @wrapper.parents('.mosaic-wrapper').length || @wrapper.data('fullscreen')
         iframe = $('iframe', @wrapper)[0]
         requestFullScreen = iframe.requestFullScreen || iframe.mozRequestFullScreen || iframe.webkitRequestFullScreen
         requestFullScreen.bind(iframe)() if requestFullScreen
