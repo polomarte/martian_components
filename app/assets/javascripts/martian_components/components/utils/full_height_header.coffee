@@ -6,6 +6,8 @@ class @MC.Utils.FullHeightHeader
     $('[full-height-header]').each (i, el) => new @($(el))
 
   constructor: (@el) ->
+    @el.data('fullHeightHeader', @)
+
     @component = @el.data('component')
 
     if @component
@@ -14,13 +16,13 @@ class @MC.Utils.FullHeightHeader
       @inner = @el
 
     @lastWidth = null
-    @offset = @inner.offset().top
 
     @compute()
-    $(window).on 'resize', @compute
+
+    $(window).on 'resize', =>
+      @compute() unless @lastWidth == $(window).width()
+      @lastWidth = $(window).width()
 
   compute: =>
-    return false if @lastWidth == $(window).width()
-    @inner.css('height', $(window).height() - @offset)
-    @lastWidth = $(window).width()
+    @inner.css('height', $(window).height() - @inner.offset().top)
     @el.trigger 'compute.fullHeightHeader.MC'
