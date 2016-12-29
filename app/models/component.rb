@@ -69,6 +69,10 @@ class Component < ActiveRecord::Base
     "component-#{self.class.to_s.underscore.dasherize}"
   end
 
+  def modal_id
+    ['component', self.class.to_s.underscore.dasherize, 'modal', key.parameterize].join('-')
+  end
+
 private
 
   def reload_related_active_admin_resource!
