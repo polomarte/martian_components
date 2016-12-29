@@ -20,7 +20,7 @@
             - if item_capture = tabs.options[:custom_items] && tabs.options[:custom_items][item.key]
               = item_capture
             - else
-              = component item.key
+              = component item
 
     - if defined?(block)
       - block.call(tabs, inner_content)
