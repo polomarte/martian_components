@@ -4,6 +4,8 @@ class GalleryAsset < ActiveRecord::Base
 
   enum kind: [:video, :image, :file]
 
+  translates :title, :description
+
   belongs_to :gallery, touch: true
 
   validates :kind, :gallery, :position, presence: true
