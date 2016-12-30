@@ -24,3 +24,6 @@ class @MC.Banner extends @MC.Base
     video.on 'canplaythrough', =>
       MC.Utils.FullscreenIntoParent.perform(video)
       video.css 'margin-left', '0'
+
+    if video.attr('autoplay')
+      video.on 'canplay', => video[0].play()
