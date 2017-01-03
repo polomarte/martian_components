@@ -13,6 +13,14 @@ class @MC.Tabs extends @MC.Base
 
     @scrollOnLoad()
 
+    $('a', @navItems).on 'show.bs.tab', (ev, a) =>
+      $(component).data('component').refresh() for component in @nestedComponents
+
+      tabPane = $($(ev.delegateTarget).attr('href'))
+      tabPane.css('opacity', 0)
+
+      setTimeout (=> tabPane.css('opacity', 1)), 1000
+
     $('a', @navItems).on 'shown.bs.tab', (ev, a) =>
       $(component).data('component').refresh() for component in @nestedComponents
 
