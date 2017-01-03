@@ -8,7 +8,7 @@ class CollapseDecorator < ComponentDecorator
       elsif object.try(:video_code).present?
         embedded_video_player object.video_code
       elsif object.try(:image).present?
-        image_tag object.image_url(:small)
+        image_tag object.image_url(object.options[:image_version] || :small)
       elsif object.try(:media_html).present?
         object.media_html
       elsif html
