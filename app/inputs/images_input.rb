@@ -10,14 +10,15 @@ class ImagesInput
       inputs_label = object.class.human_attribute_name(img_form.object.kind) rescue nil
 
       img_form.inputs inputs_label, class: 'inputs media-uploader-inputs' do
-        t = img_form.template
+        t = img_form.template.dup
 
         li_css_classes = 'fileinput-button file input required'
 
-        t.output_buffer << t.content_tag(:li, class: li_css_classes) do
+        img_form.template.output_buffer << t.content_tag(:li, class: li_css_classes) do
           output = ''
           output << img_form.s3_file_field(:file)
           output << t.content_tag(:p, img_form.object.decorate.form_hint, class: 'inline-hints')
+
           output << Nokogiri::HTML.fragment(
             img_form.input :remote_file_url, as: :hidden).css('input').to_s.html_safe
 
