@@ -8,11 +8,12 @@ class @MC.Core.EmbeddedVideoPlayerWrapper
         new MC.Core.EmbeddedVideoPlayerWrapper(wrapper)
 
   constructor: (@wrapper) ->
-    @player      = null
-    @poster      = $('.embedded-video-player-poster', @wrapper)
-    @placeholder = $('.embedded-video-player-placeholder', @wrapper)
-    @loader      = $('.loader', @poster)
-    @playIcon    = $('.play-icon', @poster)
+    @player                 = null
+    @poster                 = $('.embedded-video-player-poster', @wrapper)
+    @placeholder            = $('.embedded-video-player-placeholder', @wrapper)
+    @loader                 = $('.loader', @poster)
+    @playIcon               = $('.play-icon', @poster)
+    @shouldFullscreenOnPlay = @wrapper.data('fullscreen')
 
     @options =
       videoId: @placeholder.data('videoId')
@@ -22,35 +23,39 @@ class @MC.Core.EmbeddedVideoPlayerWrapper
         modestbranding: true
         showinfo: 0
         rel: 0
+        fs: if @shouldFullscreenOnPlay then 0 else 1
 
-    Utils.onFullscreenChange (ev) =>
-      return if Utils.fullscreenElement() # Ignore if entering in fullscreen mode
-      return if !@player
+    Utils.onFullscreenChange (ev) => @resetFromFullscreen()
 
-      @player.stopVideo?()
-      @loader.hide()
-      @poster.show()
-      @playIcon.show()
+    @poster.on 'click', => @onClickToPlay()
 
-    @poster.on 'click', =>
-      @playIcon.hide()
+  onClickToPlay: ->
+    @playIcon.hide()
 
-      if !@player?
-        @loader.show()
-        @player = new YT.Player(@placeholder.attr('id'), @options)
-        @wrapper.data 'player', @player
+    if !@player?
+      @loader.show()
+      @player = new YT.Player(@placeholder.attr('id'), @options)
+      @wrapper.data 'player', @player
 
-        @player.addEventListener 'onReady', =>
-          @loader.hide()
-          @player.playVideo()
-          @poster.hide()
-      else
+      @player.addEventListener 'onReady', =>
+        @loader.hide()
         @player.playVideo()
         @poster.hide()
 
-      # TODO: Refact this. Gallery component should be responsable for this action
-      if @wrapper.parents('.mosaic-wrapper').length || @wrapper.data('fullscreen')
-        iframe = $('iframe', @wrapper)[0]
-        requestFullScreen = iframe.requestFullScreen || iframe.mozRequestFullScreen || iframe.webkitRequestFullScreen
-        requestFullScreen.bind(iframe)() if requestFullScreen
+    else
+      @player.playVideo()
+      @poster.hide()
 
+    if @shouldFullscreenOnPlay
+      iframe = $('iframe', @wrapper)[0]
+      requestFullScreen = iframe.requestFullScreen || iframe.mozRequestFullScreen || iframe.webkitRequestFullScreen
+      requestFullScreen.bind(iframe)() if requestFullScreen
+
+  resetFromFullscreen: ->
+    return if Utils.fullscreenElement() # Ignore if entering in fullscreen mode
+    return if !@player
+
+    @player.stopVideo?()
+    @loader.hide()
+    @poster.show()
+    @playIcon.show()
