@@ -33,14 +33,15 @@ class @MC.Core.EmbeddedVideoPlayerWrapper
       @playIcon.show()
 
     @poster.on 'click', =>
-      @loader.show()
       @playIcon.hide()
 
       if !@player?
+        @loader.show()
         @player = new YT.Player(@placeholder.attr('id'), @options)
         @wrapper.data 'player', @player
 
         @player.addEventListener 'onReady', =>
+          @loader.hide()
           @player.playVideo()
           @poster.hide()
       else
