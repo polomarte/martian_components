@@ -46,8 +46,11 @@ class @Utils
     document.webkitExitFullscreen?()
     document.webkitExitFullscreen?()
 
-  @onExitFullscreen: (callback) ->
+  @onFullscreenChange: (callback) ->
     document.addEventListener('webkitfullscreenchange', callback, false)
     document.addEventListener('mozfullscreenchange', callback, false)
     document.addEventListener('fullscreenchange', callback, false)
     document.addEventListener('MSFullscreenChange', callback, false)
+
+  @fullscreenElement: ->
+    document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement

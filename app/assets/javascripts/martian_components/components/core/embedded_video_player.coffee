@@ -23,17 +23,29 @@ class @MC.Core.EmbeddedVideoPlayerWrapper
         showinfo: 0
         rel: 0
 
-    Utils.onExitFullscreen =>
+    Utils.onFullscreenChange (ev) =>
+      return if Utils.fullscreenElement() # Ignore if entering in fullscreen mode
+      return if !@player
+
       @player.stopVideo?()
       @loader.hide()
       @poster.show()
+      @playIcon.show()
 
-    @poster.one 'click', =>
+    @poster.on 'click', =>
       @loader.show()
       @playIcon.hide()
 
-      @player = new YT.Player(@placeholder.attr('id'), @options)
-      @wrapper.data 'player', @player
+      if !@player?
+        @player = new YT.Player(@placeholder.attr('id'), @options)
+        @wrapper.data 'player', @player
+
+        @player.addEventListener 'onReady', =>
+          @player.playVideo()
+          @poster.hide()
+      else
+        @player.playVideo()
+        @poster.hide()
 
       # TODO: Refact this. Gallery component should be responsable for this action
       if @wrapper.parents('.mosaic-wrapper').length || @wrapper.data('fullscreen')
@@ -41,6 +53,3 @@ class @MC.Core.EmbeddedVideoPlayerWrapper
         requestFullScreen = iframe.requestFullScreen || iframe.mozRequestFullScreen || iframe.webkitRequestFullScreen
         requestFullScreen.bind(iframe)() if requestFullScreen
 
-      @player.addEventListener 'onReady', =>
-        @player.playVideo()
-        @poster.hide()
