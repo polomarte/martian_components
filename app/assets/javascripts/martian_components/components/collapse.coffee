@@ -8,9 +8,9 @@ class @MC.Collapse extends @MC.Base
     @text           = $('.text', @el).first()
     @collapsedText  = $('.text.collapse', @el)
     @collapseToggle = $('.toggle-wrapper svg', @el)
-    @modalToggle  = $('> [data-toggle="modal"]', @inner)
-    @modalDismiss = $("[data-dismiss][data-target='#{@modalToggle.data('target')}']")
-    @modal        = $(@modalToggle.data('target'))
+    @modalToggle    = $('> [data-toggle="modal"]', @inner)
+    @modalDismiss   = $("[data-dismiss][data-target='#{@modalToggle.data('target')}']")
+    @modal          = $(@modalToggle.data('target'))
 
     @modal.on 'shown.bs.modal',          => @modalDismiss.show()
     @modal.on 'hide.bs.modal',           => @modalDismiss.hide()
@@ -55,9 +55,9 @@ class @MC.Collapse extends @MC.Base
       'position':    'fixed'
 
     $('.text', elClone).css
-      'height':   'auto'
+      'height': 'auto'
 
-    elClone.appendTo 'body'
+    @el.after elClone
     result = $('.text', elClone).height()
     elClone.remove()
     result
