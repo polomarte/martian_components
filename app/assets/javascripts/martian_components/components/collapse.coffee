@@ -19,19 +19,28 @@ class @MC.Collapse extends @MC.Base
     @collapseToggle.on 'click',                  => @onCollapseToggleClick()
     @textToCollpase.on $.support.transition.end, => @textToCollpase.trigger('update.dot')
 
+    @text.height 'auto' if @text != @textToCollpases
+
     @textToCollpase.dotdotdot(watch: 'window')
     @fitText()
 
+    setTimeout (=>
+      @text.removeClass 'invisible'
+      @textManualSplit.removeClass 'invisible'
+    ), 700
+
   refresh: ->
     @closeCollapse()
-    setTimeout (=> @fitText()), 700
+    @fitText()
+    @textToCollpase.css('opacity', 0)
+    setTimeout (=> @textToCollpase.css('opacity', 1)), 700
 
   fitText: =>
     @textCollapsedHeight = @computeTextCollapseHeight()
     @textToCollpase.css height: @textCollapsedHeight
 
-    setTimeout (=> @textToCollpase.trigger('update.dot')), 700 # Fallback 1
-    setTimeout (=> @textToCollpase.trigger('update.dot')), 1500 # Fallback 2
+    setTimeout (=> @textToCollpase.trigger 'update.dot'), 700 # Fallback 1
+    setTimeout (=> @textToCollpase.trigger 'update.dot'), 1500 # Fallback 2
 
   computeTextCollapseHeight: ->
     @textToCollpase.css 'height', 0

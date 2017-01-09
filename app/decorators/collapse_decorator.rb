@@ -25,9 +25,9 @@ class CollapseDecorator < ComponentDecorator
     if object.text_with_manual_division? && !for_modal
       output = ''
       splitted_text = object.text.split(Collapse::TEXT_SPLITTER)
-      output << content_tag(:div, splitted_text.first.html_safe, class: "text #{object.options[:text_class]}")
+      output << content_tag(:div, splitted_text.first.html_safe, class: "text invisible #{object.options[:text_class]}")
       output << content_tag(:div, '', class: 'clearfix')
-      output << content_tag(:div, splitted_text.last.html_safe, class: "text manual-split #{object.options[:text_class]}")
+      output << content_tag(:div, splitted_text.last.html_safe, class: "text invisible manual-split #{object.options[:text_class]}")
       output.html_safe
     else
       object.text.sub!(Collapse::TEXT_SPLITTER, '')
