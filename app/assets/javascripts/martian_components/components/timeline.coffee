@@ -37,20 +37,17 @@ class @MC.Timeline extends @MC.Base
       @updateActiveYear newPositionIndex
 
   initSlider: =>
-    @slider.slick
+    defaultOptions =
       slide: 'article'
       slidesToShow: 1
       dots: false
-      responsive: [
-        {
-          breakpoint: 768
-          settings:
-            arrows: false
-        }
-      ]
-      onBeforeChange: (slider, current, next) =>
-        @navSlider.slider('values', 0, next * @navSliderStepSize)
-        @updateActiveYear next
+      infinite: false
+
+    @slider.slick Object.merge({}, defaultOptions, @slider.data('gallery-options') || {})
+
+    @slider.on 'beforeChange', (ev, slick, currentSlide, nextSlide) =>
+      @navSlider.slider('values', 0, nextSlide * @navSliderStepSize)
+      @updateActiveYear nextSlide
 
   updateActiveYear: (newIndex) ->
     @years.removeClass 'active'

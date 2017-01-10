@@ -10,7 +10,10 @@
         .nav-slider[data={jq_slider: true}]
           .years[data={values: timeline.items.map(&:h1)}]
 
-      div[data={slick_carousel: true}]
+      div[data={ \
+        slick_carousel: true,
+        gallery_options: timeline.options[:gallery_options].to_json}]
+
         - timeline.items.each do |item|
           = component item
 
