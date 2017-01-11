@@ -1,9 +1,10 @@
 class @MC.Core.YoutubePlayerApiLoader
   @autoInit: ->
-    @.instance = new @ if $('.embedded-video-player-wrapper').length
+    @instance = new @ if $('.embedded-video-player-wrapper').length
 
   constructor: ->
     window.onYouTubeIframeAPIReady = @onYouTubeIframeAPIReady
+    @isReady = false
     @loadApi()
 
   loadApi: ->
@@ -14,4 +15,5 @@ class @MC.Core.YoutubePlayerApiLoader
 
   onYouTubeIframeAPIReady: ->
     instance = MC.Core.YoutubePlayerApiLoader.instance
+    instance.isReady = true
     $(instance).trigger('apiReady')

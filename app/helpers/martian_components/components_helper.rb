@@ -57,32 +57,39 @@ module MartianComponents
     end
 
     def embedded_video_player video_id, poster_url=nil, options={}
-      content_tag :div, class: 'embedded-video-player-wrapper', 'data-fullscreen' => !!options[:fullscreen] do
+      output = ''
+
+      output << content_tag(:div, class: 'embedded-video-player-wrapper', 'data-modal' => !!options[:modal]) do
         content_tag :div, class: 'embedded-video-player-wrapper-inner' do
-          output = ''
+          out = ''
 
           poster_content = capture do
-            out = ''
-            out << inline_svg('icons/video_player_play.svg', class: 'play-icon')
-            out << image_tag('icons/video_player_loader.gif', class: 'loader')
-            out.html_safe
+            o = ''
+            o << inline_svg('icons/video_player_play.svg', class: 'play-icon')
+            o << image_tag('icons/video_player_loader.gif', class: 'loader')
+            o.html_safe
           end
 
           poster_url ||= "http://img.youtube.com/vi/#{video_id}/hqdefault.jpg"
 
-          output << (content_tag :div, poster_content,
+          out << (content_tag :div, poster_content,
             style: "background-image: url('#{poster_url}')",
             class: 'embedded-video-player-poster')
 
-          output << content_tag(:div, nil,
+          out << content_tag(:div, nil,
             id: "embedded-video-#{video_id}",
             class: 'embedded-video-player-placeholder',
             data: {video_id: video_id})
 
-          output.html_safe
+          out.html_safe
         end
       end
+
+      if options[:modal]
+        output << controller.render_to_string(partial: 'elements/embedded_video_player_modal', locals: {video_id: video_id})
+      end
+
+      output.html_safe
     end
   end
 end
-

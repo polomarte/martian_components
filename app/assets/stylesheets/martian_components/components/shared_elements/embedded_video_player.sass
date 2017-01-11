@@ -36,3 +36,29 @@
       left: 50%
       top: 50%
       z-index: 1
+
+.embedded-video-player-modal
+  .modal-dialog
+    height: 100%
+
+  .modal-body
+    height: 100%
+    padding-bottom: 50px
+    +flexbox
+    +align-items(center)
+    +justify-content(center)
+
+  iframe
+    +size(300px, 300px * (720 / 1280))
+
+  @media (min-width: $screen-sm-min)
+    iframe
+      +size(500px, 500px * (720 / 1280))
+
+  @media (min-width: $screen-md-min)
+    iframe
+      +size(700px, 700px * (720 / 1280))
+
+  @media (min-width: $screen-lg-min)
+    iframe
+      +size(1000px, 1000px * (720 / 1280))

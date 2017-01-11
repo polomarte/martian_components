@@ -1,0 +1,7 @@
+.modal.fade.embedded-video-player-modal id="modal-#{video_id}" tabindex='-1'
+  .modal-dialog
+    .modal-body
+      .modal-player-placeholder id="modal-player-placeholder-#{video_id}"
+
+button.close data={dismiss: 'modal', target: "#modal-#{video_id}"}
+  = inline_svg 'icons/modal_close.svg'

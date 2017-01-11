@@ -3,7 +3,7 @@
     = embedded_video_player(\
       asset.video_code,
       (asset.image.file.try(:exists?) && asset.image_url(:small)),
-      {fullscreen: gallery&.options[:fullscreen_videos]})
+      {modal: gallery&.options[:modal_videos]})
 
     .caption
       = raw asset.title
