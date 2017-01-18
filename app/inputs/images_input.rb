@@ -22,31 +22,38 @@ class ImagesInput
 
   def img_form_inputs
     img_form.inputs img_form_inputs_label, class: 'inputs media-uploader-inputs' do
-      output = ''
+      template.concat file_input
 
-      output << template.content_tag(:li, class: 'fileinput-button file input required') do
-        out = ''
-        out << img_form.s3_file_field(:file)
-        out << template.content_tag(:p, img_form.object.decorate.form_hint, class: 'inline-hints')
-        out << img_form.hidden_field(:remote_file_url)
-
-        if img_form.object.persisted?
-          out << template.link_to('Remover', '#', class: 'remove-media-btn')
-          out << img_form.hidden_field(:_destroy)
-        end
-
-        out.html_safe
+      if builder.is_a? ActiveAdmin::FormBuilder
+        img_form.input(:kind, as: :hidden)
+        img_form.input(:imageable_id, as: :hidden)
+        img_form.input(:imageable_type, as: :hidden)
+      else
+        template.concat img_form.input(:kind, as: :hidden)
+        template.concat img_form.input(:imageable_id, as: :hidden)
+        template.concat img_form.input(:imageable_type, as: :hidden)
       end
-
-      output << img_form.input(:kind, as: :hidden)
-      output << img_form.input(:imageable_id, as: :hidden)
-      output << img_form.input(:imageable_type, as: :hidden)
-
-      output.html_safe
     end
   end
 
   def img_form_inputs_label
     object.class.human_attribute_name(img_form.object.kind) rescue nil
+  end
+
+  def file_input
+    template.content_tag(:li, class: 'fileinput-button file input required') do
+      output = ''
+
+      output << img_form.s3_file_field(:file)
+      output << template.content_tag(:p, img_form.object.decorate.form_hint, class: 'inline-hints')
+      output << img_form.hidden_field(:remote_file_url)
+
+      if img_form.object.persisted?
+        output << template.link_to('Remover', '#', class: 'remove-media-btn')
+        output << img_form.hidden_field(:_destroy)
+      end
+
+      output.html_safe
+    end
   end
 end
