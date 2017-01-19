@@ -1,7 +1,7 @@
 class @MCAdmin.GalleryAssets
   @autoInit: ->
     init = =>
-      $('form[id^=form-gallery] .assets-inputs').each (i, el) => new @($(el))
+      $('form[id^=form_gallery] .assets-inputs').each (i, el) => new @($(el))
 
     $(document).on 'ajaxComplete', (ev, xhr) =>
       return false unless $(xhr.responseJSON?.component_form).length
