@@ -81,7 +81,8 @@ class @MC.Core.EmbeddedVideoPlayerWrapper
           showinfo: 0
           rel: 0)
 
-      @modalPlayer.addEventListener 'onReady', => @modalPlayer.playVideo()
+      @modalPlayer.addEventListener 'onReady', =>
+        @modalPlayer.playVideo() unless Utils.isTouchDevice()
 
     @modal.modal({show: false})
 
