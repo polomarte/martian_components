@@ -2,7 +2,6 @@ class Image < ActiveRecord::Base
   translates :title, :description
   mount_uploader :file, ImageUploader
 
-  serialize :duotone
   belongs_to :imageable, touch: true, polymorphic: true
   validates :file, presence: true
   validates :title, presence: true, if: :photo?
@@ -13,7 +12,7 @@ class Image < ActiveRecord::Base
   def self.permitted_params
     [:id, :description, :date,
      :active, :kind, :file, :file_cache, :remote_file_url,
-     :imageable_id, :imageable_type, :position, :duotone, :_destroy]
+     :imageable_id, :imageable_type, :position, :_destroy]
   end
 
   def self.policy_class
