@@ -28,10 +28,6 @@ class ImageUploader < CarrierWave::Uploader::Base
     process resize_to_fit: [150, 150]
   end
 
-  version :thumb_fill, if: Proc.new {|new_upload| !new_upload.svg?} do
-    process resize_to_fill: [150, 150]
-  end
-
   version :small, if: Proc.new {|new_upload| !new_upload.svg?} do
     process resize_to_fit: [600, 600]
   end
@@ -43,14 +39,6 @@ class ImageUploader < CarrierWave::Uploader::Base
   version :large, if: Proc.new {|new_upload| !new_upload.svg?} do
     process resize_to_fit: [1920, 1080]
   end
-
-  # version :fullscreen, if: Proc.new {|new_upload| !new_upload.svg?} do
-  #   process resize_to_fill: [1920, 1080]
-  # end
-
-  # version :blur, if: Proc.new {|new_upload| !new_upload.svg?} do
-  #   process :gaussian_blur
-  # end
 
   # version :slide_blur, if: Proc.new {|new_upload| !new_upload.svg?} do
   #   process resize_to_fill: [890, 445]
