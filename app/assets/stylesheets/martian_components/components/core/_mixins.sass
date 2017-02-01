@@ -1,0 +1,205 @@
+@import "martian_components/components/core/_mixins/flex"
+
+=vertical-spacing-margin($dir, $half: "no")
+  @if ($dir == "top" or $dir == "bottom")
+    @if ($half == "half")
+      margin-#{$dir}: $vertical-spacing-xs / 2
+    @else
+      margin-#{$dir}: $vertical-spacing-xs
+  @else
+    @if ($half == "half")
+      margin-top: $vertical-spacing-xs / 2
+      margin-bottom: $vertical-spacing-xs / 2
+    @else
+      margin-top: $vertical-spacing-xs
+      margin-bottom: $vertical-spacing-xs
+
+  @media (min-width: $screen-sm-min)
+    @if ($dir == "top" or $dir == "bottom")
+      @if ($half == "half")
+        margin-#{$dir}: $vertical-spacing-sm / 2
+      @else
+        margin-#{$dir}: $vertical-spacing-sm
+    @else
+      @if ($half == "half")
+        margin-top: $vertical-spacing-sm / 2
+        margin-bottom: $vertical-spacing-sm / 2
+      @else
+        margin-top: $vertical-spacing-sm
+        margin-bottom: $vertical-spacing-sm
+
+  @media (min-width: $screen-md-min)
+    @if ($dir == "top" or $dir == "bottom")
+      @if ($half == "half")
+        margin-#{$dir}: $vertical-spacing-md / 2
+      @else
+        margin-#{$dir}: $vertical-spacing-md
+    @else
+      @if ($half == "half")
+        margin-top: $vertical-spacing-md / 2
+        margin-bottom: $vertical-spacing-md / 2
+      @else
+        margin-top: $vertical-spacing-md
+        margin-bottom: $vertical-spacing-md
+
+  @media (min-width: $screen-lg-min)
+    @if ($dir == "top" or $dir == "bottom")
+      @if ($half == "half")
+        margin-#{$dir}: $vertical-spacing-lg / 2
+      @else
+        margin-#{$dir}: $vertical-spacing-lg
+    @else
+      @if ($half == "half")
+        margin-top: $vertical-spacing-lg / 2
+        margin-bottom: $vertical-spacing-lg / 2
+      @else
+        margin-top: $vertical-spacing-lg
+        margin-bottom: $vertical-spacing-lg
+
+=vertical-spacing-padding($dir, $half: "no")
+  @if ($dir == "top" or $dir == "bottom")
+    @if ($half == "half")
+      padding-#{$dir}: $vertical-spacing-xs / 2
+    @else
+      padding-#{$dir}: $vertical-spacing-xs
+  @else
+    @if ($half == "half")
+      padding-top: $vertical-spacing-xs / 2
+      padding-bottom: $vertical-spacing-xs / 2
+    @else
+      padding-top: $vertical-spacing-xs
+      padding-bottom: $vertical-spacing-xs
+
+  @media (min-width: $screen-sm-min)
+    @if ($dir == "top" or $dir == "bottom")
+      @if ($half == "half")
+        padding-#{$dir}: $vertical-spacing-sm / 2
+      @else
+        padding-#{$dir}: $vertical-spacing-sm
+    @else
+      @if ($half == "half")
+        padding-top: $vertical-spacing-sm / 2
+        padding-bottom: $vertical-spacing-sm / 2
+      @else
+        padding-top: $vertical-spacing-sm
+        padding-bottom: $vertical-spacing-sm
+
+  @media (min-width: $screen-md-min)
+    @if ($dir == "top" or $dir == "bottom")
+      @if ($half == "half")
+        padding-#{$dir}: $vertical-spacing-md / 2
+      @else
+        padding-#{$dir}: $vertical-spacing-md
+    @else
+      @if ($half == "half")
+        padding-top: $vertical-spacing-md / 2
+        padding-bottom: $vertical-spacing-md / 2
+      @else
+        padding-top: $vertical-spacing-md
+        padding-bottom: $vertical-spacing-md
+
+  @media (min-width: $screen-lg-min)
+    @if ($dir == "top" or $dir == "bottom")
+      @if ($half == "half")
+        padding-#{$dir}: $vertical-spacing-lg / 2
+      @else
+        padding-#{$dir}: $vertical-spacing-lg
+    @else
+      @if ($half == "half")
+        padding-top: $vertical-spacing-lg / 2
+        padding-bottom: $vertical-spacing-lg / 2
+      @else
+        padding-top: $vertical-spacing-lg
+        padding-bottom: $vertical-spacing-lg
+
+=absolute-center($width)
+  position: absolute
+  width: $width
+  left: 50%
+  margin-left: 0 - $width / 2
+
+=btn-color-style($fg-color, $bg-color)
+  &,
+  &:active,
+  &[disabled],
+  &.disabled
+    color: $fg-color
+    background-color: $bg-color
+
+  &:hover
+    background-color: lighten($bg-color, 10%)
+
+  &.inverted
+    color: $bg-color
+    background-color: $fg-color
+
+    &,
+    &:active,
+    &[disabled],
+    &.disabled
+      color: $bg-color
+      background-color: $fg-color
+
+    &:hover
+      background-color: lighten($fg-color, 10%)
+
+  &.with-icon
+    svg
+      height: 20px
+      padding-left: 20px
+      margin-bottom: -5px
+      margin-top: -5px
+      margin-right: -5px
+
+=media-border($color: "white")
+  border: $media-border-width-xs solid $color
+
+  @media (min-width: $screen-md-min)
+    border-width: $media-border-width-md
+
+  @media (min-width: $screen-lg-min)
+    border-width: $media-border-width-lg
+
+
+=font-smoothing($font-smoothing: antialiased)
+  // none | antialiased | subpixel-antialiased
+  -webkit-font-smoothing: $font-smoothing
+  -moz-font-smoothing: $font-smoothing
+  -ms-font-smoothing: $font-smoothing
+  font-smoothing: $font-smoothing
+
+=bourbon-placeholder
+  $placeholders: ":-webkit-input" ":-moz" "-moz" "-ms-input"
+  @each $placeholder in $placeholders
+    &:#{$placeholder}-placeholder
+      @content
+
+=triangle($dir, $size, $color, $offset: 0px)
+  &:before,
+  &:after
+    border: $size transparent solid
+    content: ''
+    position: absolute
+
+  @if ($dir == "top" or $dir == "up" or $dir == "left" or $dir == "before")
+    &:before
+      @if ($dir == "top" or $dir == "up")
+        border-bottom-color: $color
+      @else if ($dir == "right" or $dir == "after")
+        border-left-color: $color
+  @else if ($dir == "bottom" or $dir == "down" or $dir == "left" or $dir == "before")
+    &:after
+      left: 50%
+      margin-left: -$size
+      @if ($dir == "bottom" or $dir == "down")
+        border-top-color: $color
+        bottom: $offset
+      @else if ($dir == "left" or $dir == "before")
+        border-right-color: $color
+
+=transform($transform)
+  -webkit-transform: $transform
+  -moz-transform: $transform
+  -ms-transform: $transform
+  -o-transform: $transform
+  transform: $transform
