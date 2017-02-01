@@ -29,7 +29,7 @@ class @MC.Gallery extends @MC.Base
     if @options.padding
       customOptions =
         centerMode:     true
-        centerPadding:  '32%'
+        centerPadding:  '30%'
         slidesToShow:   1
         slidesToScroll: 1
         focusOnSelect:  true
@@ -37,6 +37,10 @@ class @MC.Gallery extends @MC.Base
           {
             breakpoint: 1600
             settings: {centerPadding:  '28%'}
+          }
+          {
+            breakpoint: 1400
+            settings: {centerPadding:  '25%'}
           }
           {
             breakpoint: 1100
