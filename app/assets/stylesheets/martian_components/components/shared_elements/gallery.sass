@@ -51,6 +51,7 @@ article[class^="component-"]
   @media (min-width: $screen-sm-min)
     [data-slick-carousel]
       margin-top: 50px
+      padding-bottom: 50px
 
     [data-slick-carousel="false"]
       width: 600px
@@ -63,9 +64,16 @@ article[class^="component-"]
         padding: 0 20px
 
   @media (min-width: $screen-md-min)
+    [data-slick-carousel]
+      padding-bottom: 70px
+
     [data-slick-carousel="false"]
       width: 100%
 
       // Nested components
       article[class^="component-"]
         width: 235px
+
+  @media (min-width: $screen-lg-min)
+    [data-slick-carousel]
+      padding-bottom: 75px
