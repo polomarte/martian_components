@@ -127,7 +127,10 @@
     background-color: $bg-color
 
   &:hover
-    background-color: lighten($bg-color, 10%)
+    @if (lightness($bg-color) > 0.5)
+      background-color: darken($bg-color, 15%)
+    @else
+      background-color: lighten($bg-color, 15%)
 
   &.inverted
     color: $bg-color
@@ -141,7 +144,10 @@
       background-color: $fg-color
 
     &:hover
-      background-color: lighten($fg-color, 10%)
+      @if (lightness($fg-color) > 50%)
+        background-color: darken($fg-color, 15%)
+      @else
+        background-color: lighten($fg-color, 15%)
 
   &.with-icon
     svg
@@ -159,7 +165,6 @@
 
   @media (min-width: $screen-lg-min)
     border-width: $media-border-width-lg
-
 
 =font-smoothing($font-smoothing: antialiased)
   // none | antialiased | subpixel-antialiased
