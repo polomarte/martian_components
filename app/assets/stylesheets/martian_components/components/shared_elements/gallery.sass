@@ -6,6 +6,12 @@ article[class^="component-"]
     padding-bottom: 40px
     +center-block
 
+    // Workaround to single slide gallery. FUCK!!! Why me?!
+    &.single-slide
+      .slick-track
+        width: 100% !important
+        left: 0 !important
+
     .slick-prev,
     .slick-next
       &:before
