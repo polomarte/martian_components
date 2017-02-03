@@ -99,4 +99,4 @@ class @MC.HoverItem extends @MC.Base
     @modalToggle.removeAttr('data-toggle')
 
   stopVideo: ->
-    @embeddedPlayerWrapper.data('player').stopVideo()
+    @embeddedPlayerWrapper.data('player')?.stopVideo?()
