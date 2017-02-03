@@ -24,7 +24,6 @@ article.component-banner
     position: relative
     z-index: 0
     text-align: center
-    height: 240px
     width: 100%
     padding: 0
     +flexbox
@@ -49,6 +48,7 @@ article.component-banner
   h1
     color: white
     margin-top: 0
+    margin-bottom: 20px
     width: 100%
 
   h2
@@ -58,26 +58,33 @@ article.component-banner
     width: 100%
 
   @media (min-width: $screen-sm-min)
-    .inner
-      height: 280px
-      padding: 0
-
     .icon-wrapper
       height: 65px
       margin-bottom: 22px
 
   @media (min-width: $screen-md-min)
-    .inner
-      height: 320px
-
     .icon-wrapper
       height: 75px
       margin-bottom: 35px
 
   @media (min-width: $screen-lg-min)
-    .inner
-      height: 400px
-
     .icon-wrapper
       height: 90px
       margin-bottom: 40px
+
+  // To be used in header banners that hasn't full-height-header option
+  &.hero
+    .inner
+      height: 240px
+
+    @media (min-width: $screen-sm-min)
+      .inner
+        height: 280px
+
+    @media (min-width: $screen-md-min)
+      .inner
+        height: 320px
+
+    @media (min-width: $screen-lg-min)
+      .inner
+        height: 400px
