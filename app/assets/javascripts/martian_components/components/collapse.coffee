@@ -5,23 +5,24 @@ class @MC.Collapse extends @MC.Base
   constructor: (@el) ->
     super
 
-    @text            = $('.text', @el).first()
-    @textManualSplit = $('.text.manual-split', @el)
-    @textToCollpase  = if @textManualSplit.length then @textManualSplit else @text
-    @collapseToggle  = $('.toggle-wrapper svg', @el)
-    @modalToggle     = $('> [data-toggle="modal"]', @inner)
-    @modalDismiss    = $("[data-dismiss][data-target='#{@modalToggle.data('target')}']")
-    @modal           = $(@modalToggle.data('target'))
+    @text                = $('.text', @el).first()
+    @textManualSplit     = $('.text.manual-split', @el)
+    @textToCollapse      = if @textManualSplit.length then @textManualSplit else @text
+    @collapseToggle      = $('.toggle-wrapper svg', @el)
+    @modalToggle         = $('> [data-toggle="modal"]', @inner)
+    @modalDismiss        = $("[data-dismiss][data-target='#{@modalToggle.data('target')}']")
+    @modal               = $(@modalToggle.data('target'))
+    @textToCollapse.open = false
 
     @modal.on 'shown.bs.modal',                  => @modalDismiss.show()
     @modal.on 'hide.bs.modal',                   => @modalDismiss.hide()
     @modalDismiss.on 'touchstart click',         => @modal.modal('hide')
     @collapseToggle.on 'click',                  => @onCollapseToggleClick()
-    @textToCollpase.on $.support.transition.end, => @textToCollpase.trigger('update.dot')
+    @textToCollapse.on $.support.transition.end, => @textToCollapse.trigger('update.dot')
 
-    @text.height 'auto' if @text != @textToCollpases
+    @text.height 'auto' if @text != @textToCollapses
 
-    @textToCollpase.dotdotdot(watch: 'window')
+    @textToCollapse.dotdotdot(watch: 'window')
     @fitText()
 
     setTimeout (=>
@@ -32,18 +33,18 @@ class @MC.Collapse extends @MC.Base
   refresh: ->
     @closeCollapse()
     @fitText()
-    @textToCollpase.css('opacity', 0)
-    setTimeout (=> @textToCollpase.css('opacity', 1)), 700
+    @textToCollapse.css('opacity', 0)
+    setTimeout (=> @textToCollapse.css('opacity', 1)), 700
 
   fitText: =>
     @textCollapsedHeight = @computeTextCollapseHeight()
-    @textToCollpase.css height: @textCollapsedHeight
+    @textToCollapse.css height: @textCollapsedHeight
 
-    setTimeout (=> @textToCollpase.trigger 'update.dot'), 700 # Fallback 1
-    setTimeout (=> @textToCollpase.trigger 'update.dot'), 1500 # Fallback 2
+    setTimeout (=> @textToCollapse.trigger 'update.dot'), 700 # Fallback 1
+    setTimeout (=> @textToCollapse.trigger 'update.dot'), 1500 # Fallback 2
 
   computeTextCollapseHeight: ->
-    @textToCollpase.css 'height', 0
+    @textToCollapse.css 'height', 0
 
     collapseOrModalToggle =
       if @collapseToggle.is(':visible')
@@ -53,7 +54,7 @@ class @MC.Collapse extends @MC.Base
 
     diff = collapseOrModalToggle.offset().top - @text.offset().top - 30
 
-    if @textToCollpase == @textManualSplit
+    if @textToCollapse == @textManualSplit
       return 0
     else
       return if diff < 160 then 160 else diff
@@ -83,46 +84,46 @@ class @MC.Collapse extends @MC.Base
     result
 
   openCollapse: ->
-    return if @textToCollpase.open
+    return if @textToCollapse.open
 
-    @textToCollpase.trigger('destroy')
-    @textToCollpase.css('height', @textCollapsedHeight) # Hack, 'cause .trigger('destroy') clean inline syle too
-    @textToCollpase.height @computeTextFullHeight()
+    @textToCollapse.trigger('destroy')
+    @textToCollapse.css('height', @textCollapsedHeight) # Hack, 'cause .trigger('destroy') clean inline syle too
+    @textToCollapse.height @computeTextFullHeight()
 
     # Improve UX, applying fade in when possible (manual splitted text only)
-    @textToCollpase.css('opacity', 1) if @textToCollpase.hasClass('manual-split')
+    @textToCollapse.css('opacity', 1) if @textToCollapse.hasClass('manual-split')
 
     onOpen = =>
-      @textToCollpase.trigger('update.dot')
-      @textToCollpase.open = true
+      @textToCollapse.trigger('update.dot')
+      @textToCollapse.open = true
       @collapseToggle.attr 'class', 'text-open'
 
-    @textToCollpase.on $.support.transition.end, onOpen
+    @textToCollapse.on $.support.transition.end, onOpen
     setTimeout onOpen, 550 # Fallback 1
     setTimeout onOpen, 1500 # Fallback 2
 
     # Reactive dotdotdot
-    setTimeout (=> @textToCollpase.dotdotdot(watch: 'window')), 2000
+    setTimeout (=> @textToCollapse.dotdotdot(watch: 'window')), 2000
 
   closeCollapse: ->
-    return unless @textToCollpase.open
+    return unless @textToCollapse.open
 
-    @textToCollpase.height @textCollapsedHeight
+    @textToCollapse.height @textCollapsedHeight
     $('body').stop().animate {scrollTop: @el.offset().top}
 
     # Improve UX, applying fade out when possible (manual splitted text only)
-    @textToCollpase.css('opacity', 0) if @textToCollpase.hasClass('manual-split')
+    @textToCollapse.css('opacity', 0) if @textToCollapse.hasClass('manual-split')
 
     onClose = =>
-      @textToCollpase.open = false
+      @textToCollapse.open = false
       @collapseToggle.attr 'class', ''
 
-    @textToCollpase.on $.support.transition.end, onClose
+    @textToCollapse.on $.support.transition.end, onClose
     setTimeout onClose, 550 # Fallback 1
     setTimeout onClose, 1500 # Fallback 2
 
   onCollapseToggleClick: ->
-    if @textToCollpase.open then @closeCollapse() else @openCollapse()
+    if @textToCollapse.open then @closeCollapse() else @openCollapse()
 
   onResponsiveSizeChange: ->
     @refresh()
