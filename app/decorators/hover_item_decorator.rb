@@ -4,6 +4,10 @@ class HoverItemDecorator < ComponentDecorator
   end
 
   def link_url_target_attr
-    URI.parse(link_url).host == ENV['HOST'] ? '_self' : '_blank'
+    if link_url.start_with?('/') || URI.parse(link_url).host == ENV['HOST']
+      '_self'
+    else
+      '_blank'
+    end
   end
 end
