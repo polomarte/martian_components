@@ -21,7 +21,7 @@ class @MC
     @Gallery.autoInit()
     @MegaLink.autoInit()
 
-    @Utils.Analytics.autoInit()
+    # @Utils.Analytics.autoInit()
     @Utils.LazySvg.autoInit()
     @Utils.FullHeightHeader.autoInit()
     @Utils.SmoothScroll.autoInit()
