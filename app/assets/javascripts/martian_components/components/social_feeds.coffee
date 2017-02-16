@@ -56,4 +56,4 @@ class @MC.SocialFeed
     @embeddedPlayerWrapper = $('.embedded-video-player-wrapper', @el)
 
   stopVideo: ->
-    @embeddedPlayerWrapper.data('player').stopVideo()
+    @embeddedPlayerWrapper.data('player')?.stopVideo()
