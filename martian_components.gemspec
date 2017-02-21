@@ -19,6 +19,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency('rails',                   ['>= 4.1.0'])
   s.add_dependency('devise',                  ['~> 3.5.10'])
+  s.add_dependency('activeadmin',             ['1.0.0.pre2'])
   s.add_dependency('bootstrap-sass',          ['~> 3.2'])
   s.add_dependency('rails_autolink',          ['~> 1.1.0'])
   s.add_dependency('koala',                   ['~> 2.2.0'])
@@ -36,7 +37,7 @@ Gem::Specification.new do |s|
   s.add_dependency('jquery-ui-rails',         ['~> 5.0.5'])
   s.add_dependency('inline_svg',              ['~> 0.6.1'])
   s.add_dependency('route_translator',        ['~> 4.0.0'])
-  s.add_dependency('jquery.fileupload-rails', ['~>1.11.0'])
+  s.add_dependency('jquery.fileupload-rails', ['~> 1.11.0'])
   s.add_dependency('fog',                     ['~> 1.36.0'])
   s.add_dependency('data_migrate',            ['~> 3.0.1'])
 
