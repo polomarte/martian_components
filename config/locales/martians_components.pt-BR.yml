@@ -12,7 +12,8 @@ pt-BR:
       shared_attributes: &shared_attributes
         created_at: Criado em
         updated_at: Atualizado em
-        link_url: Link
+        link_url: URL do Link
+        link_label: Texto do Link
         title: Título
         description: Descrição
         image: Imagem

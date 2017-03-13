@@ -1,10 +1,10 @@
 class Component < ActiveRecord::Base
-  @@permitted_params = [:h1, :h2, :text]
+  @@permitted_params = [:h1, :h2, :text, :link_url, :link_label]
 
   include Imageable
 
   store :data, accessors: [:options, :form_options]
-  translates :title, :h1, :h2, :text
+  translates :title, :h1, :h2, :text, :link_url, :link_label
 
   validates :key, presence: true
   validates :key, uniqueness: true
