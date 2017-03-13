@@ -1,11 +1,7 @@
 class HoverItem < Component
-  store_accessor :data, :link_url
-
   define_image_kinds [:icon, :background]
 
-  def self.permitted_params
-    super | [:link_url]
-  end
+  validates :link_url, presence: true, if: ->{link_label.present?}
 
   def video_id
     return nil if link_url.blank?
