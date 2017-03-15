@@ -11,10 +11,10 @@
         - if hover_item.text.present? && !hover_item.link_label.present?
           .more-icon= inline_svg 'icons/more.svg'
 
-        - hover_item.link_label.present?
+        - if hover_item.link_label.present?
           = link_to hover_item.link_label, hover_item.link_url,
             target: hover_item.decorate.link_url_target_attr,
-            class: 'btn link-btn '.concat(hover_item.options[:link_btn_class])
+            class: "btn link-btn #{hover_item.options[:link_btn_class]}"
 
       - if hover_item.link_url.present? && hover_item.video_id.blank?
         - if hover_item.link_label.present?

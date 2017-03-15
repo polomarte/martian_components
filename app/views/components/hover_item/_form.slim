@@ -16,5 +16,6 @@
 
     - if :link_url.in? f.object.decorate.form_additional_editable_attrs
       = f.input :link_url
+      = f.input :link_label
 
   = f.input :images, as: :images
