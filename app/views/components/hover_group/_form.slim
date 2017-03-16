@@ -28,7 +28,7 @@
           - component.items.each_with_index do |item, i|
             li[class=('active' if i.zero?)]
               a data-toggle='tab' href="##{dom_id(item)}" role='tab'
-                = item.h1
+                = item.h1.presence || item.title
 
         /! Tab panes
         .tab-content
