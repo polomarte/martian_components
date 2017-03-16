@@ -7,6 +7,7 @@
   = f.semantic_errors *f.object.errors.keys
 
   = f.inputs do
+    = f.input :published
     = f.input :h1
 
     - unless :text.in? f.object.decorate.form_disabled_attrs

@@ -22,7 +22,7 @@ module MartianComponents
 
       component.options = component.options.deep_merge(options)
 
-      if component.present?
+      if component.present? && component.published?
         cache_key = ['v1', component,
           Digest::MD5.hexdigest([options, block_given? && capture(component, &block)].join)]
 

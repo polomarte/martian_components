@@ -12,8 +12,7 @@ pt-BR:
       shared_attributes: &shared_attributes
         created_at: Criado em
         updated_at: Atualizado em
-        link_url: URL do Link
-        link_label: Texto do Link
+        published: Publicado?
         title: Título
         description: Descrição
         image: Imagem
@@ -21,6 +20,8 @@ pt-BR:
         video_code: Video
         video_mp4: Video formato mp4
         video_ogg: Video formato ogg
+        link_url: URL do Link
+        link_label: Texto do Link
       component:
         <<: *shared_attributes
         h1: Título
