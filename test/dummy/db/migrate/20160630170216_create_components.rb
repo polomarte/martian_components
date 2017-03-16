@@ -10,8 +10,11 @@ class CreateComponents < ActiveRecord::Migration
       t.column :data, :text
       t.column :affix_nav_navegable, :boolean, default: false
       t.column :file, :string
+      t.column :link_url, :string
+      t.column :link_label, :string
       t.column :parent_id, :integer
       t.column :position, :integer
+      t.column :published, :boolean, default: false
 
       t.timestamps
     end
