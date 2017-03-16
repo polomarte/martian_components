@@ -11,13 +11,13 @@
         slick_carousel: !!hover_group.options[:gallery],
         gallery_options: hover_group.options[:gallery_options].to_json}
 
-        - hover_group.items.each do |item|
+        - hover_group.items.published.each do |item|
           = component item
 
       .clearfix
 
       = render partial: 'components/hover_item/modal',
-        collection: hover_group.items, as: :hover_item
+        collection: hover_group.items.published, as: :hover_item
 
     - if defined?(block)
       - block.call(hover_group, inner_content)

@@ -10,14 +10,16 @@
 
       = f.semantic_errors *f.object.errors.keys
 
-      = f.input :key, as: :hidden, wrapper_html: {class: 'hide'}
+      = f.inputs do
+        = f.input :published
+        = f.input :key, as: :hidden, wrapper_html: {class: 'hide'}
 
-      - unless component.form_options[:only_items]
-        = f.inputs do
+        - unless component.form_options[:only_items]
           = f.input :h1
           = f.input :h2
           = f.input :text, as: :default_wysiwyg
 
+      - unless component.form_options[:only_items]
         = f.input :images, as: :images
 
     .panel

@@ -11,6 +11,7 @@
       = f.semantic_errors *f.object.errors.keys
 
       = f.inputs do
+        = f.input :published
         = f.input :h1
         = f.input :h2
         = f.input :key, as: :hidden
