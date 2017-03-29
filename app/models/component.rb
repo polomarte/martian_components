@@ -9,6 +9,7 @@ class Component < ActiveRecord::Base
   validates :key, presence: true
   validates :key, uniqueness: true
   validates :title, presence: true, if: ->(c) { c.h1.blank? }
+  validates :link_url, presence: true, if: ->{link_label.present?}
 
   belongs_to :parent, class_name: 'Component', inverse_of: :items,
     foreign_key: 'parent_id', touch: true
