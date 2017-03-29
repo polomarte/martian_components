@@ -53,6 +53,23 @@ class ComponentDecorator < Draper::Decorator
     content_tag :div, '', class: 'background-image-wrapper', style: "background-image: url(#{background_path})"
   end
 
+  def link_btn
+    return unless link_label.present? && link_url.present?
+
+    css_classes = ['link-btn', 'btn', options[:link_btn_class]].join(' ')
+
+    link_to link_label, link_url, target: link_url_target_attr, class: css_classes
+  end
+
+  def link_url_target_attr
+    link_url_host = URI.parse(link_url).host rescue nil
+
+    if link_url.start_with?('/') || link_url_host == ENV['HOST']
+      '_self'
+    else
+      '_blank'
+    end
+  end
 
   # Form specific methods
 

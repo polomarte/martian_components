@@ -1,8 +1,6 @@
 class HoverItem < Component
   define_image_kinds [:icon, :background]
 
-  validates :link_url, presence: true, if: ->{link_label.present?}
-
   def video_id
     return nil if link_url.blank?
     uri = URI.parse(link_url)
