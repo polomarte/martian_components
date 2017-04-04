@@ -12,7 +12,7 @@ class Banner < Component
   before_validation :fix_videos_mime_types, if: ->{video_mp4.present? && video_ogg.present?}
 
   def self.permitted_params
-    @@permitted_params | [:remote_video_mp4_url, :remove_video_mp4, :remote_video_ogg_url, :remove_video_ogg]
+    @@permitted_params | [:remote_video_mp4_url, :remove_video_mp4, :remote_video_ogg_url, :remove_video_ogg, :video_mp4, :video_ogg, :video_mp4_cache, :video_ogg_cache]
   end
 
 private
