@@ -6,9 +6,8 @@ class Component < ActiveRecord::Base
   store :data, accessors: [:options, :form_options]
   translates :title, :h1, :h2, :text, :link_url, :link_label
 
-  validates :key, presence: true
+  validates :key, :title, presence: true
   validates :key, uniqueness: true
-  validates :title, presence: true, if: ->(c) { c.h1.blank? }
   validates :link_url, presence: true, if: ->{link_label.present?}
 
   belongs_to :parent, class_name: 'Component', inverse_of: :items,
