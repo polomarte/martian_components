@@ -17,8 +17,6 @@ class Component < ActiveRecord::Base
   has_many :items, ->{order [position: :asc, id: :asc]}, class_name: 'Component',
     inverse_of: :parent, foreign_key: 'parent_id', dependent: :destroy
 
-  after_save :reload_related_active_admin_resource!
-
   scope :published, ->{where(published: true)}
 
   def self.[] key
@@ -74,39 +72,5 @@ class Component < ActiveRecord::Base
 
   def modal_id
     ['component', self.class.to_s.underscore.dasherize, 'modal', key.parameterize].join('-')
-  end
-
-private
-
-  def reload_related_active_admin_resource!
-    admin = ActiveAdmin.application.namespace(:admin)
-
-    page_resource = admin.resources.to_a.find do |res|
-      next unless res.is_a? ActiveAdmin::Page
-      res.name.in? [key, parent.try(:key)]
-    end
-
-    return if page_resource.blank?
-    return if page_resource.menu_item.blank?
-
-    component = self
-    admin.send :parse_page_registration_block, page_resource do
-      menu(
-        parent:   page_resource.menu_item.parent.label,
-        priority: page_resource.menu_item.priority,
-        label:    component.decorate.title)
-
-      content title: component.decorate.title do
-        columns do
-          column do
-            if parent = component.parent
-              render parent.to_form_path, component: parent
-            else
-              render component.to_form_path, component: component
-            end
-          end
-        end
-      end
-    end
   end
 end
