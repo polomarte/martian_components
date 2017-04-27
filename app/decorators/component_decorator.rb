@@ -26,7 +26,7 @@ class ComponentDecorator < Draper::Decorator
 
     css_classes = [
       object.image.try(:kind).try(:parameterize, '-'),
-      object.try(:options).try(:[], :main_image_position)
+      object.options[:image_class]
     ].join(' ')
 
     image_tag object.image_url, class: css_classes
