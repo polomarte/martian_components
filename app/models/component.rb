@@ -9,6 +9,9 @@ class Component < ActiveRecord::Base
   validates :key, :title, presence: true
   validates :key, uniqueness: true
   validates :link_url, presence: true, if: ->{link_label.present?}
+  validates :link_url, http_url: true, if: ->{link_url.present? && !link_url.start_with?('/')}
+
+  before_validation :adjust_link_url
 
   belongs_to :parent, class_name: 'Component', inverse_of: :items,
     foreign_key: 'parent_id', touch: true
@@ -17,6 +20,7 @@ class Component < ActiveRecord::Base
     inverse_of: :parent, foreign_key: 'parent_id', dependent: :destroy
 
   scope :published, ->{where(published: true)}
+
 
   def self.[] key
     raise 'Invalid key format' unless valid_key?(key)
@@ -71,5 +75,13 @@ class Component < ActiveRecord::Base
 
   def modal_id
     ['component', self.class.to_s.underscore.dasherize, 'modal', key.parameterize].join('-')
+  end
+
+  private
+
+  def adjust_link_url
+    if link_url.present? && !link_url.start_with?('/') && !link_url.start_with?('http')
+      self.link_url = 'http://' + self.link_url.strip
+    end
   end
 end
