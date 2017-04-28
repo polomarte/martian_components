@@ -39,12 +39,16 @@ pt-BR:
 
     errors:
       models:
+        component:
+          attributes:
+            link_url:
+              invalid_url: não possui formato válido
         banner:
           attributes:
             video_mp4:
-              invalid_mime: Formato inválido. Deve ser mp4
+              invalid_mime: não possui formato válido. Deve ser mp4
             video_ogg:
-              invalid_mime: Formato inválido. Deve ser ogv/ogg
+              invalid_mime: não possui formato válido. Deve ser ogv/ogg
 
   activerecord:
     <<: *models_attributes_and_errors
