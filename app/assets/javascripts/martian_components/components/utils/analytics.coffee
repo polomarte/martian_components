@@ -3,7 +3,6 @@ class @MC.Utils.Analytics
     new @ if ga?
 
   constructor: ->
-    $('.component-hover-group').each (i, el) => @setupForHoverGroup($(el))
     $('.component-social-feeds').each (i, el) => @setupForSocialFeeds($(el))
 
   setupForSocialFeeds: (socialFeeds) ->
