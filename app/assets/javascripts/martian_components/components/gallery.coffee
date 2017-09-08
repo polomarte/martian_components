@@ -2,6 +2,7 @@ class @MC.Gallery extends @MC.Base
   class GalleryAsset
     constructor: (@el, @gallery) ->
       @embeddedPlayerWrapper = $('.embedded-video-player-wrapper', @el)
+      new MC.Core.EmbeddedVideoPlayerWrapper(@embeddedPlayerWrapper)
       @el.addClass('no-touch') unless Utils.isTouchDevice()
 
     stopVideo: ->
