@@ -12,7 +12,7 @@ class @MC.Utils.SmoothScroll
 
   scrollOnClick: ->
     # Based on http://css-tricks.com/snippets/jquery/smooth-scrolling/
-    $('a[href*=#]:not([href=#])', @nav).on 'click', (ev) =>
+    $('a[href*="#"]:not([href="#"])', @nav).on 'click', (ev) =>
       if location.pathname.replace(/^\//,'') == ev.delegateTarget.pathname.replace(/^\//,'') && location.hostname == ev.delegateTarget.hostname
         @scrollTo @getTargetByHash(ev.delegateTarget.hash)
 
