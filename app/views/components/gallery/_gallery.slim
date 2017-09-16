@@ -4,17 +4,20 @@
     = gallery.decorate.h2
     = gallery.decorate.text
 
+    - default_assets = gallery.gallery_assets.reorder('').order(gallery.options[:assets_order] || [position: :asc])
+    - gallery_assets = default_assets | (gallery.options[:custom_assets] || [])
+
     // TODO: Refact to remove the conditional and document de mosaic option.
     - if gallery.options.dig(:data, :mosaic)
       .mosaic-wrapper
-        - (gallery.gallery_assets | (gallery.options[:custom_assets] || [])).each do |asset, index|
+        - gallery_assets.each do |asset, index|
           = render asset, gallery: gallery
     - else
       div[data={ \
         slick_carousel: true,
         gallery_options: gallery.options[:gallery_options].to_json}]
 
-        - (gallery.gallery_assets | (gallery.options[:custom_assets] || [])).each do |asset, index|
+        - gallery_assets.each do |asset, index|
           = render asset, gallery: gallery
 
     .clearfix
